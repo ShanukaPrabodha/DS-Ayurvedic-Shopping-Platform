@@ -5,6 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=Development nodemon --exec babel-node src/server.js",
+		"k8s": "cross-env NODE_ENV=Production nodemon --exec babel-node src/server.js",
 		"check:lint": "eslint src",
 		"check:format": "prettier --check .",
 		"fix:lint": "eslint src --fix",

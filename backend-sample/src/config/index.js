@@ -6,7 +6,7 @@ let configs;
 if (environment == "Development") {
 	configs = {
 		ip: process.env.IP || "localhost",
-		port: process.env.PORT || "5000",
+		port: process.env.PORT || "5001",
 		environment: process.env.DEV_ENVIRONMENT,
 		mongodb: {
 			uri: process.env.DEV_MONGO_URI,
@@ -25,7 +25,7 @@ if (environment == "Development") {
 if (environment == "Production") {
 	configs = {
 		ip: process.env.IP || "localhost",
-		port: process.env.PORT || "5000",
+		port: process.env.PORT || "5001",
 		environment: process.env.PROD_ENVIRONMENT,
 		mongodb: {
 			uri: process.env.DEV_MONGO_URI,
