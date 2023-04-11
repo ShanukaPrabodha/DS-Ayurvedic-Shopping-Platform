@@ -52,6 +52,13 @@ spec:
                 name: notification-srv
                 port:
                   number: 5006
+          - path: /api/delivery
+            pathType: Prefix
+            backend:
+              service:
+                name: delivery-srv
+                port:
+                  number: 5007
           - path: /?(.*)
             pathType: Prefix
             backend:
