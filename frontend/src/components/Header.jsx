@@ -6,6 +6,7 @@ const Header = () => {
 		<div className="underline font-bold text-blue-600 flex gap-4">
 			<Link to="/">Home</Link>
 			<Link to="/sample">Sample</Link>
+			<Link to="/checkout">Checkout</Link>
 		</div>
 	);
 };
