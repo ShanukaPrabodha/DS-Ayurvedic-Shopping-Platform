@@ -31,3 +31,11 @@ build:
         manual:
           - src: "*.js"
             dest: .
+    - image: teambinarymatter/product
+      context: product
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
