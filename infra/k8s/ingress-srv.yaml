@@ -38,6 +38,13 @@ spec:
                 name: order-srv
                 port:
                   number: 5004
+          - path: /api/review
+            pathType: Prefix
+            backend:
+              service:
+                name: review-srv
+                port:
+                  number: 5005
           - path: /?(.*)
             pathType: Prefix
             backend:
