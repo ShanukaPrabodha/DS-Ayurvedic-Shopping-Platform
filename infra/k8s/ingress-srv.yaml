@@ -45,6 +45,13 @@ spec:
                 name: review-srv
                 port:
                   number: 5005
+          - path: /api/notification
+            pathType: Prefix
+            backend:
+              service:
+                name: notification-srv
+                port:
+                  number: 5006
           - path: /?(.*)
             pathType: Prefix
             backend:
