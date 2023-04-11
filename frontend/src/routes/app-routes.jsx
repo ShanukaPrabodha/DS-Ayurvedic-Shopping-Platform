@@ -9,7 +9,7 @@ import Header from "../components/Header";
 
 // Pages
 
-import { Sample, Home } from "../pages";
+import { Sample, Home, Checkout, Payment, PaymentSuccess } from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -20,6 +20,9 @@ const AppRoutes = () => {
 					{/* Public Routes */}
 					<Route path="/" element={<Home />} />
 					<Route path="/sample" element={<Sample />} />
+					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
+					<Route path="/payment/:orderId" element={<Payment />} />
 				</Routes>
 			</Router>
 		</>

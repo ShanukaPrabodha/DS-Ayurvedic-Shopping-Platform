@@ -14,8 +14,8 @@ router.get("/", (req, res, next) => {
 router.post("/create-customer", controller.createNewCustomer);
 router.post("/add-card", controller.addNewCard);
 router.post("/make-payment", controller.createPaymentIntent);
+router.get("/get-payment-methods/:customer_Id", controller.getPaymentMethods);
 // ---------------------------------------------------------------------
-router.post("/get-payment-methods", controller.getPaymentMethods);
 router.get("/get-customers", controller.getAllCustomers);
 
 export default router;

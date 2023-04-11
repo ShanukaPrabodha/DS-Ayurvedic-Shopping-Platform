@@ -1,5 +1,5 @@
 import { Router } from "express";
-// import controller from "../controllers";
+import controller from "../controllers";
 // import middleware from "../middleware";
 
 const router = Router();
@@ -11,9 +11,12 @@ router.get("/", (req, res, next) => {
 });
 
 // Order Endpoints
-// TODO: Create a new order
+router.post("/", controller.addOrder); // insert one order
 // TODO: Get all orders
-// TODO: Get a order
+
+router.patch("/paid/:orderId", controller.changeOrderIsPaidStatus); // change order isPaid status
+router.get("/:orderId", controller.getOrder); // get one order
+
 // TODO: Update a order
 // TODO: Delete a order
 
