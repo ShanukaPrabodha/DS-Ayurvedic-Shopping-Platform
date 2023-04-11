@@ -12,5 +12,5 @@ app.listen(PORT, () => {
 	logger.info(`✨ Starting on ${ENVIRONMENT} Environment`);
 	logger.info(`🔗 ${MONGO_URI}`);
 	connect();
-	logger.info(`🚀 Product API up and running on PORT ${PORT}`);
+	logger.info(`🚀 Order API up and running on PORT ${PORT}`);
 });

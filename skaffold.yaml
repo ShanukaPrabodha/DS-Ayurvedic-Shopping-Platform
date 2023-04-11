@@ -39,3 +39,11 @@ build:
         manual:
           - src: "*.js"
             dest: .
+    - image: teambinarymatter/order
+      context: order
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
