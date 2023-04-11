@@ -3,6 +3,6 @@ WORKDIR /app
 COPY package.json .
 RUN yarn
 COPY . .
-EXPOSE 5002
+EXPOSE 5001
 ENTRYPOINT ["yarn"]
 CMD ["k8s"]
