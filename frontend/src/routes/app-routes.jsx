@@ -6,9 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 // Pages
-
 import { Sample, Home, Checkout, Payment, PaymentSuccess } from "../pages";
 
 const AppRoutes = () => {
@@ -16,14 +16,17 @@ const AppRoutes = () => {
 		<>
 			<Router>
 				<Header />
-				<Routes>
-					{/* Public Routes */}
-					<Route path="/" element={<Home />} />
-					<Route path="/sample" element={<Sample />} />
-					<Route path="/checkout" element={<Checkout />} />
-					<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
-					<Route path="/payment/:orderId" element={<Payment />} />
-				</Routes>
+				<div className="min-h-screen">
+					<Routes>
+						{/* Public Routes */}
+						<Route path="/" element={<Home />} />
+						<Route path="/sample" element={<Sample />} />
+						<Route path="/checkout" element={<Checkout />} />
+						<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
+						<Route path="/payment/:orderId" element={<Payment />} />
+					</Routes>
+				</div>
+				<Footer />
 			</Router>
 		</>
 	);
