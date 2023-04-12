@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Checkout = () => {
 	const navigate = useNavigate();
 
-	const userId = "cus_Nh2fSNEhLusl8u";
+	const userId = "cus_NhCuFcVQHkHfz5";
 	const products = [
 		{
 			id: 1,

@@ -10,7 +10,7 @@ const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 	const [cardExpiryYear, setCardExpiryYear] = useState(2027);
 	const [cardCvc, setCardCvc] = useState(123);
 
-	const userId = "cus_Nh2fSNEhLusl8u";
+	const userId = "cus_NhCuFcVQHkHfz5";
 
 	// Add new card
 	const { mutate: addPaymentMethod, isLoading: addPaymentMethodLoading } = useMutation(
