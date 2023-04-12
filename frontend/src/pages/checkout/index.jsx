@@ -2,6 +2,7 @@ import React from "react";
 import CheckoutAPI from "../../contexts/api/CheckoutAPI";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "../../components";
 
 const Checkout = () => {
 	const navigate = useNavigate();
@@ -43,7 +44,9 @@ const Checkout = () => {
 
 	return (
 		<>
-			<h1 className="mt-5 text-4xl text-center">Checkout Page</h1>
+			{createOrderLoading && <Spinner />}
+
+			<h1 className="mt-5 text-4xl text-center">Order Summary</h1>
 
 			<div className="flex justify-center mt-5">
 				{/* Show products and total amount */}
@@ -60,23 +63,36 @@ const Checkout = () => {
 									{product.quantity} x {product.price}
 								</span>
 							</div>
-							<span>{product.quantity * product.price}</span>
+							<span>LKR {product.quantity * product.price}</span>
 						</div>
 					))}
 					<div className="flex justify-between mt-2">
 						<span className="text-sm text-gray-500">Commission</span>
 						<span className="text-sm text-gray-500">{commission * 100}%</span>
 					</div>
+					<hr className="mt-5" />
+					{/* Subtotal - 2 decimal places */}
 					<div className="flex justify-between mt-2">
-						<span className="text-xl">Total</span>
-						<span className="text-xl">{amount}/=</span>
+						<span className="text-lg">Subtotal</span>
+						<span className="text-lg">LKR {(amount - amount * commission).toFixed(2)}</span>
+					</div>
+					{/* Commission */}
+					<div className="flex justify-between mt-2">
+						<span className="text-lg">Commission</span>
+						<span className="text-lg">LKR {(amount * commission).toFixed(2)}</span>
+					</div>
+					{/* Total */}
+					<div className="flex justify-between mt-2 font-bold">
+						<span className="text-xl">Order Total</span>
+						<span className="text-xl">LKR {amount.toFixed(2)}</span>
 					</div>
 				</div>
 			</div>
 
 			<div className="flex justify-center mt-5">
 				<button
-					className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+					// orange color continue button pop effect
+					className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/4 disabled:opacity-50 disabled:cursor-not-allowed"
 					onClick={handleCreateOrder}
 					disabled={createOrderLoading}
 				>

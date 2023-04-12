@@ -2,6 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import PaymentAPI from "../../contexts/api/PaymentAPI";
+import { Spinner, makeToast } from "../../components";
 
 const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 	const [cardName, setCardName] = useState("Visa");
@@ -19,6 +20,7 @@ const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 			onSuccess: (data) => {
 				refetch();
 				closeModal();
+				makeToast({ type: "success", message: "Card added successfully" });
 			},
 		}
 	);
@@ -29,6 +31,8 @@ const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 
 	return (
 		<>
+			{addPaymentMethodLoading && <Spinner />}
+
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog as="div" className="relative z-10" onClose={closeModal}>
 					<Transition.Child
@@ -131,12 +135,12 @@ const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 										</div>
 										<div className="flex items-center justify-between">
 											<button
-												className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+												className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
 												type="button"
 												disabled={addPaymentMethodLoading}
 												onClick={handleAddPaymentMethod}
 											>
-												Add Card
+												{addPaymentMethodLoading ? "Adding..." : "Add Card"}
 											</button>
 											<button
 												className="bg-transparent hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 border border-red-500 hover:border-transparent rounded focus:outline-none focus:shadow-outline"

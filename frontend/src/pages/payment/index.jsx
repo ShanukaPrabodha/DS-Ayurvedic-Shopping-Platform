@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import AddCardModal from "./AddCardModal";
 import Swal from "sweetalert2";
+import { Spinner } from "../../components";
 
 const Payment = () => {
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = React.useState(null);
@@ -73,63 +74,89 @@ const Payment = () => {
 
 	return (
 		<>
+			{orderLoading && <Spinner />}
+			{paymentMethodsLoading && <Spinner />}
+			{makePaymentLoading && <Spinner />}
+
 			{/* Modal */}
 			{isOpen && <AddCardModal closeModal={closeModal} isOpen={isOpen} refetch={refetch} />}
 
-			<h1 className="mt-5 text-4xl text-center">Payment Page</h1>
+			<h1 className="mt-5 text-4xl text-center">Payment</h1>
 
-			{/* add payment method button */}
+			{/* please select a payment method message */}
+			{paymentMethods && paymentMethods.data.length > 0 && !selectedPaymentMethod && (
+				<div className="flex justify-center mt-5 animate-pulse">
+					<div className="flex justify-center bg-yellow-200 p-2 rounded text-yellow-700 w-1/2 border-2 border-yellow-500">
+						<h2 className="text-xl">Please Select a Payment Method</h2>
+					</div>
+				</div>
+			)}
+
+			{/* if no payment methods found display this message */}
+			{paymentMethods && paymentMethods.data.length === 0 && (
+				<div className="flex justify-center mt-5 animate-pulse">
+					<div className="flex justify-center bg-red-200 p-2 rounded text-red-700 w-1/2 border-2 border-red-500">
+						<h2 className="text-xl">No Payment Methods Found</h2>
+					</div>
+				</div>
+			)}
+
+			{/* display payment methods cards - stripe */}
 			<div className="flex justify-center mt-5">
-				<button className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600" onClick={openModal}>
-					Add New Card
-				</button>
+				<div className="flex flex-col w-1/2">
+					{paymentMethods && paymentMethods.data.length > 0 && (
+						<div>
+							{paymentMethods.data.map((paymentMethod) => (
+								<div
+									key={paymentMethod.id}
+									className={`${
+										selectedPaymentMethod === paymentMethod.id
+											? "border-2 border-green-500"
+											: "border-2 border-gray-300"
+									} p-2 rounded mb-5 cursor-pointer`}
+									onClick={() => setSelectedPaymentMethod(paymentMethod.id)}
+								>
+									<div className="flex justify-between">
+										<span className="text-xl">Name : </span>
+										<span className="text-xl">{paymentMethod.billing_details.name}</span>
+									</div>
+									<div className="flex justify-between">
+										<span className="text-xl">Card Number : </span>
+										<span className="text-xl">**** **** **** {paymentMethod.card.last4}</span>
+									</div>
+									<div className="flex justify-between">
+										<span className="text-xl">Expiry Date : </span>
+										<span className="text-xl">
+											{paymentMethod.card.exp_month}/{paymentMethod.card.exp_year}
+										</span>
+									</div>
+								</div>
+							))}
+						</div>
+					)}
+					{/* plus icon card for adding new payment method */}
+					<div
+						className="border-2 border-gray-300 p-2 rounded mb-5 cursor-pointer hover:border-green-500"
+						onClick={openModal}
+					>
+						<div className="flex justify-center">
+							<span className="text-3xl font-bold">+</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			{/* display payment methods - stripe */}
-			{paymentMethods && paymentMethods.data.length > 0 && (
-				<div className="flex justify-center">
-					<div className="flex justify-center mt-5 flex-col">
-						<h2 className="text-xl font-bold underline mb-2">Payment Methods</h2>
-						{paymentMethods.data.map((paymentMethod) => (
-							<div className="flex flex-col justify-center" key={paymentMethod.id}>
-								<p className="text-lg">Payment Method ID: {paymentMethod.id}</p>
-								<p className="text-lg">Card Number: {paymentMethod.card.last4}</p>
-								<p className="text-lg">Card Brand: {paymentMethod.card.brand}</p>
-								{/* Radio button */}
-								<div className="mt-5">
-									<input
-										type="radio"
-										name="paymentMethod"
-										value={paymentMethod.id}
-										onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-									/>
-								</div>
-
-								<hr className="my-5" />
-							</div>
-						))}
-					</div>
-				</div>
-			)}
-
-			{/* if no payment methods */}
-			{paymentMethods && paymentMethods.data.length === 0 && (
-				<div className="flex justify-center mt-5">
-					<h2 className="text-xl">- No Payment Methods -</h2>
-				</div>
-			)}
-
-			{/* display order details */}
+			{/* display order details in a card */}
 			{order && (
-				<div className="flex justify-center mt-5">
-					<div className="flex justify-between mt-2">
-						<span className="text-xl">Total : </span>
-						<span className="text-xl">{order.amount}/=</span>
+				<div className="flex justify-center">
+					<div className="flex justify-center mt-5 p-5 rounded shadow w-1/2 bg-gray-100">
+						<div className="flex justify-between">
+							<span className="text-3xl">LKR {order.amount}</span>
+						</div>
 					</div>
 				</div>
 			)}
 
-			{/* make payment button */}
 			{order && (
 				<div className="flex justify-center mt-5">
 					<button
@@ -137,7 +164,7 @@ const Payment = () => {
 						onClick={handleMakePayment}
 						disabled={makePaymentLoading || !selectedPaymentMethod || order.isPaid}
 					>
-						Make Payment
+						{makePaymentLoading ? "Processing..." : "Make Payment"}
 					</button>
 				</div>
 			)}
