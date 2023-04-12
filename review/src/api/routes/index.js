@@ -1,6 +1,6 @@
 import { Router } from "express";
-// import controller from "../controllers";
-// import middleware from "../middleware";
+import controller from "../controllers";
+//import middleware from "../middleware";
 
 const router = Router();
 
@@ -10,11 +10,12 @@ router.get("/", (req, res, next) => {
 	next();
 });
 
-// Review Endpoints
-// TODO: Create a new review
-// TODO: Get all reviews
-// TODO: Get a review
-// TODO: Update a review
-// TODO: Delete a review
+router.post("/sellerReview/", controller.insertSellerReview); // insert one seller review
+router.get("/sellerReview/", controller.getAllSellerReviews); // get all seller reviews
+router.get("/sellerReview/:id", controller.getOneSellerReview); // get one seller review
+
+router.post("/productReview/", controller.insertProductReview); // insert one product review
+router.get("/productReview/", controller.getAllProductReviews); // get all product reviews
+router.get("/productReview/:id", controller.getOneProductReview); // get one product review
 
 export default router;
