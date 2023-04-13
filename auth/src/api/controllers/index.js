@@ -1,4 +1,4 @@
-import { registerBuyer } from "./Buyer.controller";
+import { registerBuyer, loginBuyer, getBuyerDetails, getAllBuyers, editBuyerDetails, deleteBuyer } from "./Buyer.controller";
 
 import {
 	getAdminDetails,
@@ -13,6 +13,11 @@ import {
 export default {
 	// Buyer Auth Controllers
 	registerBuyer,
+	loginBuyer,
+	getBuyerDetails,
+	getAllBuyers,
+	editBuyerDetails,
+	deleteBuyer,
 
 	// Admin Auth Controllers
 	getAdminDetails,

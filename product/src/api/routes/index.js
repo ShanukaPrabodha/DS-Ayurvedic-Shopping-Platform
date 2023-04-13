@@ -1,5 +1,5 @@
 import { Router } from "express";
-// import controller from "../controllers";
+import controller from "../controllers";
 // import middleware from "../middleware";
 
 const router = Router();
@@ -10,11 +10,12 @@ router.get("/", (req, res, next) => {
 	next();
 });
 
-// Product Endpoints
-// TODO: Create a new product
-// TODO: Get all products
-// TODO: Get a product
-// TODO: Update a product
-// TODO: Delete a product
+router.post("/product/", controller.insertProduct); // insert one Product
+router.get("/product/", controller.getAllProducts); // get all Products
+router.get("/product/:id", controller.getOneProduct); // get one Campingl Product
+router.put("/product/:id", controller.updateProduct); // update one Camping Product
+router.delete("/product/:id", controller.deleteProduct); // delete one Camping Product
+router.get("/product/search/:search", controller.searchProducts); // search Camping Product
+
 
 export default router;
