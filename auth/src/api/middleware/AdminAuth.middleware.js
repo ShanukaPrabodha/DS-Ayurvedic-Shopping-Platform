@@ -16,11 +16,8 @@ export const admin_auth = async (request, response, next) => {
 				});
 
 				if (!admin) {
-					const useNotFoundResponse = JSON.stringify({
-						status: 401,
-						message: "User not found in the system",
-					});
-					throw new Error(useNotFoundResponse);
+					// throw new Error(useNotFoundResponse);
+					return request.handleResponse.unauthorizedRespond(response)("Admin not found");
 				}
 
 				request.authToken = authToken;
@@ -29,11 +26,13 @@ export const admin_auth = async (request, response, next) => {
 				logger.info(`Authentication Token for ID ${admin._id} is Accepted`);
 				next();
 			} else {
-				response.status(401);
-				throw new Error("Not authorized, no token");
+				// response.status(401);
+				// throw new Error("Not authorized, no token");
+				request.handleResponse.unauthorizedRespond(response)("Not authorized, no token");
 			}
 		} else {
-			throw new Error("Token Secret is not found");
+			// throw new Error("Token Secret is not found");
+			request.handleResponse.unauthorizedRespond(response)("Token Secret is not found");
 		}
 	} catch (error) {
 		logger.warn(error.message);

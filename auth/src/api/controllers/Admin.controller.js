@@ -111,3 +111,51 @@ export const deleteAdmin = async (req, res, next) => {
 			next();
 		});
 };
+
+// Check if the user is an admin
+export const checkAdmin = async (req, res, next) => {
+	if (req.admin.permissionLevel === "ADMIN") {
+		req.handleResponse.successRespond(res)({ success: true });
+		next();
+	} else {
+		req.handleResponse.errorRespond(res)("User is not an admin");
+		next();
+	}
+};
+
+// Check if the user is an buyer
+export const checkBuyer = async (req, res, next) => {
+	if (req.admin.permissionLevel === "BUYER") {
+		req.handleResponse.successRespond(res)({ success: true });
+		next();
+	} else {
+		req.handleResponse.errorRespond(res)("User is not an buyer");
+		next();
+	}
+};
+
+// Check if the user is an seller
+export const checkSeller = async (req, res, next) => {
+	if (req.admin.permissionLevel === "SELLER") {
+		req.handleResponse.successRespond(res)({ success: true });
+		next();
+	} else {
+		req.handleResponse.errorRespond(res)("User is not an seller");
+		next();
+	}
+};
+
+// Check if the user is logged in
+export const isLoggedIn = async (req, res, next) => {
+	if (
+		req.user.permissionLevel === "ADMIN" ||
+		req.user.permissionLevel === "BUYER" ||
+		req.user.permissionLevel === "SELLER"
+	) {
+		req.handleResponse.successRespond(res)({ success: true });
+		next();
+	} else {
+		req.handleResponse.errorRespond(res)("User is not logged in");
+		next();
+	}
+};
