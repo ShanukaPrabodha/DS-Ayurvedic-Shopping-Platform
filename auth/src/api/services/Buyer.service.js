@@ -37,3 +37,36 @@ export const getBuyerDetails = async (userId) => {
 			throw new Error(error.message);
 		});
 };
+
+//Get All Buyers Details
+export const getAllBuyers = async () => {
+	return await BuyerModel.find()
+		.then((buyers) => {
+			return buyers;
+		})
+		.catch((errors) => {
+			throw new Error(errors.message);
+		});
+};
+
+// Update Buyer Details
+export const editBuyerDetails = async (userId, Buyer) => {
+	return await BuyerModel.findByIdAndUpdate(userId, Buyer, { new: true })
+		.then((Buyer) => {
+			return Buyer;
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
+
+// Delete Buyer
+export const deleteBuyer = async (userId) => {
+	return await BuyerModel.findByIdAndDelete(userId)
+		.then((Buyer) => {
+			return Buyer;
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
