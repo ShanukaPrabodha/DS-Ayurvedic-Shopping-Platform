@@ -1,6 +1,4 @@
  import ProductService from "../services";
- const cloudinary=require('../../util/cloudinary');
-
 
  // Insert one product
  export const insertProduct = async (request, response, next) => {
