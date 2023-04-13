@@ -90,3 +90,53 @@ export const getBuyerDetails = async (req, res, next) => {
 			next();
 		});
 };
+
+// All Buyers Controller
+
+export const getAllBuyers = async (request, response, next) => {
+	await BuyerService.getAllBuyers("users")
+		.then(async (data) => {
+			request.handleResponse.successRespond(response)(data);
+			next();
+		})
+		.catch((error) => {
+			request.handleResponse.errorRespond(response)(error.message);
+			next();
+		});
+};
+
+// Buyer edit Controller
+export const editBuyerDetails = async (req, res, next) => {
+	const user = {
+		name: req.body.name,
+		email: req.body.email,
+		contact: req.body.contact,
+		nic: req.body.nic,
+		address: req.body.address,
+		password: req.body.password,
+	};
+
+	await BuyerService.editBuyerDetails(req.params.id, user)
+		.then((data) => {
+			req.handleResponse.successRespond(res)(data);
+			next();
+		})
+		.catch((error) => {
+			req.handleResponse.errorRespond(res)(error.message);
+			next();
+		});
+};
+
+// Buyer delete Controller
+
+export const deleteBuyer = async (req, res, next) => {
+	await BuyerService.deleteBuyer(req.params.id)
+		.then((data) => {
+			req.handleResponse.successRespond(res)(data);
+			next();
+		})
+		.catch((error) => {
+			req.handleResponse.errorRespond(res)(error.message);
+			next();
+		});
+};
