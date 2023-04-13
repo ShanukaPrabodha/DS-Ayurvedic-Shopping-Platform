@@ -15,6 +15,8 @@ router.get("/", (req, res, next) => {
 
 // Buyer Endpoints
 router.post("/buyer/register", controller.registerBuyer);
+router.post("/buyer/login", controller.loginBuyer);
+router.get("/buyer/:id", controller.getBuyerDetails);
 
 // Admin Endpoints
 router.get("/admin", middleware.admin_auth, controller.checkAdmin); // Check if the user is an admin
