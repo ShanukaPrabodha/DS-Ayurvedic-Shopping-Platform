@@ -2,14 +2,17 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 import jwt from "jsonwebtoken";
 
-const BuyerAuthSchema = new mongoose.Schema(
+const BuyerSchema = new mongoose.Schema(
 	{
 		// TODO: Add more fields
-		name:{
+		stripeUserId: {
+			type: String,
+			required: false,
+		},
+		name: {
 			type: String,
 			required: true,
 		},
-
 		email: {
 			type: String,
 			required: true,
@@ -18,11 +21,11 @@ const BuyerAuthSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		nic:{
+		nic: {
 			type: String,
 			required: true,
 		},
-		address:{
+		address: {
 			type: String,
 			required: true,
 		},
@@ -52,7 +55,7 @@ const BuyerAuthSchema = new mongoose.Schema(
 	}
 );
 
-BuyerAuthSchema.pre("save", async function (next) {
+BuyerSchema.pre("save", async function (next) {
 	const user = this;
 	const password = user.password;
 
@@ -67,7 +70,7 @@ BuyerAuthSchema.pre("save", async function (next) {
 	return next();
 });
 
-BuyerAuthSchema.methods.generateAuthToken = async function () {
+BuyerSchema.methods.generateAuthToken = async function () {
 	const user = this;
 	const secret = process.env.JWT_SECRET;
 
@@ -83,8 +86,8 @@ BuyerAuthSchema.methods.generateAuthToken = async function () {
 	return authToken;
 };
 
-BuyerAuthSchema.methods.matchPassword = async function (enteredPassword) {
+BuyerSchema.methods.matchPassword = async function (enteredPassword) {
 	return await bcrypt.compare(enteredPassword, this.password);
 };
 
-module.exports = mongoose.model("BuyerAuth", BuyerAuthSchema);
+module.exports = mongoose.model("Buyer", BuyerSchema);
