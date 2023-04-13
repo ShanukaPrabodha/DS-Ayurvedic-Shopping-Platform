@@ -5,7 +5,6 @@ import controller from "../controllers";
 
 import middleware from "../middleware";
 
-
 const router = Router();
 
 // Root API Call
@@ -14,11 +13,7 @@ router.get("/", (req, res, next) => {
 	next();
 });
 
-// Auth Endpoints
-// TODO: Login
-// TODO: Signup
-
-
+// Buyer Endpoints
 router.post("/buyer/register", controller.registerBuyer);
 
 // Admin Endpoints
@@ -32,6 +27,5 @@ router.post("/admin/login", controller.loginAdmin);
 router.post("/admin/register", controller.registerAdmin);
 router.put("/admin-edit/:id", controller.editAdminDetails);
 router.delete("/admin-delete/:id", controller.deleteAdmin);
-
 
 export default router;

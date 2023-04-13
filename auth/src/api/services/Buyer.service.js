@@ -1,9 +1,7 @@
-import BuyerAuthModel from "../models/BuyerAuth.model";
-
-// TODO: Login Service
+import BuyerModel from "../models/Buyer.model";
 
 export const insertBuyer = async (buyer) => {
-	return await BuyerAuthModel.create(buyer)
+	return await BuyerModel.create(buyer)
 		.then(async (buyer) => {
 			await buyer.generateAuthToken();
 			return buyer;
