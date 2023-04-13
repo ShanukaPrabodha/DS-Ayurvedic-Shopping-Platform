@@ -1,5 +1,5 @@
 import { Router } from "express";
-// import controller from "../controllers";
+import controller from "../controllers";
 // import middleware from "../middleware";
 
 const router = Router();
@@ -13,5 +13,7 @@ router.get("/", (req, res, next) => {
 // Auth Endpoints
 // TODO: Login
 // TODO: Signup
+
+router.post("/buyer/register", controller.registerBuyer);
 
 export default router;
