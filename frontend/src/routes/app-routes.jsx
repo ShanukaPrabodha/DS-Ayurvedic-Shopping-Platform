@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// import PrivateRoute from "./PrivateRoute";
-// import CheckLoginStatus from "./CheckLoginStatus";
+import PrivateRoute from "./PrivateRoute";
+import CheckLoginStatus from "./CheckLoginStatus";
 
 // Components
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
-import { Sample, Home, Checkout, Payment, PaymentSuccess } from "../pages";
+import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin } from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -24,6 +24,17 @@ const AppRoutes = () => {
 						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
 						<Route path="/payment/:orderId" element={<Payment />} />
+
+						{/* Check Login Status Admin */}
+						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
+							<Route exact path="/admin/login" element={<AdminLogin />} />
+						</Route>
+
+						{/* Admin Private Routes */}
+						<Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
+							<Route exact path="/admin" element={<Home />} />
+							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
+						</Route>
 					</Routes>
 				</div>
 				<Footer />

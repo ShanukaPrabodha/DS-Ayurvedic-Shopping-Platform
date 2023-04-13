@@ -4,8 +4,8 @@ import { Navigate, Outlet } from "react-router-dom";
 const CheckLoginStatus = () => {
 	const permissionLevel = localStorage.getItem("permissionLevel");
 
-	if (permissionLevel === "ADMINISTRATOR") {
-		return <Navigate to="/administrator" />;
+	if (permissionLevel === "ADMIN") {
+		return <Navigate to="/admin" />;
 	}
 	if (permissionLevel === "SELLER") {
 		return <Navigate to="/seller" />;
