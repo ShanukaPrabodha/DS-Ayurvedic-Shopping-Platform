@@ -31,7 +31,7 @@ export const registerSeller = async (request, response, next) => {
 
 		await SellerService.insertSeller(Seller)
 			.then((data) => {
-				logger.info(`New Buyer with ID ${data._id} created`);
+				logger.info(`New Seller with ID ${data._id} created`);
 				request.handleResponse.successRespond(response)(data);
 				next();
 			})

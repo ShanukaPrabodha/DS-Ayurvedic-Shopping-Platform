@@ -58,7 +58,7 @@ const SellerSchema = new mongoose.Schema(
 	}
 );
 
-BuyerSchema.pre("save", async function (next) {
+SellerSchema.pre("save", async function (next) {
 	const user = this;
 	const password = user.password;
 
