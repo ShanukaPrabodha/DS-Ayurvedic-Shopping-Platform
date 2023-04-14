@@ -2,7 +2,7 @@ import { insertBuyer, authenticateBuyer, getBuyerDetails, getAllBuyers, editBuye
 
 import { getAdminDetails, authenticateAdmin, insertAdmin, editAdminDetails, deleteAdmin } from "./Admin.service";
 
-import {insertSeller} from "./Seller.service";
+import {insertSeller, authenticateSeller, getSellerDetails, getAllSellers, editSellerDetails, deleteSeller} from "./Seller.service";
 
 export default {
 	// Buyer Auth services
@@ -23,4 +23,9 @@ export default {
 
 	// Seller Auth services
 	insertSeller,
+	authenticateSeller,
+	getSellerDetails,
+	getAllSellers,
+	editSellerDetails,
+	deleteSeller,
 };
