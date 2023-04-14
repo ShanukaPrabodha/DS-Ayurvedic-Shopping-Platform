@@ -10,6 +10,8 @@ import {
 	isLoggedIn,
 } from "./Admin.controller";
 
+import {registerSeller} from "./Seller.controller"
+
 export default {
 	// Buyer Auth Controllers
 	registerBuyer,
@@ -27,4 +29,7 @@ export default {
 	deleteAdmin,
 	checkAdmin,
 	isLoggedIn,
+
+	// Seller Auth Controllers
+	registerSeller,
 };

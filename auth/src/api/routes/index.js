@@ -33,4 +33,8 @@ router.post("/admin/register", controller.registerAdmin);
 router.put("/admin-edit/:id", controller.editAdminDetails);
 router.delete("/admin-delete/:id", controller.deleteAdmin);
 
+
+// Seller Endpoints
+router.post("/seller/register", controller.registerSeller);
+
 export default router;
