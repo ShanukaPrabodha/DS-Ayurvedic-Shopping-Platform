@@ -1,8 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-import requestConfig from "./requestConfig";
-import requestConfigJson from "./requestConfigJson";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ProductAPI from "./api/productAPI";
 
 const BASE_URL = "http://localhost:5003/api/product";
 // const BASE_URL = import.meta.env.VITE_K8S_BACKEND_URL;
@@ -28,8 +26,8 @@ export function ProductProvider({ children }) {
 
 	useEffect(() => {
 		setIsLoading(true);
-		axios.get(`${BASE_URL}/product/`, requestConfig)
-            .then((response) => {
+            ProductAPI.getProducts()         
+             .then((response) => {
 			setProducts(response.data);
 			setIsLoading(false);
 		});
@@ -42,7 +40,7 @@ export function ProductProvider({ children }) {
 
 		try {
 			setIsLoading(true);
-			const response = await axios.post(`${BASE_URL}/product/`,newProduct,requestConfigJson);
+			const response = await ProductAPI.createProduct(newProduct);
 			setProducts([...products, response.data]);
 			setIsLoading(false);
 			alert("Data added successfully...");
@@ -57,7 +55,7 @@ export function ProductProvider({ children }) {
 
 	const getProduct = (id) => {
 		useEffect(() => {
-            axios.get(`${BASE_URL}/product/${id}`, requestConfigJson).then((res) => {
+            ProductAPI.getOneProduct(id).then((res) => {
 				setProduct(res.data);
 			});
 		}, []);
@@ -75,7 +73,7 @@ export function ProductProvider({ children }) {
 		    variants: values.variants,
 			productImage:values.productImage,
 		};
-		axios.put(`${BASE_URL}/product/${id}`, newProduct, requestConfigJson)
+		ProductAPI.editProduct(values.id, newProduct)
 			.then((response) => {
 				//console.log(res.data);
 				//navigate("/viewres");
@@ -91,7 +89,7 @@ export function ProductProvider({ children }) {
 
 	// Delete trainer and update UI
 	const deleteProduct = (id) => {
-		axios.delete(`${BASE_URL}/product/${id}`, requestConfig).then(() => {
+		ProductAPI.deleteProduct(id).then(() => {
 			setProducts(products.filter((prod) => prod._id !== id));
 		});
 	};

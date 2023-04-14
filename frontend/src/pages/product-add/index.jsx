@@ -1,8 +1,8 @@
 import React from "react";
 import ProductAdd from "./productAdd";
 
-// HotelPackageProvider
-import { ProductProvider } from "../../contexts/api/productAPI";
+// ProductProvider
+import { ProductProvider } from "../../contexts/ProductContext";
 
 const index = () => {
 	return (

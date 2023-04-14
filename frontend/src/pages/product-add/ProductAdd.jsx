@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 //import CampingPackageContext from "../../contexts/CampingPackageContext";
-import ProductContext from "../../contexts/api/productAPI"
+import ProductContext from "../../contexts/ProductContext";
 //import "../camping-package-create/camping.css";
 
 const ProductAdd = () => {
@@ -98,8 +98,6 @@ const ProductAdd = () => {
 		for (var i = 0; i < e.target.images.files.length; i++) {
 			imageArray.push(e.target.images.files[i].name);
 		}*/
-
-        setUrl("facebook.com")
 		const newProduct = {
 			productId: '0',
 			productName: e.target.productName.value,
