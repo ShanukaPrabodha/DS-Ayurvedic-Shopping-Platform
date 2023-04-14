@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
-import { Sample, Home, Checkout, Payment, PaymentSuccess } from "../pages";
+import { Sample, Home, Checkout, Payment, PaymentSuccess ,ProductAdd } from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -24,6 +24,16 @@ const AppRoutes = () => {
 						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
 						<Route path="/payment/:orderId" element={<Payment />} />
+
+						{/*Product Routes*/}
+
+						<Route path="/product-add" element={<ProductAdd />} />
+
+
+
+
+
+
 					</Routes>
 				</div>
 				<Footer />
