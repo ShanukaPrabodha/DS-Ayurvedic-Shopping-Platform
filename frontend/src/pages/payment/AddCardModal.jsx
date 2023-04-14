@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import PaymentAPI from "../../contexts/api/PaymentAPI";
 import { Spinner, makeToast } from "../../components";
 
-const AddCardModal = ({ closeModal, isOpen, refetch }) => {
+const AddCardModal = ({ closeModal, isOpen, refetchPaymentMethods }) => {
 	const [cardName, setCardName] = useState("Visa");
 	const [cardNumber, setCardNumber] = useState("4242424242424242");
 	const [cardExpiryMonth, setCardExpiryMonth] = useState(12);
@@ -18,7 +18,7 @@ const AddCardModal = ({ closeModal, isOpen, refetch }) => {
 		() => PaymentAPI.addNewCard(userId, cardName, cardNumber, cardExpiryMonth, cardExpiryYear, cardCvc),
 		{
 			onSuccess: (data) => {
-				refetch();
+				refetchPaymentMethods();
 				closeModal();
 				makeToast({ type: "success", message: "Card added successfully" });
 			},
