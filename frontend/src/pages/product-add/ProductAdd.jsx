@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-//import CampingPackageContext from "../../contexts/CampingPackageContext";
 import ProductContext from "../../contexts/ProductContext";
-//import "../camping-package-create/camping.css";
 
 const ProductAdd = () => {
 	const [show,setShow]=useState('F');

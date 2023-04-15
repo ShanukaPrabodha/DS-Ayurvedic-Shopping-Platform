@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ProductAPI from "./api/productAPI";
+import ProductAPI from "./api/ProductAPI";
 
 const BASE_URL = "http://localhost:5003/api/product";
 // const BASE_URL = import.meta.env.VITE_K8S_BACKEND_URL;
@@ -29,6 +29,7 @@ export function ProductProvider({ children }) {
             ProductAPI.getProducts()         
              .then((response) => {
 			setProducts(response.data);
+			console.log(products.values('productName'));
 			setIsLoading(false);
 		});
 	}, []);

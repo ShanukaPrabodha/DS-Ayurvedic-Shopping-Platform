@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 // Pages
 
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, ProductAdd } from "../pages";
+import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, ProductAdd ,ProductDisplay } from "../pages";
 
 
 const AppRoutes = () => {
@@ -30,6 +30,8 @@ const AppRoutes = () => {
 
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
+						<Route path="/product-display" element={<ProductDisplay />} />
+
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
