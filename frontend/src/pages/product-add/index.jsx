@@ -1,5 +1,5 @@
 import React from "react";
-import ProductAdd from "./productAdd";
+import ProductAdd from "./ProductAdd";
 
 // ProductProvider
 import { ProductProvider } from "../../contexts/ProductContext";

@@ -2,36 +2,36 @@ import axios from "axios";
 import requestConfig from "./requestConfig";
 import requestConfigJson from "./requestConfigJson";
 
-const BASE_URL = "http://localhost:5003/api/product";
+const BASE_URL = "http://localhost:5003";
 // const BASE_URL = import.meta.env.VITE_K8S_BACKEND_URL;
 
 class ProductAPI {
 	// Get all products
 	static getProducts() {
-		return axios.get(`${BASE_URL}/product/`, requestConfig);
+		return axios.get(`${BASE_URL}/api/product/product/`, requestConfig);
 	}
 
-	// Add a new hotel package
-	static createProduct(newCampingPackage) {
-		return axios.post(`${BASE_URL}/product/`, newCampingPackage, requestConfigJson);
+	// Add a product
+	static createProduct(newProduct) {
+		return axios.post(`${BASE_URL}/api/product/product/`, newProduct, requestConfigJson);
 	}
 
-	//Get one Camping Package
+	//Get one Product
 
 	static getOneProduct(id) {
-		return axios.get(`${BASE_URL}/product/${id}`, requestConfigJson);
+		return axios.get(`${BASE_URL}/api/product/product/${id}`, requestConfigJson);
 	}
 
-	//Edit Camping Package
+	//Edit Product
 
-	static editProduct(id, newCampingPackage) {
-		return axios.put(`${BASE_URL}/product/${id}`, newCampingPackage, requestConfigJson);
+	static editProduct(id, newProduct) {
+		return axios.put(`${BASE_URL}/api/product/product/${id}`, newProduct, requestConfigJson);
 	}
 
-	//Delete Camping Package
+	//Delete Product
 
 	static deleteProduct(id) {
-		return axios.delete(`${BASE_URL}/cproduct/${id}`, requestConfig);
+		return axios.delete(`${BASE_URL}/api/product/product/${id}`, requestConfig);
 	}
 }
 
