@@ -1,5 +1,5 @@
 import React from "react";
-import ProductAdd from "./ProductAdd";
+import ProductDisplay from "./ProductDisplay";
 
 // ProductProvider
 import { ProductProvider } from "../../contexts/ProductContext";
@@ -8,7 +8,7 @@ const index = () => {
 	return (
 		<>
 			<ProductProvider>
-				<ProductAdd />
+				<ProductDisplay />
 			</ProductProvider>
 		</>
 	);
