@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductAPI from "./api/ProductAPI";
@@ -20,16 +21,14 @@ export function ProductProvider({ children }) {
 		supplier: "",
 		weight: "",
 		variants: "",
-		productImage:"",
-		
+		productImage: "",
 	});
 
 	useEffect(() => {
 		setIsLoading(true);
-            ProductAPI.getProducts()         
-             .then((response) => {
+		ProductAPI.getProducts().then((response) => {
 			setProducts(response.data);
-			console.log(products.values('productName'));
+			console.log(products.values("productName"));
 			setIsLoading(false);
 		});
 	}, []);
@@ -56,7 +55,7 @@ export function ProductProvider({ children }) {
 
 	const getProduct = (id) => {
 		useEffect(() => {
-            ProductAPI.getOneProduct(id).then((res) => {
+			ProductAPI.getOneProduct(id).then((res) => {
 				setProduct(res.data);
 			});
 		}, []);
@@ -65,14 +64,13 @@ export function ProductProvider({ children }) {
 	// Edit camping Package
 	const editProduct = (values) => {
 		const newProduct = {
-
-            productId: "0",
-		    productName: values.productId,
-		    description: values.description,
-		    supplier: values.supplier,
-		    weight: values.weight,
-		    variants: values.variants,
-			productImage:values.productImage,
+			productId: "0",
+			productName: values.productId,
+			description: values.description,
+			supplier: values.supplier,
+			weight: values.weight,
+			variants: values.variants,
+			productImage: values.productImage,
 		};
 		ProductAPI.editProduct(values.id, newProduct)
 			.then((response) => {
