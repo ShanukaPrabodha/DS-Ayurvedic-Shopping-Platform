@@ -4,5 +4,6 @@ import Checkout from "./checkout";
 import Payment from "./payment";
 import PaymentSuccess from "./payment-success";
 import AdminLogin from "./admin-login";
+import AdminDashboard from "./admin-dashboard";
 
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin };
+export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard };

@@ -1,11 +1,13 @@
-import React from "react";
+import PaymentSuccess from "./PaymentSuccess";
 
-const PaymentSuccess = () => {
+import { PaymentProvider } from "../../contexts/PaymentContext";
+
+const index = () => {
 	return (
-		<>
-			<h1 className="mt-5 text-4xl text-center">Payment Success Page</h1>
-		</>
+		<PaymentProvider>
+			<PaymentSuccess />
+		</PaymentProvider>
 	);
 };
 
-export default PaymentSuccess;
+export default index;
