@@ -12,6 +12,7 @@ export function PaymentProvider({ children }) {
 
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const [payment, setPayment] = useState(null);
 
 	function closeModal() {
 		setIsOpen(false);
@@ -26,6 +27,7 @@ export function PaymentProvider({ children }) {
 
 	// Get order id from url
 	const { orderId } = useParams();
+	const { paymentId } = useParams();
 
 	// Get order details
 	const { data: order, isLoading: orderLoading } = useQuery(["order"], () => OrderAPI.getOrder(orderId), {
@@ -65,7 +67,21 @@ export function PaymentProvider({ children }) {
 					icon: "success",
 					timer: 3000,
 					timerProgressBar: true,
+				}).then(() => {
+					navigate("/payment/success/" + data.id);
 				});
+			},
+		}
+	);
+
+	// Get payment details by payment id
+	const { data: paymentDetails, isLoading: paymentDetailsLoading } = useQuery(
+		["paymentDetails"],
+		() => PaymentAPI.getPaymentDetails(paymentId),
+		{
+			enabled: !!paymentId,
+			onSuccess: (data) => {
+				setPayment(data);
 			},
 		}
 	);
@@ -85,6 +101,8 @@ export function PaymentProvider({ children }) {
 				makePayment,
 				makePaymentLoading,
 				refetchPaymentMethods,
+				paymentDetails,
+				paymentDetailsLoading,
 			}}
 		>
 			{children}

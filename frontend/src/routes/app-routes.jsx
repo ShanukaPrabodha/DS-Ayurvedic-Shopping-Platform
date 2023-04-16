@@ -9,9 +9,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
-
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, ProductAdd } from "../pages";
-
+import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd } from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -38,7 +36,7 @@ const AppRoutes = () => {
 
 						{/* Admin Private Routes */}
 						<Route exact path="/admin" element={<PrivateRoute permissionLevel="ADMIN" />}>
-							<Route exact path="/admin" element={<Home />} />
+							<Route exact path="/admin" element={<AdminDashboard />} />
 							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
 						</Route>
 

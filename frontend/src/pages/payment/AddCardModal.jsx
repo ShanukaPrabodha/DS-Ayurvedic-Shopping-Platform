@@ -5,13 +5,13 @@ import PaymentAPI from "../../contexts/api/PaymentAPI";
 import { Spinner, makeToast } from "../../components";
 
 const AddCardModal = ({ closeModal, isOpen, refetchPaymentMethods }) => {
+	const userId = localStorage.getItem("stripeUserId");
+
 	const [cardName, setCardName] = useState("Visa");
 	const [cardNumber, setCardNumber] = useState("4242424242424242");
 	const [cardExpiryMonth, setCardExpiryMonth] = useState(12);
 	const [cardExpiryYear, setCardExpiryYear] = useState(2027);
 	const [cardCvc, setCardCvc] = useState(123);
-
-	const userId = "cus_NhCuFcVQHkHfz5";
 
 	// Add new card
 	const { mutate: addPaymentMethod, isLoading: addPaymentMethodLoading } = useMutation(
