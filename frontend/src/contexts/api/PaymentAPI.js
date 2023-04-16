@@ -43,6 +43,12 @@ class PaymentAPI {
 		);
 		return response.data;
 	}
+
+	// Get payment details by payment id
+	static async getPaymentDetails(payment_Id) {
+		const response = await axios.get(`${BASE_URL}/api/payment/get-payment-details/${payment_Id}`, requestConfig);
+		return response.data;
+	}
 }
 
 export default PaymentAPI;

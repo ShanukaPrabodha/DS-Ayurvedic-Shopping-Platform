@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminAPI from "./api/AdminAPI";
 import { useMutation } from "@tanstack/react-query";
+import makeToast from "../components/toast";
 
 const AdminContext = createContext();
 
@@ -26,6 +27,9 @@ export function AdminProvider({ children }) {
 			navigate("/admin");
 			window.location.reload();
 			makeToast({ type: "success", message: "Login Successful" });
+		},
+		onError: (err) => {
+			makeToast({ type: "error", message: "Login Failed" });
 		},
 	});
 

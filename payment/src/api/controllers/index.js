@@ -1,4 +1,4 @@
-import { createNewCustomer, addNewCard, createPaymentIntent, getPaymentMethods, getAllCustomers } from "./StripeHandler";
+import { createNewCustomer, addNewCard, createPaymentIntent, getPaymentMethods, getAllCustomers, getPaymentDetails } from "./StripeHandler";
 
 export default {
 	// Stripe Controllers
@@ -7,4 +7,5 @@ export default {
 	createPaymentIntent,
 	getPaymentMethods,
 	getAllCustomers,
+	getPaymentDetails,
 };

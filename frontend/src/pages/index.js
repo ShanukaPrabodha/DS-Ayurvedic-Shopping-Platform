@@ -4,8 +4,9 @@ import Checkout from "./checkout";
 import Payment from "./payment";
 import PaymentSuccess from "./payment-success";
 import AdminLogin from "./admin-login";
+import AdminDashboard from "./admin-dashboard";
 import ProductAdd from "./product-add";
 import ProductDisplay from "./products-display";
 
 
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin ,ProductAdd , ProductDisplay };
+export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay };
