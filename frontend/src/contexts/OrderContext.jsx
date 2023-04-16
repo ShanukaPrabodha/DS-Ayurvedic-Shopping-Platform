@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import OrderAPI from "./api/OrderAPI";
 
 const OrderContext = createContext();
+const COMMISION = import.meta.env.VITE_COMMISION_RATE;
 
 export function OrderProvider({ children }) {
 	const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function OrderProvider({ children }) {
 			quantity: 2,
 		},
 	];
-	const commission = 0.05;
+	const commission = Number(COMMISION);
 	const amount = products.reduce((acc, product) => acc + product.price * product.quantity, 0) * (1 + commission);
 
 	const order = {

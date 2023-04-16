@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config();
+const ejs = require("ejs");
 
 const app = express();
 const port = process.env.PORT || 5006;
@@ -17,7 +18,7 @@ app.get("/api/notification", (req, res) => {
 // Endpoint for sending an email
 app.post("/api/notification/send-email", async (req, res) => {
   try {
-    const { to, subject, text } = req.body;
+    const { to, subject, templateType, data } = req.body;
 
     // Create a Nodemailer transport
     const transporter = nodemailer.createTransport({
@@ -30,12 +31,25 @@ app.post("/api/notification/send-email", async (req, res) => {
       },
     });
 
+    let file = "";
+    let folder = "templates";
+
+    if (templateType === "order") {
+      file = folder + "/orderTemplate.ejs";
+    } else if (templateType === "invoice") {
+      file = folder + "/invoiceTemplate.ejs";
+    } else {
+      file = folder + "/defaultTemplate.ejs";
+    }
+
+    const template = await ejs.renderFile(file, data);
+
     // Create an email message
     const mailOptions = {
       from: process.env.EMAIL_FROM,
       to: to,
       subject: subject,
-      text: text,
+      html: template,
     };
 
     // Send the email

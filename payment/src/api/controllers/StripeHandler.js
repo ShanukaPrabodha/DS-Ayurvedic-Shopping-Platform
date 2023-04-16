@@ -102,3 +102,16 @@ export const getAllCustomers = async (request, response, next) => {
 		next();
 	}
 };
+
+// Get payment details by payment id
+export const getPaymentDetails = async (request, response, next) => {
+	try {
+		const paymentDetails = await stripe.paymentIntents.retrieve(request.params.payment_Id);
+
+		request.handleResponse.successRespond(response)(paymentDetails);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
+};

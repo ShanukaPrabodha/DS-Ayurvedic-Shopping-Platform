@@ -1,0 +1,27 @@
+<!-- orderConfirmation.ejs -->
+<html>
+  <body>
+    <h1>Your Order is on Its Way!</h1>
+    <p>Dear <%= name %>,</p>
+    <p>
+      Thank you for your order with My Store. Your order is now confirmed and on
+      its way to you.
+    </p>
+    <p>Order Details:</p>
+    <ul>
+      <% orderItems.forEach(function(item) { %>
+      <li>
+        <strong><%= item.productName %></strong> - <%= item.quantity %> x <%=
+        item.price %>
+      </li>
+      <% }); %>
+    </ul>
+    <p>
+      If you have any questions or need further assistance, please don't
+      hesitate to contact our customer support.
+    </p>
+    <p>Thank you for shopping with us!</p>
+    <p>Best regards,</p>
+    <p>The My Store Team</p>
+  </body>
+</html>
