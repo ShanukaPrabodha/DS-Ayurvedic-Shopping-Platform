@@ -3,7 +3,7 @@
  // Insert one product
  export const insertProduct = async (request, response, next) => {
 
-    const{productId,productName,description, supplier,weight,variants}=request.body;
+    const{productId,productName,description, supplier,weight,variants,productImage}=request.body;
      await ProductService.insertProduct(
         {
         productId,
@@ -11,7 +11,8 @@
         description,
         supplier,
         weight,
-        variants
+        variants,
+        productImage
      })
          .then((data) => {
              request.handleResponse.successRespond(response)(data);
