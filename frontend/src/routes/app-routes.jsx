@@ -22,8 +22,8 @@ import {
 	BuyerRegister,
 	BuyerLogin,
 	BuyerDashboard,
-  SellerReview,
-  ProductReview,
+	SellerReview,
+	ProductReview,
 } from "../pages";
 
 const AppRoutes = () => {
@@ -55,15 +55,11 @@ const AppRoutes = () => {
 							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
 						</Route>
 
-
 						{/* Seller Private Routes */}
-					<Route path="/sellerReview" element={<SellerReview />} />
-	
+						<Route path="/sellerReview" element={<SellerReview />} />
 
-					{/* Product Private Routes */}
-					<Route path="/productReview" element={<ProductReview />} />
-
-
+						{/* Product Private Routes */}
+						<Route path="/productReview" element={<ProductReview />} />
 
 						{/* Buyer Routes */}
 						<Route path="/buyer/register" element={<BuyerRegister />} />
@@ -77,7 +73,6 @@ const AppRoutes = () => {
 						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
 							<Route exact path="/buyer" element={<BuyerDashboard />} />
 						</Route>
-
 					</Routes>
 				</div>
 				<Footer />

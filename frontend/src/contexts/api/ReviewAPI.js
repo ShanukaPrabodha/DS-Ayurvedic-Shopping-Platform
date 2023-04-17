@@ -20,11 +20,10 @@ class ReviewAPI {
 	}
 
 	// Get all seller reviews
-static async getAllSellerReviews() {
-	const response = await axios.get(`${BASE_URL}/api/Review/sellerReview/`);
-	return response.data;
-  }
-  
+	static async getAllSellerReviews() {
+		const response = await axios.get(`${BASE_URL}/api/Review/sellerReview/`);
+		return response.data;
+	}
 
 	// Create new product review
 	static async createProductReview({ product_id, review_value, text }) {
@@ -41,12 +40,11 @@ static async getAllSellerReviews() {
 		return response.data;
 	}
 
-    // Get all product reviews
+	// Get all product reviews
 	static async getProductReviews() {
 		const response = await axios.get(`${BASE_URL}/api/Review/productReview/`);
 		return response.data;
 	}
-	
 }
 
 export default ReviewAPI;
