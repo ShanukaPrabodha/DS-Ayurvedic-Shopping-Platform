@@ -9,7 +9,19 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd } from "../pages";
+import {
+	Sample,
+	Home,
+	Checkout,
+	Payment,
+	PaymentSuccess,
+	AdminLogin,
+	AdminDashboard,
+	ProductAdd,
+	BuyerRegister,
+	BuyerLogin,
+	BuyerDashboard
+} from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -25,7 +37,6 @@ const AppRoutes = () => {
 						<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
 						<Route path="/payment/:orderId" element={<Payment />} />
 
-
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
 
@@ -39,6 +50,20 @@ const AppRoutes = () => {
 							<Route exact path="/admin" element={<AdminDashboard />} />
 							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
 						</Route>
+
+						{/* Buyer Routes */}
+						<Route path="/buyer/register" element={<BuyerRegister />} />
+
+						{/* Check Login Status Buyer */}
+						<Route exact path="/buyer/login" element={<CheckLoginStatus />}>
+							<Route exact path="/buyer/login" element={<BuyerLogin />} />
+						</Route>
+
+						{/* Buyer Private Routes */}
+						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
+						<Route exact path="/buyer" element={<BuyerDashboard />} />
+						</Route>
+
 
 					</Routes>
 				</div>
