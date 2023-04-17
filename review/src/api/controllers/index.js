@@ -2,6 +2,7 @@ import {
 	insertSellerReview,
 	getAllSellerReviews,
 	getOneSellerReview,
+	deleteSellerReview,
 } from "./Seller.Review.controller";
 
 import {
@@ -18,6 +19,7 @@ export default {
 	insertSellerReview,
 	getAllSellerReviews,
 	getOneSellerReview,
+	deleteSellerReview,
 
 	insertProductReview,
 	getAllProductReviews,

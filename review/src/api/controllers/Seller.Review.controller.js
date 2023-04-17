@@ -38,3 +38,15 @@ export const getOneSellerReview = async (request, response, next) => {
 			next();
 		});
 };
+
+  
+  export const deleteSellerReview = async (request, response, next) => {
+	await SellerReviewService.deleteSellerReview(request.params.id)
+		.then((data) => {
+			request.handleResponse.successRespond(response)(data);
+			next();
+		})
+		.catch((error) => {
+			request.handleResponse.errorRespond(response)(error.message);
+			next();
+		})};

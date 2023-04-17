@@ -37,3 +37,20 @@ export const getOneSellerReview = async (SellerReviewId) => {
 			throw new Error(error.message);
 		});
 };
+
+// Delete Seller Review
+
+  export const deleteSellerReview = async (SellerReviewId) => {
+	return await SellerReviewModel.findByIdAndDelete(SellerReviewId)
+		.then((sellerReviews) => {
+			if (sellerReviews) {
+				return sellerReviews;
+			} else {
+				throw new Error("seller review not found");
+			}
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
+  

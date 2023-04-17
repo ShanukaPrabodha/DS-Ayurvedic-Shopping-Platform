@@ -13,6 +13,7 @@ router.get("/", (req, res, next) => {
 router.post("/sellerReview/", controller.insertSellerReview); // insert one seller review
 router.get("/sellerReview/", controller.getAllSellerReviews); // get all seller reviews
 router.get("/sellerReview/:id", controller.getOneSellerReview); // get one seller review
+router.delete("/sellerReview/:id", controller.deleteSellerReview); // get one seller review
 
 router.post("/productReview/", controller.insertProductReview); // insert one product review
 router.get("/productReview/", controller.getAllProductReviews); // get all product reviews
