@@ -12,7 +12,7 @@ import BuyerLogin from "./buyer-login";
 import BuyerDashboard from "./buyer-dashboard";
 
 import ProductDisplay from "./products-display";
+import SellerReview from "./seller-review";
+import ProductReview from "./product-review";
 
-
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay, BuyerRegister, BuyerLogin, BuyerDashboard };
-
+export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay, BuyerRegister, BuyerLogin, BuyerDashboard, SellerReview, ProductReview };
