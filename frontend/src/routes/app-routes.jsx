@@ -9,9 +9,22 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
-
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, ProductDisplay, SellerReview, ProductReview } from "../pages";
-
+import {
+	Sample,
+	Home,
+	Checkout,
+	Payment,
+	PaymentSuccess,
+	AdminLogin,
+	AdminDashboard,
+	ProductAdd,
+	ProductDisplay,
+	BuyerRegister,
+	BuyerLogin,
+	BuyerDashboard,
+  SellerReview,
+  ProductReview,
+} from "../pages";
 
 const AppRoutes = () => {
 	return (
@@ -27,11 +40,9 @@ const AppRoutes = () => {
 						<Route path="/payment/success/:paymentId" element={<PaymentSuccess />} />
 						<Route path="/payment/:orderId" element={<Payment />} />
 
-
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
 						<Route path="/product-display" element={<ProductDisplay />} />
-
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
@@ -44,6 +55,7 @@ const AppRoutes = () => {
 							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
 						</Route>
 
+
 						{/* Seller Private Routes */}
 					<Route path="/sellerReview" element={<SellerReview />} />
 	
@@ -51,6 +63,20 @@ const AppRoutes = () => {
 					{/* Product Private Routes */}
 					<Route path="/productReview" element={<ProductReview />} />
 
+
+
+						{/* Buyer Routes */}
+						<Route path="/buyer/register" element={<BuyerRegister />} />
+
+						{/* Check Login Status Buyer */}
+						<Route exact path="/buyer/login" element={<CheckLoginStatus />}>
+							<Route exact path="/buyer/login" element={<BuyerLogin />} />
+						</Route>
+
+						{/* Buyer Private Routes */}
+						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
+							<Route exact path="/buyer" element={<BuyerDashboard />} />
+						</Route>
 
 					</Routes>
 				</div>
