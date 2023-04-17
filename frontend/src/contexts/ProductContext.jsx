@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ProductAPI from "./api/productAPI";
+import ProductAPI from "./api/ProductApi";
 
 const BASE_URL = "http://localhost:5003/api/product";
 // const BASE_URL = import.meta.env.VITE_K8S_BACKEND_URL;
@@ -20,15 +21,14 @@ export function ProductProvider({ children }) {
 		supplier: "",
 		weight: "",
 		variants: "",
-		productImage:"",
-		
+		productImage: "",
 	});
 
 	useEffect(() => {
 		setIsLoading(true);
-            ProductAPI.getProducts()         
-             .then((response) => {
+		ProductAPI.getProducts().then((response) => {
 			setProducts(response.data);
+			console.log(products.values("productName"));
 			setIsLoading(false);
 		});
 	}, []);
@@ -55,7 +55,7 @@ export function ProductProvider({ children }) {
 
 	const getProduct = (id) => {
 		useEffect(() => {
-            ProductAPI.getOneProduct(id).then((res) => {
+			ProductAPI.getOneProduct(id).then((res) => {
 				setProduct(res.data);
 			});
 		}, []);
@@ -64,14 +64,13 @@ export function ProductProvider({ children }) {
 	// Edit camping Package
 	const editProduct = (values) => {
 		const newProduct = {
-
-            productId: "0",
-		    productName: values.productId,
-		    description: values.description,
-		    supplier: values.supplier,
-		    weight: values.weight,
-		    variants: values.variants,
-			productImage:values.productImage,
+			productId: "0",
+			productName: values.productId,
+			description: values.description,
+			supplier: values.supplier,
+			weight: values.weight,
+			variants: values.variants,
+			productImage: values.productImage,
 		};
 		ProductAPI.editProduct(values.id, newProduct)
 			.then((response) => {

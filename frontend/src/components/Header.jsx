@@ -34,6 +34,13 @@ const Header = () => {
 							</ul>
 
 							<ul className="flex p-1">
+								{/* Shop */}
+								<li className="mr-6">
+									<Link to="/product-display" className="text-base font-medium text-white hover:text-gray-300">
+										Shop
+									</Link>
+								</li>
+
 								{/* Checkout */}
 								<li className="mr-6">
 									<Link to="/checkout" className="text-base font-medium text-white hover:text-gray-300">

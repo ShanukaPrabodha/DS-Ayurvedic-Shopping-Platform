@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Pages
+
 import {
 	Sample,
 	Home,
@@ -22,6 +23,11 @@ import {
 	BuyerLogin,
 	BuyerDashboard
 } from "../pages";
+
+
+import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, ProductDisplay } from "../pages";
+
+
 
 const AppRoutes = () => {
 	return (
@@ -39,6 +45,8 @@ const AppRoutes = () => {
 
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
+						<Route path="/product-display" element={<ProductDisplay />} />
+
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
