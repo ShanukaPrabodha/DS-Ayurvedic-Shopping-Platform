@@ -11,10 +11,8 @@ import BuyerRegister from "./buyer-register";
 import BuyerLogin from "./buyer-login";
 import BuyerDashboard from "./buyer-dashboard";
 
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, BuyerRegister, BuyerLogin, BuyerDashboard };
-
 import ProductDisplay from "./products-display";
 
 
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay };
+export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay, BuyerRegister, BuyerLogin, BuyerDashboard };
 

@@ -19,15 +19,11 @@ import {
 	AdminLogin,
 	AdminDashboard,
 	ProductAdd,
+	ProductDisplay,
 	BuyerRegister,
 	BuyerLogin,
-	BuyerDashboard
+	BuyerDashboard,
 } from "../pages";
-
-
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, ProductDisplay } from "../pages";
-
-
 
 const AppRoutes = () => {
 	return (
@@ -46,7 +42,6 @@ const AppRoutes = () => {
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
 						<Route path="/product-display" element={<ProductDisplay />} />
-
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
@@ -69,10 +64,8 @@ const AppRoutes = () => {
 
 						{/* Buyer Private Routes */}
 						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
-						<Route exact path="/buyer" element={<BuyerDashboard />} />
+							<Route exact path="/buyer" element={<BuyerDashboard />} />
 						</Route>
-
-
 					</Routes>
 				</div>
 				<Footer />
