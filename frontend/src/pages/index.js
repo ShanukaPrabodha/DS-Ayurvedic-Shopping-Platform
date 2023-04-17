@@ -7,6 +7,7 @@ import AdminLogin from "./admin-login";
 import AdminDashboard from "./admin-dashboard";
 import ProductAdd from "./product-add";
 import ProductDisplay from "./products-display";
+import SellerReview from "./seller-review";
+import ProductReview from "./product-review";
 
-
-export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay };
+export { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd , ProductDisplay, SellerReview, ProductReview };

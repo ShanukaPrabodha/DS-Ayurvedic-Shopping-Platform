@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 // Pages
 
-import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, ProductDisplay } from "../pages";
+import { Sample, Home, Checkout, Payment, PaymentSuccess, AdminLogin, AdminDashboard, ProductAdd, ProductDisplay, SellerReview, ProductReview } from "../pages";
 
 
 const AppRoutes = () => {
@@ -43,6 +43,14 @@ const AppRoutes = () => {
 							<Route exact path="/admin" element={<AdminDashboard />} />
 							{/* <Route exact path="/admin/edit" element={<AdminEdit />} /> */}
 						</Route>
+
+						{/* Seller Private Routes */}
+					<Route path="/sellerReview" element={<SellerReview />} />
+	
+
+					{/* Product Private Routes */}
+					<Route path="/productReview" element={<ProductReview />} />
+
 
 					</Routes>
 				</div>
