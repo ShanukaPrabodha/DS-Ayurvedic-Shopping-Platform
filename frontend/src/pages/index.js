@@ -15,6 +15,9 @@ import ProductDisplay from "./products-display";
 import SellerReview from "./seller-review";
 import ProductReview from "./product-review";
 
+import SellerRegister from "./seller-register";
+import SellerLogin from "./seller-login";
+
 export {
 	Sample,
 	Home,
@@ -30,4 +33,6 @@ export {
 	BuyerDashboard,
 	SellerReview,
 	ProductReview,
+	SellerRegister,
+	SellerLogin,
 };
