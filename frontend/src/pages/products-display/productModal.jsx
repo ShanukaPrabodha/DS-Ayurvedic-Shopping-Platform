@@ -10,16 +10,14 @@ export default function productModal({ visible, onClose, product }) {
 	const [price, setPrice] = useState(0);
 	const [size, setSize] = useState();
 	const [stock, setStock] = useState();
-	const [details,setDetails]=useState({
-		productId:product._id,
-			 productImage:"",
-			 productName:"",
-			 supplier:"",
-			 size:"",
-			 price:"",
-			 stock:"",
-			 total:""
-	});
+
+
+    const onCloseModel=()=>{
+
+        setTotal(0);
+
+        onClose();
+    }
 
 	const hello = (variant) => {
 		setSize(variant.size);
@@ -73,7 +71,7 @@ export default function productModal({ visible, onClose, product }) {
 		<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
 			<div className="bg-white rounded-lg w-[auto] h-[auto]">
 			<div className="ml-[700px] mt-[12px] mr-auto">
-				<button onClick={onClose}>
+				<button onClick={onCloseModel}>
 					<ImCross className="fill-red-600 hover:fill-red-400" />
 				</button>	
 				</div>
