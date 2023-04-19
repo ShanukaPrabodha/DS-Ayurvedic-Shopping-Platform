@@ -9,7 +9,6 @@ export function BuyerProvider({ children }) {
 	const [buyers, setBuyers] = useState([]);
 	const [mailError, setMailError] = useState("");
 	const [nicError, setNicError] = useState("");
-	
 
 	const [buyer, setBuyer] = useState({
 		name: "",

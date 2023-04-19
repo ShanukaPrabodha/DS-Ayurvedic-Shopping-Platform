@@ -5,10 +5,7 @@ const BuyerDashboard = () => {
 	return (
 		<>
 			<div className="flex flex-col w-1/6 h-screen right bg-slate-100 ml-6 mt-8 rounded-3xl">
-
-				
 				<div className="flex flex-col items-center justify-center mt-24">
-					
 					<hr></hr>
 					<Link
 						to="/buyer"
