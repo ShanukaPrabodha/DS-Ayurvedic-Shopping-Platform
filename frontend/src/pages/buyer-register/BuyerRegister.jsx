@@ -98,13 +98,11 @@ const BuyerRegister = () => {
 
 	return (
 		<>
-			<h1 className="mt-4 text-4xl text-center">Buyer Register</h1>
-
 			<form onSubmit={handleSubmit}>
 				<div className="flex justify-center h-full max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-xl">
 					<div className=" left  rounded-lg">
 						<div className="mt-32 ml-16 ">
-							<h1 className="text-5xl text-white">
+							<h1 className="text-5xl text-black">
 								Welcome to<br></br> iHurb
 							</h1>
 						</div>
@@ -115,13 +113,13 @@ const BuyerRegister = () => {
 
 					<div className="right">
 						<div className="ml-20 mr-20 mt-18">
-							<h1 className="mb-10 text-2xl text-primary-blue font-bold text-center">Register Here..</h1>
+							<h1 className="mb-10 text-2xl text-primary-blue font-bold text-center">As a Buyer Register Here..</h1>
 							<div>
 								<label className="block mb-2 text-sm font-bold text-black">Name</label>
 								<input
 									id="name"
 									type="text"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your Name"
 									onChange={() => {
 										checkName();
@@ -135,7 +133,7 @@ const BuyerRegister = () => {
 								<input
 									id="email"
 									type="email"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your Email"
 									onChange={() => {
 										checkEmail();
@@ -149,7 +147,7 @@ const BuyerRegister = () => {
 								<input
 									id="contact"
 									type="number"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your Mobile Number"
 									onChange={() => {
 										checkMobile();
@@ -163,7 +161,7 @@ const BuyerRegister = () => {
 								<input
 									id="nic"
 									type="text"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your NIC Number"
 									onChange={() => {
 										checkNic();
@@ -177,7 +175,7 @@ const BuyerRegister = () => {
 								<input
 									id="address"
 									type="text"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your Address"
 									onChange={() => {
 										checkAddress();
@@ -190,7 +188,7 @@ const BuyerRegister = () => {
 								<label className="block mb-2 text-sm font-bold text-black">Password</label>
 								<input
 									id="password"
-									className="w-80 px-4 py-2 text-sm border rounded-md bg-slate-100 focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
+									className="w-80 px-4 py-2 text-sm border rounded-md bg-slate-100 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
 									placeholder="Please Enter Your Password"
 									type="password"
 									onChange={() => {
@@ -201,7 +199,7 @@ const BuyerRegister = () => {
 							<span className="text-red-500 text-sm">{passwordError}</span>
 
 							<div className="flex items-center justify-center gap-4">
-								<button className="bg-green-500 hover:bg-green-700 text-white font-bold mt-10  w-60 py-1.5  rounded-xl">
+								<button className="bg-primary-green hover:bg-green-500 text-white font-bold mt-10  w-60 py-1.5  rounded-xl">
 									Register
 								</button>
 							</div>

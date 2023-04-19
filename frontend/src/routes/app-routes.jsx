@@ -25,7 +25,8 @@ import {
 	SellerReview,
 	ProductReview,
 	SellerRegister,
-	SellerLogin
+	SellerLogin,
+	SellerDashboard,
 } from "../pages";
 
 const AppRoutes = () => {
@@ -84,6 +85,13 @@ const AppRoutes = () => {
 						<Route exact path="/seller/login" element={<CheckLoginStatus />}>
 							<Route exact path="/seller/login" element={<SellerLogin />} />
 						</Route>
+
+							{/* Seller Private Routes */}
+						<Route exact path="/seller" element={<PrivateRoute permissionLevel="SELLER" />}>
+							<Route exact path="/seller" element={<SellerDashboard />} />
+						</Route>
+
+
 					</Routes>
 				</div>
 				<Footer />
