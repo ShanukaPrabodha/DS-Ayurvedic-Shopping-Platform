@@ -1,17 +1,16 @@
 import { createContext, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import BuyerAPI from "./api/BuyerAPI";
+import { useNavigate } from "react-router-dom";
+import SellerAPI from "./api/SellerAPI";
 import makeToast from "../components/toast";
 
-const BuyerContext = createContext();
+const SellerContext = createContext();
 
-export function BuyerProvider({ children }) {
-	const [buyers, setBuyers] = useState([]);
+export function SellerProvider({ children }) {
+	const [sellers, setSellers] = useState([]);
 	const [mailError, setMailError] = useState("");
 	const [nicError, setNicError] = useState("");
-	
 
-	const [buyer, setBuyer] = useState({
+	const [seller, setSeller] = useState({
 		name: "",
 		email: "",
 		contact: "",
@@ -20,14 +19,14 @@ export function BuyerProvider({ children }) {
 		password: "",
 	});
 
-	// Buyer Register
+	// Seller Register
 
-	const BuyerRegister = async (values) => {
-		BuyerAPI.register(values)
+	const SellerRegister = async (values) => {
+		SellerAPI.register(values)
 			.then((response) => {
-				setBuyers([...buyers, response.data]);
+				setSellers([...sellers, response.data]);
 				makeToast({ type: "success", message: "Registration Successful" });
-				window.location.href = "/buyer/login";
+				window.location.href = "/seller/login";
 			})
 			.catch((err) => {
 				// eslint-disable-next-line no-console
@@ -45,9 +44,8 @@ export function BuyerProvider({ children }) {
 			});
 	};
 
-	// Buyer Login
-	const BuyerLogin = (values) => {
-		BuyerAPI.login(values)
+	const SellerLogin = (values) => {
+		SellerAPI.login(values)
 			.then((response) => {
 				localStorage.setItem("stripeUserId", response.data.stripeUserId);
 				localStorage.setItem("uId", response.data._id);
@@ -56,31 +54,33 @@ export function BuyerProvider({ children }) {
 				localStorage.setItem("permissionLevel", response.data.permissionLevel);
 
 				makeToast({ type: "success", message: "Login Successful" });
-				window.location.href = "/buyer";
+				window.location.href = "/seller";
 			})
 			.catch((err) => {
 				makeToast({ type: "error", message: "Invalid Email or Password" });
 			});
 	};
 
+	// Seller Login
+
 	return (
-		<BuyerContext.Provider
+		<SellerContext.Provider
 			value={{
-				buyers,
-				setBuyers,
-				buyer,
-				setBuyer,
-				BuyerRegister,
+				seller,
+				setSeller,
+				SellerRegister,
+				SellerLogin,
 				mailError,
 				setMailError,
-				nicError,
 				setNicError,
-				BuyerLogin,
+				nicError,
+				sellers,
+				setSellers,
 			}}
 		>
 			{children}
-		</BuyerContext.Provider>
+		</SellerContext.Provider>
 	);
 }
 
-export default BuyerContext;
+export default SellerContext;
