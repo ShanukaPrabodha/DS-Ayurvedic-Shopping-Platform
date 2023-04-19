@@ -1,12 +1,22 @@
-/* eslint-disable no-console */
 import { useContext, useState, useEffect } from "react";
-import axios from "axios";
 import ProductContext from "../../contexts/ProductContext";
 import { ImCart } from "react-icons/im";
 import ReactStars from "react-rating-stars-component";
+import ProductModal from "./productModal";
 
 const ProductDisplay = () => {
-	const { products } = useContext(ProductContext);
+	const { products, product, getProduct } = useContext(ProductContext);
+	const [showModal, setShowModal] = useState("false");
+	const [id, setId] = useState({});
+
+	const handleOnClose = () => {
+		setShowModal("false");
+	};
+
+	const setVisibility = (product) => {
+		setShowModal("true");
+		setId(product);
+	};
 
 	const ratingChanged = (newRating) => {
 		console.log(newRating);
@@ -16,11 +26,8 @@ const ProductDisplay = () => {
 		<>
 			<section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
 				{/*   ✅ Product card 1 - Starts Here 👇*/}
-				{products.map((product) => (
-					<div
-						className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
-						key={product._id}
-					>
+				{products.map((product, key) => (
+					<div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 						<a href="#">
 							<img src={product.productImage} alt="Product" className="h-80 w-72 object-cover rounded-t-xl" />
 							<div>
@@ -33,7 +40,7 @@ const ProductDisplay = () => {
 									<p className="text-lg font-semibold text-black cursor-auto my-3">රු.{product.variants[0].price}.00</p>
 
 									<div className="ml-auto">
-										<button>
+										<button onClick={() => setVisibility(product)}>
 											<ImCart className="fill-primary-green w-[20px] h-[20px] hover:fill-green-400" />
 										</button>
 									</div>
@@ -42,6 +49,7 @@ const ProductDisplay = () => {
 						</a>
 					</div>
 				))}
+				<ProductModal visible={showModal} onClose={handleOnClose} product={id} />
 			</section>
 		</>
 	);

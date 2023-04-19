@@ -11,6 +11,7 @@ const BuyerDashboard = () => {
 
 	return (
 		<>
+
 			<div className="absolute ml-[35rem] flex-col sm:flex-wrap sm:flex-row justify-center w-1/2">
 				<div className="flex-col px-10 w-auto md:w-50 py-6 bg-gray-200 rounded-2xl mt-10">
 					{" "}
@@ -48,6 +49,7 @@ const BuyerDashboard = () => {
 								</button>
 							</div>
 						</div>
+
 					</div>
 				</div>{" "}
 				<div className="text-gray-600 body-font">

@@ -98,8 +98,6 @@ const SellerRegister = () => {
 
 	return (
 		<>
-			
-
 			<form onSubmit={handleSubmit}>
 				<div className="flex justify-center h-full max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-xl">
 					<div className="left bg-white rounded-lg">

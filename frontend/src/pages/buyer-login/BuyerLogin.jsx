@@ -23,17 +23,17 @@ const BuyerLogin = () => {
 		BuyerLogin(newBuyer);
 	};
 
-		// Email Validation
-		const checkEmail = () => {
-			let email = document.getElementById("email").value;
-			if (emailregext.test(email)) {
-				setEmailError("");
-			} else {
-				setEmailError("Please Enter valid email");
-			}
-		};
+	// Email Validation
+	const checkEmail = () => {
+		let email = document.getElementById("email").value;
+		if (emailregext.test(email)) {
+			setEmailError("");
+		} else {
+			setEmailError("Please Enter valid email");
+		}
+	};
 
-		 // Password Validation
+	// Password Validation
 	const checkPassword = () => {
 		let password = document.getElementById("password").value;
 		if (passwordregext.test(password)) {
@@ -45,7 +45,6 @@ const BuyerLogin = () => {
 
 	return (
 		<>
-			
 			<form onSubmit={handleSubmit}>
 				<div className="flex justify-center h-full max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-xl">
 					<div className=" left bg-primary-blue  rounded-lg">
