@@ -10,6 +10,7 @@ import ProductAdd from "./product-add";
 import BuyerRegister from "./buyer-register";
 import BuyerLogin from "./buyer-login";
 import BuyerDashboard from "./buyer-dashboard";
+import BuyerProfileUpdate from "./buyer-profile-update/BuyerProfileUpdate";
 
 import ProductDisplay from "./products-display";
 import SellerReview from "./seller-review";
@@ -37,4 +38,5 @@ export {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
+	BuyerProfileUpdate,
 };

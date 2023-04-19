@@ -27,6 +27,7 @@ import {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
+	BuyerProfileUpdate
 } from "../pages";
 
 const AppRoutes = () => {
@@ -75,6 +76,7 @@ const AppRoutes = () => {
 						{/* Buyer Private Routes */}
 						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
 							<Route exact path="/buyer" element={<BuyerDashboard />} />
+							<Route exact path="/buyer/profile/:id" element={<BuyerProfileUpdate />} />
 						</Route>
 
 						{/* Seller Routes */}

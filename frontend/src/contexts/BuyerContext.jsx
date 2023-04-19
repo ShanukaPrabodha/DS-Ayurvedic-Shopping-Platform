@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import BuyerAPI from "./api/BuyerAPI";
 import makeToast from "../components/toast";
@@ -9,7 +9,6 @@ export function BuyerProvider({ children }) {
 	const [buyers, setBuyers] = useState([]);
 	const [mailError, setMailError] = useState("");
 	const [nicError, setNicError] = useState("");
-	
 
 	const [buyer, setBuyer] = useState({
 		name: "",
@@ -63,6 +62,16 @@ export function BuyerProvider({ children }) {
 			});
 	};
 
+	// Get one Buyer
+
+	const getOneBuyer = (id) => {
+		useEffect(() => {
+			BuyerAPI.getOneBuyer(id).then((res) => {
+				setBuyer(res.data);
+			});
+		}, []);
+	};
+
 	return (
 		<BuyerContext.Provider
 			value={{
@@ -76,6 +85,7 @@ export function BuyerProvider({ children }) {
 				nicError,
 				setNicError,
 				BuyerLogin,
+				getOneBuyer,
 			}}
 		>
 			{children}
