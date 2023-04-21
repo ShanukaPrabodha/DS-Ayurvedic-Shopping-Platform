@@ -14,6 +14,26 @@ class BuyerAPI {
 	static register(values) {
 		return axios.post(`${BASE_URL}/api/auth/buyer/register`, values, requestConfigJson);
 	}
+
+	// get one Buyer
+	static getOneBuyer(id) {
+		return axios.get(`${BASE_URL}/api/auth/buyer/${id}`, requestConfig);
+	}
+
+	// get all Buyers
+	static getAllBuyers() {
+		return axios.get(`${BASE_URL}/api/auth/buyer/`, requestConfig);
+	}
+
+	// update Buyer
+	static updateBuyer(id, values) {
+		return axios.put(`${BASE_URL}/api/auth/buyer-edit/${id}`, values, requestConfigJson);
+	}
+
+	// delete Buyer
+	static deleteBuyer(id) {
+		return axios.delete(`${BASE_URL}/api/auth/buyer-delete/${id}`, requestConfig);
+	}
 }
 
 export default BuyerAPI;

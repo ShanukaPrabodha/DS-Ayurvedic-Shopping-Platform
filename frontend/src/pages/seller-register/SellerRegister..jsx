@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import BuyerContext from "../../contexts/BuyerContext";
+import SellerContext from "../../contexts/SellerContext";
 
-const BuyerRegister = () => {
-	const { BuyerRegister } = useContext(BuyerContext);
+const SellerRegister = () => {
+	const { SellerRegister } = useContext(SellerContext);
 	const [nameError, setNameError] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [mobileError, setMobileError] = useState("");
@@ -15,7 +15,7 @@ const BuyerRegister = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const newBuyer = {
+		const newSeller = {
 			name: e.target.name.value,
 			email: e.target.email.value,
 			contact: e.target.contact.value,
@@ -24,7 +24,7 @@ const BuyerRegister = () => {
 			password: e.target.password.value,
 		};
 
-		BuyerRegister(newBuyer);
+		SellerRegister(newSeller);
 	};
 
 	let nameregext = /^[a-z A-Z]+$/;
@@ -100,20 +100,20 @@ const BuyerRegister = () => {
 		<>
 			<form onSubmit={handleSubmit}>
 				<div className="flex justify-center h-full max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-xl">
-					<div className=" left  rounded-lg">
+					<div className="left bg-white rounded-lg">
 						<div className="mt-32 ml-16 ">
 							<h1 className="text-5xl text-black">
 								Welcome to<br></br> iHurb
 							</h1>
 						</div>
 						<div className="img ml-3 mt-16">
-							<img className="object-cover w-100 h-56" src="/buyer.svg" alt="img" />
+							<img className="object-cover w-100 h-56" src="/seller.svg" alt="img" />
 						</div>
 					</div>
 
 					<div className="right">
 						<div className="ml-20 mr-20 mt-18">
-							<h1 className="mb-10 text-2xl text-primary-blue font-bold text-center">As a Buyer Register Here..</h1>
+							<h1 className="mb-10 text-2xl text-black font-bold text-center">As a Seller Register Here..</h1>
 							<div>
 								<label className="block mb-2 text-sm font-bold text-black">Name</label>
 								<input
@@ -205,7 +205,7 @@ const BuyerRegister = () => {
 							</div>
 							<br></br>
 							<div className="text-center mb-10">
-								<Link to="/buyer/login" className="inline-block text-sm text-green-700 align-baseline">
+								<Link to="/seller/login" className="inline-block text-sm text-green-700 align-baseline">
 									Already Registered ? Login Here !
 								</Link>
 							</div>
@@ -217,4 +217,4 @@ const BuyerRegister = () => {
 	);
 };
 
-export default BuyerRegister;
+export default SellerRegister;
