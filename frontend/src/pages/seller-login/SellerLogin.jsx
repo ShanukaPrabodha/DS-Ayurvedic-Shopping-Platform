@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import BuyerContext from "../../contexts/BuyerContext";
+import SellerContext from "../../contexts/SellerContext";
 
-const BuyerLogin = () => {
-	const { BuyerLogin } = useContext(BuyerContext);
+const SellerLogin = () => {
+	const { SellerLogin } = useContext(SellerContext);
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
 
@@ -15,12 +15,12 @@ const BuyerLogin = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const newBuyer = {
+		const newSeller = {
 			email: e.target.email.value,
 			password: e.target.password.value,
 		};
 
-		BuyerLogin(newBuyer);
+		SellerLogin(newSeller);
 	};
 
 	// Email Validation
@@ -60,7 +60,7 @@ const BuyerLogin = () => {
 
 					<div className="right">
 						<div className="ml-20 mr-20 mt-28">
-							<h1 className="mb-10 text-2xl text-primary-blue font-bold text-center">As a Buyer Login Here..</h1>
+							<h1 className="mb-10 text-2xl text-primary-blue font-bold text-center">As a Seller Login Here..</h1>
 							<div>
 								<label className="block mb-2 text-sm font-bold text-black">Email</label>
 								<input
@@ -97,7 +97,7 @@ const BuyerLogin = () => {
 							</div>
 
 							<div className="text-center mt-4">
-								<Link to="/buyer/register" className="inline-block text-sm text-green-700 align-baseline">
+								<Link to="/seller/register" className="inline-block text-sm text-green-700 align-baseline">
 									Create an Account.
 								</Link>
 							</div>
@@ -109,4 +109,4 @@ const BuyerLogin = () => {
 	);
 };
 
-export default BuyerLogin;
+export default SellerLogin;
