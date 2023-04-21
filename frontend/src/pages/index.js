@@ -16,7 +16,7 @@ import SellerReview from "./seller-review";
 
 import ProductReview from "./product-review";
 
-<<<<<<<<< Temporary merge branch 1
+
 import SellerRegister from "./seller-register";
 import SellerLogin from "./seller-login";
 import SellerDashboard from "./seller-dashboard";
@@ -37,7 +37,6 @@ export {
 	BuyerDashboard,
 	SellerReview,
 	ProductReview,
-<<<<<<<<< Temporary merge branch 1
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
