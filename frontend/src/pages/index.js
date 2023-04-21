@@ -14,11 +14,15 @@ import BuyerProfileUpdate from "./buyer-profile-update/BuyerProfileUpdate";
 
 import ProductDisplay from "./products-display";
 import SellerReview from "./seller-review";
+
 import ProductReview from "./product-review";
+
+
 
 import SellerRegister from "./seller-register";
 import SellerLogin from "./seller-login";
 import SellerDashboard from "./seller-dashboard";
+
 
 export {
 	Sample,
@@ -38,5 +42,9 @@ export {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
+
 	BuyerProfileUpdate,
+
+
+
 };

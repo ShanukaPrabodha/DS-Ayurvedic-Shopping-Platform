@@ -27,7 +27,11 @@ import {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
+
 	BuyerProfileUpdate
+
+
+
 } from "../pages";
 
 const AppRoutes = () => {
@@ -61,6 +65,8 @@ const AppRoutes = () => {
 
 						{/* Seller Private Routes */}
 						<Route path="/sellerReview" element={<SellerReview />} />
+					
+						
 
 						{/* Product Private Routes */}
 						<Route path="/productReview" element={<ProductReview />} />
