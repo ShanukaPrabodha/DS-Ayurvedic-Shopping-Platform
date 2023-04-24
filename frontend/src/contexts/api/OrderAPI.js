@@ -24,6 +24,18 @@ class OrderAPI {
 		const response = await axios.get(`${BASE_URL}/api/order/${orderId}`, requestConfig);
 		return response.data;
 	}
+
+	// Get all orders
+	static async getOrders() {
+		const response = await axios.get(`${BASE_URL}/api/order`, requestConfig);
+		return response.data;
+	}
+
+	// changeOrderStatus
+	static async changeOrderStatus(orderId, status) {
+		const response = await axios.patch(`${BASE_URL}/api/order/status/${orderId}`, { status }, requestConfigJson);
+		return response.data;
+	}
 }
 
 export default OrderAPI;
