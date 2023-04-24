@@ -10,7 +10,7 @@ import ProductAdd from "./product-add";
 import BuyerRegister from "./buyer-register";
 import BuyerLogin from "./buyer-login";
 import BuyerDashboard from "./buyer-dashboard";
-import BuyerProfileUpdate from "./buyer-profile-update/BuyerProfileUpdate";
+import BuyerProfileUpdate from "./buyer-profile-update";
 
 import ProductDisplay from "./products-display";
 import SellerReview from "./seller-review";
@@ -22,6 +22,7 @@ import ProductReview from "./product-review";
 import SellerRegister from "./seller-register";
 import SellerLogin from "./seller-login";
 import SellerDashboard from "./seller-dashboard";
+import BuyerOrders from "./buyer-orders";
 
 
 export {
@@ -44,6 +45,7 @@ export {
 	SellerDashboard,
 
 	BuyerProfileUpdate,
+	BuyerOrders,
 
 
 
