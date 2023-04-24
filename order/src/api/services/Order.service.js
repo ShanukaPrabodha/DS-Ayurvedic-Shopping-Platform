@@ -12,7 +12,20 @@ export const addOrder = async (orderData) => {
 		});
 };
 
-// TODO: Get all orders
+// Get all orders
+export const getOrders = async () => {
+	return await OrderModel.find()
+		.then((orders) => {
+			if (orders) {
+				return orders;
+			} else {
+				throw new Error("Orders not found");
+			}
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
 
 // Get one order
 export const getOrder = async (orderId) => {
@@ -32,6 +45,21 @@ export const getOrder = async (orderId) => {
 // Change order's isPaid status
 export const changeOrderIsPaidStatus = async (orderId, isPaid) => {
 	return await OrderModel.findByIdAndUpdate(orderId, { isPaid: isPaid }, { new: true })
+		.then((order) => {
+			if (order) {
+				return order;
+			} else {
+				throw new Error("Order not found");
+			}
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};
+
+// Change order's status
+export const changeOrderStatus = async (orderId, status) => {
+	return await OrderModel.findByIdAndUpdate(orderId, { status: status }, { new: true })
 		.then((order) => {
 			if (order) {
 				return order;

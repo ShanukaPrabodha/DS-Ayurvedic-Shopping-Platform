@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import OrderAPI from "./api/OrderAPI";
 
 const OrderContext = createContext();
@@ -33,6 +33,15 @@ export function OrderProvider({ children }) {
 		amount,
 	};
 
+	// Get orders
+	const {
+		data: orders,
+		isLoading: ordersLoading,
+		refetch: refetchOrders,
+	} = useQuery(["orders"], () => OrderAPI.getOrders(), {
+		enabled: true,
+	});
+
 	// Create a order
 	const { mutate: createOrder, isLoading: createOrderLoading } = useMutation(() => OrderAPI.createOrder(order), {
 		onSuccess: (data) => {
@@ -47,6 +56,9 @@ export function OrderProvider({ children }) {
 				commission,
 				createOrder,
 				createOrderLoading,
+				orders,
+				ordersLoading,
+				refetchOrders,
 			}}
 		>
 			{children}

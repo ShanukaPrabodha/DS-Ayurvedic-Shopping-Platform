@@ -17,6 +17,16 @@ export const addOrder = async (request, response, next) => {
 };
 
 // TODO: Get all orders
+export const getOrders = async (request, response, next) => {
+	try {
+		await OrderService.getOrders().then((data) => {
+			request.handleResponse.successRespond(response)(data);
+			next();
+		});
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+	}
+};
 
 // Get one order
 export const getOrder = async (request, response, next) => {
@@ -43,6 +53,19 @@ export const changeOrderIsPaidStatus = async (request, response, next) => {
 	await OrderService.changeOrderIsPaidStatus(request.params.orderId, request.body.isPaid)
 		.then((data) => {
 			request.handleResponse.successRespond(response)(data);
+			next();
+		})
+		.catch((error) => {
+			request.handleResponse.errorRespond(response)(error.message);
+			next();
+		});
+};
+
+// changeOrderStatus
+export const changeOrderStatus = async (request, response, next) => {
+	await OrderService.changeOrderStatus(request.params.orderId, request.body.status)
+		.then(() => {
+			request.handleResponse.successRespond(response)({ message: "Order status changed successfully" });
 			next();
 		})
 		.catch((error) => {
