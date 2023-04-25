@@ -4,9 +4,7 @@ import BuyerContext from "../../contexts/BuyerContext";
 
 const BuyerDashboard = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
-
 	const id = localStorage.getItem("uId");
-	// console.log(id);
 	getOneBuyer(id);
 
 	return (
