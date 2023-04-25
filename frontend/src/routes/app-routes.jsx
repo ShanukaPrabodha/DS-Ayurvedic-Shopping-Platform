@@ -28,6 +28,13 @@ import {
 	SellerLogin,
 	SellerDashboard,
 
+	BuyerProfileUpdate,
+	BuyerOrders,
+	BuyerOrderStatus,
+	
+
+
+
 } from "../pages";
 
 const AppRoutes = () => {
@@ -78,6 +85,10 @@ const AppRoutes = () => {
 						{/* Buyer Private Routes */}
 						<Route exact path="/buyer" element={<PrivateRoute permissionLevel="BUYER" />}>
 							<Route exact path="/buyer" element={<BuyerDashboard />} />
+							<Route exact path="/buyer/profile/:id" element={<BuyerProfileUpdate />} />
+							<Route exact path="/buyer/orders/:id" element={<BuyerOrders />} />
+							<Route exact path="/buyer/order-status/:id" element={<BuyerOrderStatus />} />
+							
 						</Route>
 
 						{/* Seller Routes */}

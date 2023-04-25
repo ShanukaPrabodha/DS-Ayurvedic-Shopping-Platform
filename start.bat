@@ -1,0 +1,8 @@
+start cmd /k "cd .\auth & yarn dev"
+start cmd /k "cd .\delivery & yarn dev"
+start cmd /k "cd .\frontend & yarn dev"
+start cmd /k "cd .\notification & yarn dev"
+start cmd /k "cd .\order & yarn dev"
+start cmd /k "cd .\payment & yarn dev"
+start cmd /k "cd .\product & yarn dev"
+start cmd /k "cd .\review & yarn dev"
