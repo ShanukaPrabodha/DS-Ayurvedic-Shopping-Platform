@@ -3,13 +3,18 @@ import ProductContext from "../../contexts/ProductContext";
 import { ImCart } from "react-icons/im";
 import ReactStars from "react-rating-stars-component";
 import ProductModal from "./productModal";
+import { json } from "react-router-dom";
 
 const ProductDisplay = () => {
 	const { products, product, getProduct } = useContext(ProductContext);
 	const [showModal, setShowModal] = useState("false");
 	const [id, setId] = useState({});
 
+	const dat=JSON.parse(localStorage.getItem("cart"));
+	console.log("display-"+dat);
+
 	const handleOnClose = () => {
+		//window.location.reload(true);
 		setShowModal("false");
 	};
 
@@ -32,7 +37,7 @@ const ProductDisplay = () => {
 							<img src={product.productImage} alt="Product" className="h-80 w-72 object-cover rounded-t-xl" />
 							<div>
 								<ReactStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
-							</div>
+				            </div>
 							<div className="px-4 py-3 w-72">
 								<span className="text-gray-400 mr-3 uppercase text-xs">{product.supplier}</span>
 								<p className="text-lg font-bold text-black truncate block capitalize">{product.productName}</p>

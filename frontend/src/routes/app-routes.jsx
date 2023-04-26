@@ -27,14 +27,10 @@ import {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
-
 	BuyerProfileUpdate,
+	Cart,
 	BuyerOrders,
 	BuyerOrderStatus,
-	
-
-
-
 } from "../pages";
 
 const AppRoutes = () => {
@@ -54,6 +50,7 @@ const AppRoutes = () => {
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
 						<Route path="/product-display" element={<ProductDisplay />} />
+						<Route path="/cart" element={<Cart />} />
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
@@ -68,8 +65,6 @@ const AppRoutes = () => {
 
 						{/* Seller Private Routes */}
 						<Route path="/sellerReview" element={<SellerReview />} />
-					
-						
 
 						{/* Product Private Routes */}
 						<Route path="/productReview" element={<ProductReview />} />
@@ -88,7 +83,6 @@ const AppRoutes = () => {
 							<Route exact path="/buyer/profile/:id" element={<BuyerProfileUpdate />} />
 							<Route exact path="/buyer/orders/:id" element={<BuyerOrders />} />
 							<Route exact path="/buyer/order-status/:id" element={<BuyerOrderStatus />} />
-							
 						</Route>
 
 						{/* Seller Routes */}

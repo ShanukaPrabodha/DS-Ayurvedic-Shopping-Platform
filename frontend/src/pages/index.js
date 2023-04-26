@@ -17,13 +17,13 @@ import SellerReview from "./seller-review";
 
 import ProductReview from "./product-review";
 
-
 import SellerRegister from "./seller-register";
 import SellerLogin from "./seller-login";
 import SellerDashboard from "./seller-dashboard";
 import BuyerOrders from "./buyer-orders";
 import BuyerOrderStatus from "./buyer-order-status";
 
+import Cart from "./cart";
 
 export {
 	Sample,
@@ -43,11 +43,8 @@ export {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
-
 	BuyerProfileUpdate,
+	Cart,
 	BuyerOrders,
 	BuyerOrderStatus,
-
-
-
 };
