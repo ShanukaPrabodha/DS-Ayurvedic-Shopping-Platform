@@ -24,6 +24,8 @@ import SellerDashboard from "./seller-dashboard";
 import BuyerOrders from "./buyer-orders";
 import BuyerOrderStatus from "./buyer-order-status";
 
+import Cart from "./cart";
+
 
 export {
 	Sample,
@@ -45,6 +47,9 @@ export {
 	SellerDashboard,
 
 	BuyerProfileUpdate,
+
+	Cart
+
 	BuyerOrders,
 	BuyerOrderStatus,
 

@@ -1,8 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ImCross, ImCart } from "react-icons/im";
 import ProductContext from "../../contexts/ProductContext";
+import { useNavigate } from "react-router-dom";
 
 export default function productModal({ visible, onClose, product }) {
+	//const local=JSON.parse(localStorage.getItem("cart"));
+	//console.log("local="+local);
+	const navigate=useNavigate();
+	const [cartItems,setCartItems]=useState([]);
 	const { getProduct } = useContext(ProductContext);
 	const [qty, setQty] = useState(0);
 	const [total, setTotal] = useState(0.0);
@@ -10,10 +15,14 @@ export default function productModal({ visible, onClose, product }) {
 	const [size, setSize] = useState();
 	const [stock, setStock] = useState();
 
+
 	const onCloseModel = () => {
 		setTotal(0);
-
+		setPrice(0);
+		setSize("");
+		setStock(0);
 		onClose();
+
 	};
 
 	const hello = (variant) => {
@@ -21,9 +30,9 @@ export default function productModal({ visible, onClose, product }) {
 		setPrice(variant.price);
 		setStock(variant.stock);
 
-		console.log("size=" + size);
+		/*console.log("size=" + size);
 		console.log("price=" + price);
-		console.log("stock=" + stock);
+		console.log("stock=" + stock);*/
 
 		const price2 = variant.price * qty;
 		setTotal(price2);
@@ -31,7 +40,7 @@ export default function productModal({ visible, onClose, product }) {
 
 	const selectQty = (e) => {
 		setQty(e.target.value);
-		console.log(qty);
+		//console.log(qty);
 
 		setTotal(qty * price);
 	};
@@ -41,6 +50,7 @@ export default function productModal({ visible, onClose, product }) {
 			_id: product._id,
 			product_name: product.productName,
 			productImage: product.productImage,
+			productDescription:product.description,
 			supplier: product.supplier,
 			qty: qty,
 			size: size,
@@ -49,8 +59,18 @@ export default function productModal({ visible, onClose, product }) {
 			total: total,
 		};
 
-		console.log(newData);
+		setCartItems([...cartItems,newData]);
+		alert("Item added to cart successfully...!")
+		onClose();
 	};
+
+	useEffect(()=>{
+
+		//console.log(cartItems);
+	   localStorage.setItem("cart",JSON.stringify(cartItems));
+	   localStorage.setItem("size",cartItems.length);
+
+	},[cartItems]);
 
 	if (visible == "false") return null;
 
