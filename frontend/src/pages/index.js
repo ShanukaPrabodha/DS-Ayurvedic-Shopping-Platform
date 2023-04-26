@@ -23,6 +23,8 @@ import SellerRegister from "./seller-register";
 import SellerLogin from "./seller-login";
 import SellerDashboard from "./seller-dashboard";
 
+import Cart from "./cart";
+
 
 export {
 	Sample,
@@ -44,6 +46,7 @@ export {
 	SellerDashboard,
 
 	BuyerProfileUpdate,
+	Cart
 
 
 

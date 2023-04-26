@@ -27,18 +27,20 @@ import {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
-
-	BuyerProfileUpdate
+	BuyerProfileUpdate,
+	Cart
+	
 
 
 
 } from "../pages";
 
 const AppRoutes = () => {
+
 	return (
 		<>
 			<Router>
-				<Header />
+				<Header/>
 				<div className="min-h-screen">
 					<Routes>
 						{/* Public Routes */}
@@ -51,6 +53,8 @@ const AppRoutes = () => {
 						{/*Product Routes*/}
 						<Route path="/product-add" element={<ProductAdd />} />
 						<Route path="/product-display" element={<ProductDisplay />} />
+						<Route path="/cart" element={<Cart />} />
+
 
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
