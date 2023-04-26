@@ -1,9 +1,37 @@
 import React, { useContext } from "react";
 import { Spinner } from "../../components";
 import OrderContext from "../../contexts/OrderContext";
+import { useMutation } from "@tanstack/react-query";
+import OrderAPI from "../../contexts/api/OrderAPI";
 
 const Checkout = () => {
-	const { order, createOrder, createOrderLoading, commission } = useContext(OrderContext);
+	const { navigate, commission } = useContext(OrderContext);
+
+	const stripeUserId = localStorage.getItem("stripeUserId");
+	const localOrder = JSON.parse(localStorage.getItem("order"));
+
+	const amount = localOrder.price * localOrder.qty * (1 + commission);
+
+	const order = {
+		stripeUserId: stripeUserId,
+		productId: localOrder._id,
+		product_name: localOrder.product_name,
+		price: localOrder.price,
+		qty: localOrder.qty,
+		supplier: localOrder.supplier,
+		stock: localOrder.stock,
+		productImage: localOrder.productImage,
+		status: "pending",
+		isPaid: false,
+		amount: amount,
+	};
+
+	// Create a order
+	const { mutate: createOrder, isLoading: createOrderLoading } = useMutation(() => OrderAPI.createOrder(order), {
+		onSuccess: (data) => {
+			navigate(`/payment/${data._id}`);
+		},
+	});
 
 	const handleCreateOrder = () => {
 		createOrder();

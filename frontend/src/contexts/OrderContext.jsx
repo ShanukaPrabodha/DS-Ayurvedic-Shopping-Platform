@@ -11,25 +11,24 @@ export function OrderProvider({ children }) {
 	const navigate = useNavigate();
 
 	const stripeUserId = localStorage.getItem("stripeUserId");
-	const localOrder = JSON.parse(localStorage.getItem("order"));
+	// const localOrder = JSON.parse(localStorage.getItem("order"));
 
 	const commission = Number(COMMISION);
-	const amount = localOrder.price * localOrder.qty * (1 + commission);
-	console.log("amount", amount);
+	// const amount = localOrder.price * localOrder.qty * (1 + commission);
 
-	const order = {
-		stripeUserId: stripeUserId,
-		productId: localOrder._id,
-		product_name: localOrder.product_name,
-		price: localOrder.price,
-		qty: localOrder.qty,
-		supplier: localOrder.supplier,
-		stock: localOrder.stock,
-		productImage: localOrder.productImage,
-		status: "pending",
-		isPaid: false,
-		amount: amount,
-	};
+	// const order = {
+	// 	stripeUserId: stripeUserId,
+	// 	productId: localOrder._id,
+	// 	product_name: localOrder.product_name,
+	// 	price: localOrder.price,
+	// 	qty: localOrder.qty,
+	// 	supplier: localOrder.supplier,
+	// 	stock: localOrder.stock,
+	// 	productImage: localOrder.productImage,
+	// 	status: "pending",
+	// 	isPaid: false,
+	// 	amount: amount,
+	// };
 
 	// Get orders
 	const {
@@ -41,22 +40,23 @@ export function OrderProvider({ children }) {
 	});
 
 	// Create a order
-	const { mutate: createOrder, isLoading: createOrderLoading } = useMutation(() => OrderAPI.createOrder(order), {
-		onSuccess: (data) => {
-			navigate(`/payment/${data._id}`);
-		},
-	});
+	// const { mutate: createOrder, isLoading: createOrderLoading } = useMutation(() => OrderAPI.createOrder(order), {
+	// 	onSuccess: (data) => {
+	// 		navigate(`/payment/${data._id}`);
+	// 	},
+	// });
 
 	return (
 		<OrderContext.Provider
 			value={{
-				order,
+				// order,
 				commission,
-				createOrder,
-				createOrderLoading,
+				// createOrder,
+				// createOrderLoading,
 				orders,
 				ordersLoading,
 				refetchOrders,
+				navigate,
 			}}
 		>
 			{children}
