@@ -1,16 +1,16 @@
 import React from "react";
 import BuyerOrderStatus from "./BuyerOrderStatus";
 
-import { BuyerProvider } from "../../contexts/BuyerContext";
-import { OrderProvider } from "../../contexts/OrderContext";
+// import { BuyerProvider } from "../../contexts/BuyerContext";
+///import { OrderProvider } from "../../contexts/OrderContext";
 
 const index = () => {
 	return (
-        <OrderProvider>
-		<BuyerProvider>
+        // <OrderProvider>
+		// <BuyerProvider>
 			<BuyerOrderStatus />
-		</BuyerProvider>
-        </OrderProvider>
+		// </BuyerProvider>
+        // </OrderProvider>
 	);
 };
 
