@@ -73,4 +73,17 @@ export const changeOrderStatus = async (orderId, status) => {
 };
 
 // TODO: Update a order
-// TODO: Delete a order
+// Delete a order
+export const deleteOrder = async (orderId) => {
+	return await OrderModel.findByIdAndDelete(orderId)
+		.then((order) => {
+			if (order) {
+				return order;
+			} else {
+				throw new Error("Order not found");
+			}
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+};

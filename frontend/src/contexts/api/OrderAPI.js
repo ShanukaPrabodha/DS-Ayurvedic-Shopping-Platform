@@ -28,6 +28,12 @@ class OrderAPI {
 		const response = await axios.patch(`${BASE_URL}/api/order/status/${orderId}`, { status }, requestConfigJson);
 		return response.data;
 	}
+
+	// Delete order
+	static async deleteOrder(orderId) {
+		const response = await axios.delete(`${BASE_URL}/api/order/${orderId}`, requestConfig);
+		return response.data;
+	}
 }
 
 export default OrderAPI;

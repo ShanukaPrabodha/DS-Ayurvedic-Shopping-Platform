@@ -15,6 +15,8 @@ router.post("/create-customer", controller.createNewCustomer);
 router.post("/add-card", controller.addNewCard);
 router.post("/make-payment", controller.createPaymentIntent);
 router.get("/get-payment-methods/:customer_Id", controller.getPaymentMethods);
+// Get one customer
+router.get("/get-one-customer/:customer_Id", controller.getOneCustomer);
 // get payment details by payment id
 router.get("/get-payment-details/:payment_Id", controller.getPaymentDetails);
 // ---------------------------------------------------------------------

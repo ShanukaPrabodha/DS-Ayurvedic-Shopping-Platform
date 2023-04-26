@@ -1,12 +1,33 @@
+/* eslint-disable no-unused-vars */
 import OrderService from "../services";
-// import axios from "axios";
-// import configs from "../../config";
 import { checkUserLoggedIn } from "../middleware/Auth.middleware";
+import sendMail from "../../util/sendMail";
+import getCustomer from "../../util/getCustomer";
 
 // Add one order
 export const addOrder = async (request, response, next) => {
 	await OrderService.addOrder(request.body)
-		.then((data) => {
+		.then(async (data) => {
+			// // Get one customer
+			// await getCustomer(data.stripeUserId).then((customer) => {
+			// 	// Send Email
+			// 	sendMail({
+			// 		to: customer.data.email,
+			// 		subject: "Order Placed",
+			// 		templateType: "order",
+			// 		data: {
+			// 			name: customer.data.name,
+			// 			orderItems: [
+			// 				{
+			// 					productName: data.product_name,
+			// 					quantity: data.qty,
+			// 					price: data.price,
+			// 				},
+			// 			],
+			// 		},
+			// 	});
+			// });
+
 			request.handleResponse.successRespond(response)(data);
 			next();
 		})
@@ -64,7 +85,27 @@ export const changeOrderIsPaidStatus = async (request, response, next) => {
 // changeOrderStatus
 export const changeOrderStatus = async (request, response, next) => {
 	await OrderService.changeOrderStatus(request.params.orderId, request.body.status)
-		.then(() => {
+		.then(async (data) => {
+			// Get one customer
+			// await getCustomer(data.stripeUserId).then((customer) => {
+			// 	// Send Email
+			// 	sendMail({
+			// 		to: customer.data.email,
+			// 		subject: `Order ${data.status}`,
+			// 		templateType: `order-${data.status}`,
+			// 		data: {
+			// 			name: customer.data.name,
+			// 			orderItems: [
+			// 				{
+			// 					productName: data.product_name,
+			// 					quantity: data.qty,
+			// 					price: data.price,
+			// 				},
+			// 			],
+			// 			orderNumber: data._id,
+			// 		},
+			// 	});
+			// });
 			request.handleResponse.successRespond(response)({ message: "Order status changed successfully" });
 			next();
 		})
@@ -75,4 +116,15 @@ export const changeOrderStatus = async (request, response, next) => {
 };
 
 // TODO: Update a order
-// TODO: Delete a order
+// Delete a order
+export const deleteOrder = async (request, response, next) => {
+	await OrderService.deleteOrder(request.params.orderId)
+		.then(() => {
+			request.handleResponse.successRespond(response)({ message: "Order deleted successfully" });
+			next();
+		})
+		.catch((error) => {
+			request.handleResponse.errorRespond(response)(error.message);
+			next();
+		});
+};

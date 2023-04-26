@@ -1,4 +1,11 @@
-import { addOrder, getOrder, changeOrderIsPaidStatus, getOrders, changeOrderStatus } from "./Order.controller";
+import {
+	addOrder,
+	getOrder,
+	changeOrderIsPaidStatus,
+	getOrders,
+	changeOrderStatus,
+	deleteOrder,
+} from "./Order.controller";
 
 export default {
 	// Order Controllers
@@ -7,4 +14,5 @@ export default {
 	changeOrderIsPaidStatus,
 	getOrders,
 	changeOrderStatus,
+	deleteOrder,
 };

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import OrderAPI from "../../contexts/api/OrderAPI";
 import makeToast from "../../components/toast";
 import Spinner from "../../components/spinner";
-import { MdPaid, MdPending } from "react-icons/md";
+import { MdDelete, MdPaid, MdPending } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -17,6 +17,18 @@ const OrdersTab = () => {
 		try {
 			const { data } = await OrderAPI.changeOrderStatus(orderId, "confirmed");
 			makeToast({ type: "success", message: "Order status updated successfully" });
+			refetchOrders();
+		} catch (error) {
+			console.log(error);
+			makeToast({ type: "error", message: "Something went wrong" });
+		}
+	};
+
+	// Delete order
+	const deleteOrder = async (orderId) => {
+		try {
+			const { data } = await OrderAPI.deleteOrder(orderId);
+			makeToast({ type: "success", message: "Order Rejected" });
 			refetchOrders();
 		} catch (error) {
 			console.log(error);
@@ -159,7 +171,7 @@ const OrdersTab = () => {
 													</div>
 												</td>
 
-												<td className="px-6 py-4 whitespace-nowrap">
+												<td className="px-6 py-4 whitespace-nowrap flex justify-between">
 													<div className="flex items-center">
 														<button
 															className="text-gray-800 font-bold py-1 px-2 rounded inline-flex items-center border border-gray-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -174,18 +186,14 @@ const OrdersTab = () => {
 															)}
 														</button>
 													</div>
-												</td>
 
-												{/* Delete icon */}
-												{/* <td className="px-6 py-4 whitespace-nowrap text-right  font-medium">
-												<p
-													href="#"
-													className="text-indigo-600 hover:text-indigo-900 cursor-pointer"
-													onClick={() => deleteHotelOwner(order._id)}
-												>
-													Delete
-												</p>
-											</td> */}
+													<button
+														className="text-red-500 hover:text-red-900 text-2xl"
+														onClick={() => deleteOrder(order._id)}
+													>
+														<MdDelete />
+													</button>
+												</td>
 											</tr>
 										))}
 								</tbody>

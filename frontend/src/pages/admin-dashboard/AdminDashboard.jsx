@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import DashboardTab from "./DashboardTab";
 import OrdersTab from "./OrdersTab";
 import IncomeTab from "./IncomeTab";
+import DispatchedOrdersTab from "./DispatchedOrdersTab";
 
 import AdminContext from "../../contexts/AdminContext";
 
@@ -35,13 +36,19 @@ const AdminDashboard = () => {
 						className={`text-2xl px-4 cursor-pointer ${activeTab === 1 ? "border-b-2 border-blue-500" : ""}`}
 						onClick={() => handleTabClick(1)}
 					>
-						Orders
+						All Orders
 					</div>
 					<div
 						className={`text-2xl px-4 cursor-pointer ${activeTab === 2 ? "border-b-2 border-blue-500" : ""}`}
 						onClick={() => handleTabClick(2)}
 					>
 						Income
+					</div>
+					<div
+						className={`text-2xl px-4 cursor-pointer ${activeTab === 3 ? "border-b-2 border-blue-500" : ""}`}
+						onClick={() => handleTabClick(3)}
+					>
+						Dispatched Orders
 					</div>
 				</div>
 
@@ -50,6 +57,7 @@ const AdminDashboard = () => {
 					{activeTab === 0 && <DashboardTab />}
 					{activeTab === 1 && <OrdersTab />}
 					{activeTab === 2 && <IncomeTab />}
+					{activeTab === 3 && <DispatchedOrdersTab />}
 				</div>
 			</div>
 		</div>

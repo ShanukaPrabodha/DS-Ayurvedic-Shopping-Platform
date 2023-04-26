@@ -20,6 +20,7 @@ router.patch("/status/:orderId", controller.changeOrderStatus); // change order 
 router.get("/:orderId", controller.getOrder); // get one order
 
 // TODO: Update a order
-// TODO: Delete a order
+// Delete a order
+router.delete("/:orderId", controller.deleteOrder); // delete one order
 
 export default router;

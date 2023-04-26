@@ -68,7 +68,7 @@ const DashboardTab = () => {
 						</div>
 					</div>
 				</div>
-				<div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
+				{/* <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
 					<div className="bg-white rounded-lg shadow-lg p-6">
 						<div className="flex items-center justify-between">
 							<div className="text-gray-600">Total Users</div>
@@ -81,7 +81,7 @@ const DashboardTab = () => {
 							<span className="text-gray-600 ml-2">Since last week</span>
 						</div>
 					</div>
-				</div>
+				</div> */}
 				<div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 mb-4">
 					<div className="bg-white rounded-lg shadow-lg p-6">
 						<div className="flex items-center justify-between">
