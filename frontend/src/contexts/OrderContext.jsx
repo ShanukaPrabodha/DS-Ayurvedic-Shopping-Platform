@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -10,27 +11,24 @@ export function OrderProvider({ children }) {
 	const navigate = useNavigate();
 
 	const stripeUserId = localStorage.getItem("stripeUserId");
-	const products = [
-		{
-			id: 1,
-			name: "Product 1",
-			price: 849,
-			quantity: 1,
-		},
-		{
-			id: 2,
-			name: "Product 2",
-			price: 225,
-			quantity: 2,
-		},
-	];
+	const localOrder = JSON.parse(localStorage.getItem("order"));
+
 	const commission = Number(COMMISION);
-	const amount = products.reduce((acc, product) => acc + product.price * product.quantity, 0) * (1 + commission);
+	const amount = localOrder.price * localOrder.qty * (1 + commission);
+	console.log("amount", amount);
 
 	const order = {
-		stripeUserId,
-		products,
-		amount,
+		stripeUserId: stripeUserId,
+		productId: localOrder._id,
+		product_name: localOrder.product_name,
+		price: localOrder.price,
+		qty: localOrder.qty,
+		supplier: localOrder.supplier,
+		stock: localOrder.stock,
+		productImage: localOrder.productImage,
+		status: "pending",
+		isPaid: false,
+		amount: amount,
 	};
 
 	// Get orders

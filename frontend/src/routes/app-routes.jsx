@@ -27,27 +27,17 @@ import {
 	SellerRegister,
 	SellerLogin,
 	SellerDashboard,
-
 	BuyerProfileUpdate,
-	Cart
-
-
-	BuyerProfileUpdate,
+	Cart,
 	BuyerOrders,
 	BuyerOrderStatus,
-
-	
-
-
-
 } from "../pages";
 
 const AppRoutes = () => {
-
 	return (
 		<>
 			<Router>
-				<Header/>
+				<Header />
 				<div className="min-h-screen">
 					<Routes>
 						{/* Public Routes */}
@@ -62,7 +52,6 @@ const AppRoutes = () => {
 						<Route path="/product-display" element={<ProductDisplay />} />
 						<Route path="/cart" element={<Cart />} />
 
-
 						{/* Check Login Status Admin */}
 						<Route exact path="/admin/login" element={<CheckLoginStatus />}>
 							<Route exact path="/admin/login" element={<AdminLogin />} />
@@ -76,8 +65,6 @@ const AppRoutes = () => {
 
 						{/* Seller Private Routes */}
 						<Route path="/sellerReview" element={<SellerReview />} />
-					
-						
 
 						{/* Product Private Routes */}
 						<Route path="/productReview" element={<ProductReview />} />
@@ -96,7 +83,6 @@ const AppRoutes = () => {
 							<Route exact path="/buyer/profile/:id" element={<BuyerProfileUpdate />} />
 							<Route exact path="/buyer/orders/:id" element={<BuyerOrders />} />
 							<Route exact path="/buyer/order-status/:id" element={<BuyerOrderStatus />} />
-							
 						</Route>
 
 						{/* Seller Routes */}

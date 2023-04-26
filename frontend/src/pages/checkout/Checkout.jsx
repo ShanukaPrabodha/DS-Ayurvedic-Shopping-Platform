@@ -19,10 +19,10 @@ const Checkout = () => {
 				{/* Show products and total amount */}
 				<div className="w-1/2">
 					<div className="flex justify-between">
-						<h2 className="text-xl">Products</h2>
+						<h2 className="text-xl">{order.product_name}</h2>
 						<h2 className="text-xl">Amount(LKR)</h2>
 					</div>
-					{order.products.map((product) => (
+					{/* {orders.map((product) => (
 						<div className="flex justify-between mt-2" key={product.id}>
 							<div className="flex flex-col">
 								<span>{product.name}</span>
@@ -32,27 +32,42 @@ const Checkout = () => {
 							</div>
 							<span>LKR {product.quantity * product.price}</span>
 						</div>
-					))}
-					<div className="flex justify-between mt-2">
-						<span className="text-sm text-gray-500">Commission</span>
-						<span className="text-sm text-gray-500">{commission * 100}%</span>
-					</div>
-					<hr className="mt-5" />
-					{/* Subtotal - 2 decimal places */}
-					<div className="flex justify-between mt-2">
-						<span className="text-lg">Subtotal</span>
-						<span className="text-lg">LKR {(order.amount - order.amount * commission).toFixed(2)}</span>
-					</div>
-					{/* Commission */}
-					<div className="flex justify-between mt-2">
-						<span className="text-lg">Commission</span>
-						<span className="text-lg">LKR {(order.amount * commission).toFixed(2)}</span>
-					</div>
-					{/* Total */}
-					<div className="flex justify-between mt-2 font-bold">
-						<span className="text-xl">Order Total</span>
-						<span className="text-xl">LKR {order.amount.toFixed(2)}</span>
-					</div>
+					))} */}
+
+					{order && (
+						<div>
+							<div className="flex justify-between mt-2" key={order.id}>
+								<div className="flex flex-col">
+									<span>{order.name}</span>
+									<span className="text-sm text-gray-500">
+										{order.qty} x {order.price}
+									</span>
+								</div>
+								<span>LKR {order.qty * order.price}</span>
+							</div>
+
+							<div className="flex justify-between mt-2">
+								<span className="text-sm text-gray-500">Commission</span>
+								<span className="text-sm text-gray-500">{commission * 100}%</span>
+							</div>
+							<hr className="mt-5" />
+							{/* Subtotal - 2 decimal places */}
+							<div className="flex justify-between mt-2">
+								<span className="text-lg">Subtotal</span>
+								<span className="text-lg">LKR {(order.price * order.qty).toFixed(2)}</span>
+							</div>
+							{/* Commission */}
+							<div className="flex justify-between mt-2">
+								<span className="text-lg">Commission</span>
+								<span className="text-lg">LKR {(order.price * order.qty * commission).toFixed(2)}</span>
+							</div>
+							{/* Total */}
+							<div className="flex justify-between mt-2 font-bold">
+								<span className="text-xl">Order Total</span>
+								<span className="text-xl">LKR {order.amount.toFixed(2)}</span>
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 
