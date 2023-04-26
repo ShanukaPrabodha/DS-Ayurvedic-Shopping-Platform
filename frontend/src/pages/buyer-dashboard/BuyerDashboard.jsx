@@ -18,29 +18,16 @@ const BuyerDashboard = () => {
 							<div className="h-28 w-28 rounded-full overflow-hidden bg-gray-200 ml-14">
 								<img src="https://source.unsplash.com/300x300/?boy" alt="" className="" />
 							</div>
-							<div className="ml-14 mt-2">
-								<label className="block">
-									<div className="sr-only">Choose profile photo</div>
-									<input
-										type="file"
-										className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-green-700 hover:file:bg-violet-100"
-									/>
-								</label>
-							</div>
-							<div className="text-lg font-medium text-black cursor-pointer ml-6 mt-2">
+
+							<div className="text-lg font-medium text-black cursor-pointer ml-6 mt-4">
 								<b>{buyer.name}</b>
 							</div>
 							<div className=" italic text-gray-500 ml-4">{buyer.email} </div>
 						</div>
 						<div className="flex mt-10">
-							<div className="">
-								<button className="flex ml-auto text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full">
-									<Link to={`/buyer/profile/${id}`}>Update</Link>
-								</button>
-							</div>
 							<div>
 								<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
-									<Link to="">View Profile</Link>
+									<Link to={`/buyer/profile/${id}`}>View Profile</Link>
 								</button>
 							</div>
 							<div>

@@ -21,41 +21,21 @@ const BuyerOrders = () => {
 							<div className="h-1 w-20 bg-green-500 rounded"></div>
 						</div>
 					</div>
-					<div className="container px-5 py-24 mx-auto">
-						<div className="-my-8 divide-y-2 divide-gray-100">
-							{orders &&
-								orders
-									.filter((elem) => elem.stripeUserId == stripId)
-									.map((order) => (
-										<div className="flex flex-wrap md:flex-nowrap">
-											<div className="md:flex-grow">
-												{order &&
-													order.products.map((product) => (
-														<>
-															<h2 className="text-2xl font-medium text-gray-900 title-font mb-2">{product.name}</h2>
-															<p className="leading-relaxed">
-																<div className="flex border-t border-gray-200 py-2">
-																	<span clasNames="text-gray-500">Product Price</span>
-																	<span className="ml-auto text-gray-900">{product.price}</span>
-																</div>
-																<div className="flex border-t border-b mb-6 border-gray-200 py-2">
-																	<span class="text-gray-500">Quantity</span>
-																	<span class="ml-auto text-gray-900">{product.quantity}</span>
-																</div>
-															</p>
-														</>
-													))}
-												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
-													<span className="text-gray-500">Total Amount</span>
-													<span class="ml-auto text-gray-900">{order.amount}</span>
-												</div>
-												<div class="flex border-t border-b mb-6 border-gray-200 py-2">
-													<span className="text-gray-500">Order Status</span>
-													<span class="ml-auto text-green-500 font-bold">{order.status}</span>
-												</div>
-											</div>
-										</div>
-									))}
+
+					<div className="flex flex-wrap -m-4 mt-6">
+						<div className="xl:w-1/4 md:w-1/2 p-4">
+							<div className="bg-gray-100 p-6 rounded-lg">
+								<img
+									className="h-40 rounded w-full object-cover object-center mb-6"
+									src="https://dummyimage.com/720x400"
+									alt="content"
+								/>
+								<h3 className="tracking-widest text-indigo-500 text-md font-bold title-font ">SUBTITLE</h3>
+								<h2 className="text-lg text-gray-900 font-medium title-font mb-4 mt-2">Chichen Itza</h2>
+								<p className="leading-relaxed text-base">
+									Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
