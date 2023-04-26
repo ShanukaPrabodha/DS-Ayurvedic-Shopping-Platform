@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import BuyerAPI from "./api/BuyerAPI";
 import makeToast from "../components/toast";
+import OrderAPI from "./api/OrderAPI";
 
 const BuyerContext = createContext();
 
@@ -9,6 +10,7 @@ export function BuyerProvider({ children }) {
 	const [buyers, setBuyers] = useState([]);
 	const [mailError, setMailError] = useState("");
 	const [nicError, setNicError] = useState("");
+	const [orders, setOrders] = useState([]);
 
 	const [buyer, setBuyer] = useState({
 		name: "",
@@ -72,6 +74,34 @@ export function BuyerProvider({ children }) {
 		}, []);
 	};
 
+	// Edit Buyer
+	const editBuyer = (values) => {
+		const newBuyer = {
+			name: values.name,
+			email: values.email,
+			contact: values.contact,
+			nic: values.nic,
+			address: values.address,
+		};
+		BuyerAPI.updateBuyer(values.id, newBuyer)
+			.then((response) => {
+				makeToast({ type: "success", message: "Profile Updated Successful" });
+				window.location.href = "/buyer";
+			})
+			.catch((err) => {
+				// eslint-disable-next-line no-console
+				console.log(err);
+			});
+	};
+
+	//Get all Oders
+
+	useEffect(() => {
+		OrderAPI.getOrders().then((response) => {
+			setOrders(response.data);
+		});
+	}, []);
+
 	return (
 		<BuyerContext.Provider
 			value={{
@@ -86,6 +116,9 @@ export function BuyerProvider({ children }) {
 				setNicError,
 				BuyerLogin,
 				getOneBuyer,
+				editBuyer,
+				orders,
+				setOrders,
 			}}
 		>
 			{children}
