@@ -47,31 +47,31 @@ const BuyerDashboard = () => {
 							<h1 className="text-2xl font-bold title-font  text-gray-900 tracking-widest mt-6">PENDING ORDERS</h1>
 						</div>
 						<div className="flex flex-wrap -m-4">
-							{orders && orders
-								.filter((elem) => elem.stripeUserId == stripId && elem.status == "pending")
-								.map((order) => (
-									<div className="p-4 lg:w-1/2">
-										<div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-											<img
-												alt="team"
-												className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-												src={order.productImage}
-											/>
-											<div className="flex-grow sm:pl-8">
-												<h2 className="title-font font-bold text-lg text-gray-900">{order.product_name}</h2>
-												<h3 className="text-green-500 mb-3">{order.status}</h3>
-												<p className="mb-4">
-												{order.createdAt.slice(0, 10)}
-												</p>
-												<span className="inline-flex">
-													<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
-														<Link to={`/buyer/order-status/${id}`}>Status</Link>
-													</button>
-												</span>
+							{orders &&
+								orders
+									.filter((elem) => elem.stripeUserId == stripId && elem.status == "pending")
+									.map((order) => (
+										<div className="p-4 lg:w-1/2">
+											<div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+												<img
+													alt="team"
+													className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+													src={order.productImage}
+												/>
+												<div className="flex-grow sm:pl-8">
+													<h2 className="title-font font-bold text-lg text-gray-900">{order.product_name}</h2>
+													<h3 className="text-green-500 mb-3">{order.status}</h3>
+													<p className="mb-4">{order.createdAt.slice(0, 10)}</p>
+													<span className="inline-flex">
+														<button className="flex text-white bg-green-700 border-0 py-1 px-4 focus:outline-none hover:bg-green-500 rounded-full ml-2">
+															<Link to= {`/buyer/order-status/${order._id}`}>Status</Link>
+														
+														</button>
+													</span>
+												</div>
 											</div>
 										</div>
-									</div>
-								))}
+									))}
 						</div>
 					</div>
 				</div>

@@ -10,10 +10,10 @@ const BuyerOrderStatus = () => {
 	const stripId = localStorage.getItem("stripeUserId");
 	return (
 		<>
-			  {/* {orders
+			   {orders && orders
 				.filter((elem) => elem.stripeUserId == stripId)
 				.filter((statusType) => statusType.status == "pending")
-				.map((order) => (   */}
+				.map((order) => ( 
 					<section className="text-gray-600 body-font">
 						<div className="container px-5 py-24 mx-auto flex flex-wrap flex-col">
 							<div className="flex mx-auto flex-wrap mb-20">
@@ -30,7 +30,7 @@ const BuyerOrderStatus = () => {
 										>
 											<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
 										</svg>
-										 {/* {order.status}  */}
+										 {order.status} 
 									</a>
 								</div>
 
@@ -82,10 +82,10 @@ const BuyerOrderStatus = () => {
 							<img
 								className="xl:w-1/4 lg:w-1/3 md:w-1/2 w-2/3 block mx-auto mb-10 object-cover object-center rounded"
 								alt="hero"
-								src="https://dummyimage.com/720x600"
+								src={orders.productImage}
 							/>
 							<div className="flex flex-col text-center w-full">
-								<h1 className="text-xl font-medium title-font mb-4 text-gray-900">Master Cleanse Reliac Heirloom</h1>
+								<h1 className="text-xl font-medium title-font mb-4 text-gray-900">{order.product_name}</h1>
 								<p className="lg:w-2/3 mx-auto leading-relaxed text-base">
 									Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke
 									farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism
@@ -94,7 +94,7 @@ const BuyerOrderStatus = () => {
 							</div>
 						</div>
 					</section>
-			  {/* ))}   */}
+			   ))}   
 {/* 
 			  {orders
 				.filter((elem) => elem.stripeUserId == stripId)

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import BuyerContext from "../../contexts/BuyerContext";
 import OrderContext from "../../contexts/OrderContext";
+import { Link } from "react-router-dom";
 
 const BuyerOrders = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
@@ -46,7 +47,11 @@ const BuyerOrders = () => {
 													<span className="text-gray-500">Total Amount</span>
 													<span class="ml-auto text-gray-900">{order.amount}</span>
 												</div>
-												
+												<span className="inline-flex ml-14">
+													<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
+														<Link to="">Status</Link>
+													</button>
+												</span>
 											</p>
 										</div>
 									</div>
