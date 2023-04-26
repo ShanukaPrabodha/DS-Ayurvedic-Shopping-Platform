@@ -6,8 +6,32 @@ const OrderSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		products: {
-			type: Array,
+		productId: {
+			type: String,
+			required: true,
+		},
+		product_name: {
+			type: String,
+			required: true,
+		},
+		price: {
+			type: Number,
+			required: true,
+		},
+		qty: {
+			type: Number,
+			required: true,
+		},
+		supplier: {
+			type: String,
+			required: true,
+		},
+		stock: {
+			type: Number,
+			required: true,
+		},
+		productImage: {
+			type: String,
 			required: true,
 		},
 		amount: {

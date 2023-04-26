@@ -4,20 +4,14 @@ import { HiOutlineLogout } from "react-icons/hi";
 import makeToast from "./toast";
 import { ImCart } from "react-icons/im";
 
-
 const Header = () => {
 	const navigate = useNavigate();
-	const[size,setSize]=useState()
-	const cart=JSON.parse(localStorage.getItem("cart"));
-	
-	useEffect(()=>{
+	const [size, setSize] = useState();
+	const cart = JSON.parse(localStorage.getItem("cart"));
 
+	useEffect(() => {
 		setSize(localStorage.getItem("size"));
-		
-	},[localStorage.getItem("cart")])
-    
-
-
+	}, [localStorage.getItem("cart")]);
 
 	const permissionLevel = localStorage.getItem("permissionLevel");
 
@@ -31,9 +25,9 @@ const Header = () => {
 		makeToast({ type: "success", message: "Logout Successful" });
 	};
 
-	const navigateTo=()=>{
+	const navigateTo = () => {
 		navigate("/product-display");
-	}
+	};
 
 	return (
 		<>
@@ -59,17 +53,17 @@ const Header = () => {
 								</li>
 
 								{/* Checkout */}
-								<li className="mr-6">
+								{/* <li className="mr-6">
 									<Link to="/checkout" className="text-base font-medium text-white hover:text-gray-300">
 										Checkout
 									</Link>
-								</li>
+								</li> */}
 								{/* Checkout */}
 								<li className="mr-6">
 									<span className="absolute ml-1 -mt-2 text-[17px] px-2 rounded-[50%] bg-green-200 -z-0">{size}</span>
-								<Link to="/cart">
-									<ImCart className="relative fill-white w-[20px] h-[20px] mt-2 hover:fill-green-400" />
-								</Link>
+									<Link to="/cart">
+										<ImCart className="relative fill-white w-[20px] h-[20px] mt-2 hover:fill-green-400" />
+									</Link>
 								</li>
 
 								{/* Admin */}

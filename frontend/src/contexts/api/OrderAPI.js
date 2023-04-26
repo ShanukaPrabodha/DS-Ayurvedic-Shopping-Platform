@@ -7,16 +7,8 @@ const BASE_URL = "http://localhost:5004";
 
 class OrderAPI {
 	// Create new order
-	static async createOrder({ stripeUserId, amount, products }) {
-		const response = await axios.post(
-			`${BASE_URL}/api/order`,
-			{
-				stripeUserId,
-				amount,
-				products,
-			},
-			requestConfigJson
-		);
+	static async createOrder(order) {
+		const response = await axios.post(`${BASE_URL}/api/order`, { ...order }, requestConfigJson);
 		return response.data;
 	}
 	// Get one order
