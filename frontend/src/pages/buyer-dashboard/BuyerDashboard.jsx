@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import BuyerContext from "../../contexts/BuyerContext";
+import OrderContext from "../../contexts/OrderContext";
 
 const BuyerDashboard = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
+	const { orders, refetchOrders } = useContext(OrderContext);
 	const id = localStorage.getItem("uId");
+	const stripId = localStorage.getItem("stripeUserId");
 	getOneBuyer(id);
 
 	//const stripId = localStorage.getItem("stripeUserId");
@@ -41,28 +44,34 @@ const BuyerDashboard = () => {
 				<div className="text-gray-600 body-font">
 					<div clasNames="container px-2 py-20 mx-auto">
 						<div className="flex flex-col text-center w-full mb-10">
-							<h1 className="text-2xl font-medium title-font  text-gray-900 tracking-widest mt-6">PENDING ORDERS</h1>
+							<h1 className="text-2xl font-bold title-font  text-gray-900 tracking-widest mt-6">PENDING ORDERS</h1>
 						</div>
 						<div className="flex flex-wrap -m-4">
-							<div className="p-4 lg:w-1/2">
-								<div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-									<img
-										alt="team"
-										className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-										src="https://dummyimage.com/200x200"
-									/>
-									<div className="flex-grow sm:pl-8">
-										<h2 className="title-font font-medium text-lg text-gray-900">Holden Caulfield</h2>
-										<h3 className="text-gray-500 mb-3">UI Developer</h3>
-										<p className="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
-										<span className="inline-flex">
-											<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
-												<Link to={`/buyer/order-status/${id}`}>Status</Link>
-											</button>
-										</span>
+							{orders && orders
+								.filter((elem) => elem.stripeUserId == stripId && elem.status == "pending")
+								.map((order) => (
+									<div className="p-4 lg:w-1/2">
+										<div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+											<img
+												alt="team"
+												className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+												src={order.productImage}
+											/>
+											<div className="flex-grow sm:pl-8">
+												<h2 className="title-font font-bold text-lg text-gray-900">{order.product_name}</h2>
+												<h3 className="text-green-500 mb-3">{order.status}</h3>
+												<p className="mb-4">
+												{order.createdAt.slice(0, 10)}
+												</p>
+												<span className="inline-flex">
+													<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
+														<Link to={`/buyer/order-status/${id}`}>Status</Link>
+													</button>
+												</span>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
+								))}
 						</div>
 					</div>
 				</div>
