@@ -7,6 +7,8 @@ const BuyerDashboard = () => {
 	const id = localStorage.getItem("uId");
 	getOneBuyer(id);
 
+	//const stripId = localStorage.getItem("stripeUserId");
+
 	return (
 		<>
 			<div className="absolute ml-[35rem] flex-col sm:flex-wrap sm:flex-row justify-center w-1/2">
