@@ -90,7 +90,7 @@ const DispatchedOrdersTab = () => {
 								<tbody className="bg-white divide-y divide-gray-200">
 									{orders &&
 										orders
-											.filter((order) => order.status === "dispatched")
+											.filter((order) => order.status === "dispatched" || order.status === "delivered")
 											.map((order) => (
 												<tr key={order._id}>
 													<td className="px-6 py-4 whitespace-nowrap">

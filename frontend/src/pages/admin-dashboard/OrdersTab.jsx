@@ -3,11 +3,13 @@ import { useContext } from "react";
 import OrderAPI from "../../contexts/api/OrderAPI";
 import makeToast from "../../components/toast";
 import Spinner from "../../components/spinner";
-import { MdDelete, MdPaid, MdPending } from "react-icons/md";
+import { MdDeleteOutline, MdPaid, MdPending } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { AiFillCheckCircle } from "react-icons/ai";
 import OrderContext from "../../contexts/OrderContext";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const OrdersTab = () => {
 	const { orders, ordersLoading, refetchOrders } = useContext(OrderContext);
@@ -35,6 +37,20 @@ const OrdersTab = () => {
 			makeToast({ type: "error", message: "Something went wrong" });
 		}
 	};
+
+	function generatePDF(data) {
+		const doc = new jsPDF();
+		const tableColumn = ["Order ID", "Customer ID", "Total Amount (LKR)", "Status", "Payment Status"];
+		const tableRows = [];
+
+		data.forEach((item) => {
+			const rowData = [item._id, item.stripeUserId, item.amount, item.status, item.isPaid ? "Paid" : "Pending"];
+			tableRows.push(rowData);
+		});
+
+		doc.autoTable(tableColumn, tableRows, { startY: 20 });
+		doc.save("Orders.pdf");
+	}
 
 	return (
 		<div className="mx-20">
@@ -77,6 +93,13 @@ const OrdersTab = () => {
 									<p className="ml-2">Paid</p>
 								</div>
 							</div>
+							{/* Report generating button */}
+							<button
+								onClick={() => generatePDF(orders)}
+								className="ml-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+							>
+								Generate Report
+							</button>
 						</div>
 						<div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 							<table className="min-w-full divide-y divide-gray-200 text-md">
@@ -188,10 +211,10 @@ const OrdersTab = () => {
 													</div>
 
 													<button
-														className="text-red-500 hover:text-red-900 text-2xl"
+														className="text-red-500 hover:text-red-900 text-4xl"
 														onClick={() => deleteOrder(order._id)}
 													>
-														<MdDelete />
+														<MdDeleteOutline />
 													</button>
 												</td>
 											</tr>
