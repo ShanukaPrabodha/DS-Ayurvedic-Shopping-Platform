@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SellerAPI from "./api/SellerAPI";
 import makeToast from "../components/toast";
@@ -62,6 +62,33 @@ export function SellerProvider({ children }) {
 	};
 
 	// Seller Login
+	const getOneSeller = (id) => {
+		useEffect(() => {
+			SellerAPI.getOneSeller(id).then((res) => {
+				setSeller(res.data);
+			});
+		}, []);
+	};
+
+	const editSeller = (values) => {
+		const newSeller = {
+			id: values._id,
+			name: values.name,
+			email: values.email,
+			contact: values.contact,
+			nic: values.nic,
+			address: values.address,
+		};
+		SellerAPI.updateSeller(values.id, newSeller)
+			.then((response) => {
+				makeToast({ type: "success", message: "Profile Updated Successful" });
+				window.location.href = "/seller";
+			})
+			.catch((err) => {
+				// eslint-disable-next-line no-console
+				console.log(err);
+			});
+	};
 
 	return (
 		<SellerContext.Provider
@@ -76,6 +103,8 @@ export function SellerProvider({ children }) {
 				nicError,
 				sellers,
 				setSellers,
+				getOneSeller,
+				editSeller,
 			}}
 		>
 			{children}
