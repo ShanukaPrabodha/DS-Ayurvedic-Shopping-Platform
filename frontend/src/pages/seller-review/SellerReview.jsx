@@ -3,57 +3,60 @@ import SellerReviewAPI from "../../contexts/api/ReviewAPI";
 import ReactStars from "react-rating-stars-component";
 
 const SellerReview = () => {
-    const [reviewValue, setReviewValue] = useState(0);
-	const [highlightedStars, setHighlightedStars] = useState(0);
-	const [commentValue, setCommentValue] = useState("");
-	const [reviewData, setReviewData] = useState([]);
-	
-	useEffect(() => {
-		const getReviews = async () => {
-			try {
-				const reviews = await SellerReviewAPI.getAllSellerReviews();
-				const reviewData = reviews.map((review) => ({
-					id: review._id,
-					sellerId: review.seller_id,
-					reviewValue: review.review_value,
-					text: review.text,
-				}));
-				setReviewData(reviewData);
-				console.log(reviewData);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-		getReviews();
-	}, []);
+  const [reviewValue, setReviewValue] = useState(0);
+  const [highlightedStars, setHighlightedStars] = useState(0);
+  const [commentValue, setCommentValue] = useState("");
+  const [reviewData, setReviewData] = useState([]);
 
-	const handleRatingChange = (event) => {
-		const selectedStars = Number(event.target.value);
-		setReviewValue(selectedStars);
-		setHighlightedStars(selectedStars);
-	};
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const id = localStorage.getItem("uId");
+        const reviews = await SellerReviewAPI.getAllSellerReviews(id);
+        const reviewData = reviews.map((review) => ({
+          id: review._id,
+          sellerId: review.seller_id,
+          reviewValue: review.review_value,
+          text: review.text,
+        }));
+        setReviewData(reviewData);
+        console.log(reviewData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getReviews();
+  }, []);
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		console.log(`Submitted review value: ${reviewValue}`);
-		try {
-			const response = await SellerReviewAPI.createSellerReview({
-				seller_id: "123", // Replace with the actual seller ID
-				review_value: reviewValue,
-				text: commentValue,
-			});
+  const handleRatingChange = (event) => {
+    const selectedStars = Number(event.target.value);
+    setReviewValue(selectedStars);
+    setHighlightedStars(selectedStars);
+  };
 
-			console.log(response);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(`Submitted review value: ${reviewValue}`);
+    try {
+      const id = localStorage.getItem("uId");
+      const response = await SellerReviewAPI.createSellerReview({
+        seller_id: id,
+        review_value: reviewValue,
+        text: commentValue,
+      });
 
-	const handleStarClick = (event) => {
-		const selectedStars = Number(event.target.id.replace("star", ""));
-		setReviewValue(selectedStars);
-		setHighlightedStars(selectedStars);
-	};
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleStarClick = (event) => {
+    const selectedStars = Number(event.target.id.replace("star", ""));
+    setReviewValue(selectedStars);
+    setHighlightedStars(selectedStars);
+  };
+
 
 	const starElements = [];
 	for (let i = 1; i <= 5; i++) {
@@ -105,19 +108,20 @@ const SellerReview = () => {
 			</form>
 
 			<div>
-				{reviewData.map((review) => {
-					return (
-						<div key={review.id} className="mt-2 ml-5 mr-5 bg-white p-4 sm:p-6 rounded-lg shadow-md">
-							<h1 className="text-lg font-semibold mb-2">Seller ID:{review.sellerId}</h1>
-							<div className="flex items-center mb-2">
-								<ReactStars count={5} size={20} value={review.reviewValue} activeColor="#ffd700" />
-								<span className="text-sm font-semibold ml-2">{review.reviewValue} Stars</span>
-							</div>
-							<p className="text-base font-semibold">{review.text}</p>
-						</div>
-					);
-				})}
-			</div>
+  {reviewData.map((review) => {
+    return (
+      <div key={review.id} className="mt-2 ml-5 mr-5 bg-white p-4 sm:p-6 rounded-lg shadow-md">
+        <h1 className="text-lg font-semibold mb-2">Seller ID:{review.sellerId}</h1>
+        <div className="flex items-center mb-2">
+          <ReactStars count={5} size={20} value={review.reviewValue} activeColor="#ffd700" />
+          <span className="text-sm font-semibold ml-2">{review.reviewValue} Stars</span>
+        </div>
+        <p className="text-base font-semibold">{review.text}</p>
+      </div>
+    );
+  })}
+</div>
+
 		</>
 	);
 };
