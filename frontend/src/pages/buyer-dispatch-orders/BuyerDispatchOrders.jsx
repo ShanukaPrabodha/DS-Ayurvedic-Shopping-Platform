@@ -1,31 +1,21 @@
 import React, { useContext } from "react";
-import BuyerContext from "../../contexts/BuyerContext";
 import OrderContext from "../../contexts/OrderContext";
 
 const BuyerDispatchOrder = () => {
-
-    const { buyer, getOneBuyer } = useContext(BuyerContext);
-
 	const { orders, refetchOrders } = useContext(OrderContext);
-
-	const id = localStorage.getItem("uId");
 	const stripId = localStorage.getItem("stripeUserId");
-	getOneBuyer(id);
 
-    return (
-        <>
-        
-        <h1 className="mt-5 text-4xl text-center">Dispatch Orders</h1>
+	return (
+		<>
+			<h1 className="mt-5 text-4xl text-center">Dispatch Orders</h1>
 
-        <div>
+			<div>
 				<div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
 					<table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
 						<thead className="bg-gray-50">
 							<tr>
 								<th scope="col" className="px-6 py-4 font-medium text   gray-900 "></th>
-								<th scope="col" className="px-6 py-4 font-bold text-black">
-									Seller
-								</th>
+
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Unit Price
 								</th>
@@ -38,7 +28,6 @@ const BuyerDispatchOrder = () => {
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Total
 								</th>
-								
 							</tr>
 						</thead>
 
@@ -57,14 +46,12 @@ const BuyerDispatchOrder = () => {
 													<div className="text-gray-400">{elem.product_name}</div>
 												</div>
 											</th>
-											<td className="px-2 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.supplier}</div>
-											</td>
+
 											<td className="px-6 py-4">
 												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.price}</div>
 											</td>
 											<td className="px-6 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl green-500 ">
+												<div className="inline-flex items-center rounded-full text-orange-500 text-xl font-bold ">
 													{elem.status}
 												</div>
 											</td>
@@ -80,11 +67,8 @@ const BuyerDispatchOrder = () => {
 					</table>
 				</div>
 			</div>
-        
-        </>
-    );
-
-
+		</>
+	);
 };
 
 export default BuyerDispatchOrder;

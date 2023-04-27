@@ -33,8 +33,8 @@ const BuyerProfileUpdate = () => {
 				<div className="flex justify-center h-full max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-xl ">
 					<div className=" left  rounded-lg">
 						<div className="mt-32 ml-16 ">
-							<div className="h-56 w-56 rounded-full overflow-hidden bg-gray-200 ">
-								<img src="https://source.unsplash.com/300x300/?boy" />
+							<div className="h-28 w-28 rounded-full overflow-hidden bg-gray-200 ">
+								<img src="https://img.icons8.com/color/96/000000/user-menu-male--v1.png" />
 							</div>
 						</div>
 					</div>

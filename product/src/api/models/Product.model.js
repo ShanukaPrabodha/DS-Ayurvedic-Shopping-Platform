@@ -24,6 +24,10 @@ const ProductSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	stripUserId: {
+		type: String,
+		required: true,
+	},
 	weight: {
 		type: String,
 		required: true,

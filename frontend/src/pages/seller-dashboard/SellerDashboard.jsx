@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import SellerContext from "../../contexts/SellerContext";
 
 const SellerDashboard = () => {
-
 	const { seller, getOneSeller } = useContext(SellerContext);
-  const currentSellerId = localStorage.getItem("uId");
+	const currentSellerId = localStorage.getItem("uId");
 
-if (currentSellerId) {
-  // use currentSellerId in the code snippet here
-} else {
-  // handle the case where currentSellerId is not defined or has an invalid value
-}
-
+	if (currentSellerId) {
+		// use currentSellerId in the code snippet here
+	} else {
+		// handle the case where currentSellerId is not defined or has an invalid value
+	}
 
 	const id = localStorage.getItem("uId");
 	// console.log(id);
@@ -20,6 +18,7 @@ if (currentSellerId) {
 	return (
 		<>
 			<h1 className="mt-4 text-4xl text-center">Seller Dashboard</h1>
+
 <div className="flex flex-col w-1/6 h-screen ml-[8rem] mt-2 rounded-3xl">
   <div className="flex items-center h-screen w-full -mt-[5rem] justify-center">
     <div className="max-w-xs">
@@ -143,6 +142,30 @@ if (currentSellerId) {
 </div>
 </div>
 
+						<Link to="/confirmedOrders">
+							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
+								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
+									View Orders
+								</h1>
+							</div>
+						</Link>
+						<Link to={`/sellerReview?id=${currentSellerId}`}>
+							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
+								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
+									My Reviews
+								</h1>
+							</div>
+						</Link>
+						<Link to="/manage-products">
+							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
+								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
+									Manage Products
+								</h1>
+							</div>
+						</Link>
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };

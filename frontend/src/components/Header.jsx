@@ -45,10 +45,35 @@ const Header = () => {
 							</ul>
 
 							<ul className="flex p-1">
+								{/* Buyer */}
+								{permissionLevel === "BUYER" && (
+									<li className="mr-6">
+										<Link
+											to="/buyer"
+											className="text-base font-bold text-primary-green bg-white rounded-xl px-3 py-1 border-2 border-primary-green hover:border-2 hover:border-white hover:bg-primary-green hover:text-white"
+										>
+											Dashboard
+										</Link>
+									</li>
+								)}
+								{/* Seller */}
+
+								{permissionLevel === "SELLER" && (
+									<li className="mr-6">
+										<Link
+											to="/seller"
+											className="text-base font-bold text-primary-green bg-white rounded-xl px-3 py-1 border-2 border-primary-green hover:border-2 hover:border-white hover:bg-primary-green hover:text-white"
+										>
+											Dashboard
+										</Link>
+									</li>
+								)}
+
 								{/* Shop */}
+
 								<li className="mr-6">
 									<button onClick={navigateTo} className="text-base font-medium text-white hover:text-gray-300">
-										Shop
+										Shop |
 									</button>
 								</li>
 
@@ -59,8 +84,9 @@ const Header = () => {
 									</Link>
 								</li> */}
 								{/* Checkout */}
+
 								<li className="mr-6">
-									<span className="absolute ml-1 -mt-2 text-[17px] px-2 rounded-[50%] bg-green-200 -z-0">{size}</span>
+									<span className="absolute ml-1 -mt-2 text-[17px] px-2 rounded-[50%] bg-green-200 -z-0">{size} </span>
 									<Link to="/cart">
 										<ImCart className="relative fill-white w-[20px] h-[20px] mt-2 hover:fill-green-400" />
 									</Link>
@@ -78,7 +104,7 @@ const Header = () => {
 									</li>
 								)}
 
-								{/* Logout */}
+								{/* Logout
 								{permissionLevel && (
 									<li className="mr-6 flex items-center">
 										<HiOutlineLogout
@@ -86,6 +112,28 @@ const Header = () => {
 											className="text-3xl text-white cursor-pointer hover:text-gray-300"
 										/>
 									</li>
+								)} */}
+
+								{localStorage.getItem("authToken") ? (
+									<li className="ml-12 flex items-center">
+										<HiOutlineLogout
+											onClick={adminLogout}
+											className="text-3xl text-white cursor-pointer hover:text-gray-300"
+										/>
+									</li>
+								) : (
+									<>
+										<li className="ml-8">
+											<Link to="/seller/login" className="text-base font-medium text-white hover:text-gray-300">
+												Seller |
+											</Link>
+										</li>
+										<li className="ml-6">
+											<Link to="/buyer/login" className="text-base font-medium text-white hover:text-gray-300">
+												Buyer |
+											</Link>
+										</li>
+									</>
 								)}
 							</ul>
 						</nav>

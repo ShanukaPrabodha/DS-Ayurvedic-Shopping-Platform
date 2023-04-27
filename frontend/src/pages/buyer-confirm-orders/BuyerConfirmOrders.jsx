@@ -1,16 +1,10 @@
 import React, { useContext } from "react";
-import BuyerContext from "../../contexts/BuyerContext";
+
 import OrderContext from "../../contexts/OrderContext";
 
-
 const BuyerConfirmOrders = () => {
-	const { buyer, getOneBuyer } = useContext(BuyerContext);
-
 	const { orders, refetchOrders } = useContext(OrderContext);
-
-	const id = localStorage.getItem("uId");
 	const stripId = localStorage.getItem("stripeUserId");
-	getOneBuyer(id);
 
 	return (
 		<>
@@ -22,9 +16,7 @@ const BuyerConfirmOrders = () => {
 						<thead className="bg-gray-50">
 							<tr>
 								<th scope="col" className="px-6 py-4 font-medium text   gray-900 "></th>
-								<th scope="col" className="px-6 py-4 font-bold text-black">
-									Seller
-								</th>
+
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Unit Price
 								</th>
@@ -37,7 +29,6 @@ const BuyerConfirmOrders = () => {
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Total
 								</th>
-								
 							</tr>
 						</thead>
 
@@ -56,14 +47,12 @@ const BuyerConfirmOrders = () => {
 													<div className="text-gray-400">{elem.product_name}</div>
 												</div>
 											</th>
-											<td className="px-2 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.supplier}</div>
-											</td>
+
 											<td className="px-6 py-4">
 												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.price}</div>
 											</td>
 											<td className="px-6 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl green-500 ">
+												<div className="inline-flex items-center rounded-full text-green-500 text-xl font-bold">
 													{elem.status}
 												</div>
 											</td>

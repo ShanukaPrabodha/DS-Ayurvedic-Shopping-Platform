@@ -36,29 +36,26 @@ const BuyerOrders = () => {
 												src={order.productImage}
 												alt="content"
 											/>
-											<h3 className="tracking-widest text-indigo-500 text-md font-bold title-font ">{order.status}</h3>
+											
 											<h2 className="text-lg text-gray-900 font-bold title-font mb-4 mt-2">{order.product_name}</h2>
 											<p className="leading-relaxed text-base">
 												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
 													<span className="text-gray-500">Quantity</span>
 													<span class="ml-auto text-gray-900">{order.qty}</span>
-													
 												</div>
 												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
 													<span className="text-gray-500">Total Amount</span>
 													<span class="ml-auto text-gray-900">{order.amount}</span>
 												</div>
-												<span className="inline-flex ml-14">
-													<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
-														<Link to="">Status</Link>
-													</button>
-												</span>
+												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
+													<span className="text-gray-500">Status</span>
+													<span class="ml-auto font-bold text-blue-700">{order.status}</span>
+												</div>
 											</p>
 										</div>
 									</div>
 								))}
 					</div>
-
 				</div>
 			</section>
 		</>
