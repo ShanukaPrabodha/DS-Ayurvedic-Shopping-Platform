@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import OrderAPI from "./api/OrderAPI";
@@ -46,6 +46,34 @@ export function OrderProvider({ children }) {
 	// 	},
 	// });
 
+
+	// Get one order
+	const [order, setOrder] = useState({
+			stripeUserId : "",
+			productId : "",
+			product_name : "",
+			price : "",
+			qty : "",
+			supplier : "",
+			stock : "",
+			productImage : "",
+			amount : "",
+			status : "",
+	});
+
+
+
+	// get one Order
+
+	const getOneOrder = (orderId) => {
+		useEffect(() => {
+			OrderAPI.getOrder(orderId).then((res) => {
+				setOrder(res.data);
+			});
+		}, []);
+	};
+
+
 	return (
 		<OrderContext.Provider
 			value={{
@@ -57,6 +85,9 @@ export function OrderProvider({ children }) {
 				ordersLoading,
 				refetchOrders,
 				navigate,
+				getOneOrder,
+				order,
+				setOrder,
 			}}
 		>
 			{children}
