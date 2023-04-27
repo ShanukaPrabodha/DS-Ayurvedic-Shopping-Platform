@@ -33,6 +33,10 @@ import {
 	BuyerOrderStatus,
 
 	ViewDeliveredOrders,
+	BuyerPendingOrders,
+	BuyerConfirmOrders,
+	BuyerDispatchOrder,
+	BuyerDeliveredOrders,
 	ViewConfirmedOrders,
 	
 
@@ -88,6 +92,10 @@ const AppRoutes = () => {
 							<Route exact path="/buyer/profile/:id" element={<BuyerProfileUpdate />} />
 							<Route exact path="/buyer/orders/:id" element={<BuyerOrders />} />
 							<Route exact path="/buyer/order-status/:id" element={<BuyerOrderStatus />} />
+							<Route exact path="/buyer/pending/orders" element={<BuyerPendingOrders />} />
+							<Route exact path="/buyer/confirm/orders" element={<BuyerConfirmOrders />} />
+							<Route exact path="/buyer/dispatch/orders" element={<BuyerDispatchOrder />} />
+							<Route exact path="/buyer/delivered/orders" element={<BuyerDeliveredOrders />} />
 						</Route>
 
 						{/* Seller Routes */}
