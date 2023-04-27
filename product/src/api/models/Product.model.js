@@ -20,6 +20,10 @@ const ProductSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	supplierName: {
+		type: String,
+		required: true,
+	},
 	weight: {
 		type: String,
 		required: true,
