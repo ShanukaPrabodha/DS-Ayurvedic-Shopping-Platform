@@ -7,6 +7,8 @@ function ViewDeliveredOrders() {
 
 
   const sellerName = localStorage.getItem("name");
+  
+  
 
 
   return (
