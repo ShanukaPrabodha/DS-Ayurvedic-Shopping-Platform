@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Spinner from "../../components/spinner";
 import OrderContext from "../../contexts/OrderContext";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const IncomeTab = () => {
 	const { orders, ordersLoading, commission } = useContext(OrderContext);
@@ -21,6 +23,20 @@ const IncomeTab = () => {
 		}
 	}, [orders]);
 
+	function generatePDF(data) {
+		const doc = new jsPDF();
+		const tableColumn = ["Order ID", "Customer ID", "Income (LKR)"];
+		const tableRows = [];
+
+		data.forEach((item) => {
+			const rowData = [item._id, item.stripeUserId, (item.amount * commission).toFixed(2)];
+			tableRows.push(rowData);
+		});
+
+		doc.autoTable(tableColumn, tableRows, { startY: 20 });
+		doc.save("Income.pdf");
+	}
+
 	return (
 		<div className="mx-20">
 			{ordersLoading && <Spinner />}
@@ -35,6 +51,13 @@ const IncomeTab = () => {
 									<p className="ml-2 border-r-2 border-gray-400 pr-4">Total Income</p>
 									<p className="ml-2 pr-4">LKR {totalIncome}</p>
 								</div>
+								{/* Report button */}
+								<button
+									onClick={() => generatePDF(orders.filter((order) => order.isPaid))}
+									className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+								>
+									Download Report
+								</button>
 								{/* Commission */}
 								<div className="flex flex-row items-center text-2xl font-bold ml-4">
 									<p className="ml-2 border-r-2 border-gray-400 pr-4">Commission</p>

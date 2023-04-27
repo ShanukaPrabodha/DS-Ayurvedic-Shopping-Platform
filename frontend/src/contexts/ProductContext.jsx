@@ -28,7 +28,7 @@ export function ProductProvider({ children }) {
 		setIsLoading(true);
 		ProductAPI.getProducts().then((response) => {
 			setProducts(response.data);
-			console.log(products.values("productName"));
+			//console.log(products.values("productName"));
 			setIsLoading(false);
 		});
 	}, []);

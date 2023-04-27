@@ -2,89 +2,63 @@ import React, { useContext } from "react";
 import BuyerContext from "../../contexts/BuyerContext";
 import OrderContext from "../../contexts/OrderContext";
 
+import { Link } from "react-router-dom";
+
 const BuyerOrders = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
-	const { orders } = useContext(OrderContext);
+	const { orders, refetchOrders } = useContext(OrderContext);
 	const id = localStorage.getItem("uId");
 	const stripId = localStorage.getItem("stripeUserId");
 	getOneBuyer(id);
+
 	return (
 		<>
-			<section class="text-gray-600 body-font">
-				<div class="container px-5 py-24 mx-auto">
-					<div class="flex flex-wrap w-full mb-20">
-						<div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-							<h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+			<section class="text-gray-600 body-font overflow-hidden">
+				<div className="container px-4 py-16 mx-auto">
+					<div className="flex flex-wrap w-full">
+						<div className="lg:w-1/2 w-full mb-4 lg:mb-0">
+							<h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
 								Order History of {buyer.name}
 							</h1>
-							<div class="h-1 w-20 bg-green-500 rounded"></div>
+							<div className="h-1 w-20 bg-green-500 rounded"></div>
 						</div>
 					</div>
 
-					{orders
-						.filter((elem) => elem.stripeUserId == stripId)
-						.map((order) => (
-							<div class="flex flex-wrap -m-4">
-								<div class="xl:w-1/4 md:w-1/2 p-4">
-									<div class="bg-gray-100 p-6 rounded-lg">
-										<img
-											class="h-40 rounded w-full object-cover object-center mb-6"
-											src="https://dummyimage.com/720x400"
-											alt="content"
-										/>
-										<h3 class="tracking-widest text-green-500 text-xs font-medium title-font">
-											<b>{order.status}</b>
-										</h3>
-										<h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-										<p class="leading-relaxed text-base">
-											Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.
-										</p>
+					<div className="flex flex-wrap -m-4 mt-6">
+						{orders &&
+							orders
+								.filter((elem) => elem.stripeUserId == stripId)
+								.map((order) => (
+									<div className="xl:w-1/4 md:w-1/2 p-4">
+										<div className="bg-gray-100 p-6 rounded-lg">
+											<img
+												className="h-40 rounded w-full object-cover object-center mb-6"
+												src={order.productImage}
+												alt="content"
+											/>
+											<h3 className="tracking-widest text-indigo-500 text-md font-bold title-font ">{order.status}</h3>
+											<h2 className="text-lg text-gray-900 font-bold title-font mb-4 mt-2">{order.product_name}</h2>
+											<p className="leading-relaxed text-base">
+												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
+													<span className="text-gray-500">Quantity</span>
+													<span class="ml-auto text-gray-900">{order.qty}</span>
+													
+												</div>
+												<div className="flex border-t border-b mb-6 border-gray-200 py-2">
+													<span className="text-gray-500">Total Amount</span>
+													<span class="ml-auto text-gray-900">{order.amount}</span>
+												</div>
+												<span className="inline-flex ml-14">
+													<button className="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded-full ml-10">
+														<Link to="">Status</Link>
+													</button>
+												</span>
+											</p>
+										</div>
 									</div>
-								</div>
-								<div class="xl:w-1/4 md:w-1/2 p-4">
-									<div class="bg-gray-100 p-6 rounded-lg">
-										<img
-											class="h-40 rounded w-full object-cover object-center mb-6"
-											src="https://dummyimage.com/721x401"
-											alt="content"
-										/>
-										<h3 class="tracking-widest text-green-500 text-xs font-medium title-font">SUBTITLE</h3>
-										<h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
-										<p class="leading-relaxed text-base">
-											Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.
-										</p>
-									</div>
-								</div>
-								<div class="xl:w-1/4 md:w-1/2 p-4">
-									<div class="bg-gray-100 p-6 rounded-lg">
-										<img
-											class="h-40 rounded w-full object-cover object-center mb-6"
-											src="https://dummyimage.com/722x402"
-											alt="content"
-										/>
-										<h3 class="tracking-widest text-green-500 text-xs font-medium title-font">SUBTITLE</h3>
-										<h2 class="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid of Giza</h2>
-										<p class="leading-relaxed text-base">
-											Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.
-										</p>
-									</div>
-								</div>
-								<div class="xl:w-1/4 md:w-1/2 p-4">
-									<div class="bg-gray-100 p-6 rounded-lg">
-										<img
-											class="h-40 rounded w-full object-cover object-center mb-6"
-											src="https://dummyimage.com/723x403"
-											alt="content"
-										/>
-										<h3 class="tracking-widest text-green-500 text-xs font-medium title-font">SUBTITLE</h3>
-										<h2 class="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
-										<p class="leading-relaxed text-base">
-											Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.
-										</p>
-									</div>
-								</div>
-							</div>
-						))}
+								))}
+					</div>
+
 				</div>
 			</section>
 		</>

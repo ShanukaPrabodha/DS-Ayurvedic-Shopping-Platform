@@ -1,4 +1,11 @@
-import { addOrder, getOrder, changeOrderIsPaidStatus, getOrders, changeOrderStatus } from "./Order.service";
+import {
+	addOrder,
+	getOrder,
+	changeOrderIsPaidStatus,
+	getOrders,
+	changeOrderStatus,
+	deleteOrder,
+} from "./Order.service";
 
 export default {
 	// Order services
@@ -7,4 +14,5 @@ export default {
 	changeOrderIsPaidStatus,
 	getOrders,
 	changeOrderStatus,
+	deleteOrder,
 };

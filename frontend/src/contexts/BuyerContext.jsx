@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import BuyerAPI from "./api/BuyerAPI";
 import makeToast from "../components/toast";
+import OrderAPI from "./api/OrderAPI";
 
 const BuyerContext = createContext();
 
@@ -9,6 +10,7 @@ export function BuyerProvider({ children }) {
 	const [buyers, setBuyers] = useState([]);
 	const [mailError, setMailError] = useState("");
 	const [nicError, setNicError] = useState("");
+	const [orders, setOrders] = useState([]);
 
 	const [buyer, setBuyer] = useState({
 		name: "",
@@ -92,6 +94,14 @@ export function BuyerProvider({ children }) {
 			});
 	};
 
+	//Get all Oders
+
+	useEffect(() => {
+		OrderAPI.getOrders().then((response) => {
+			setOrders(response.data);
+		});
+	}, []);
+
 	return (
 		<BuyerContext.Provider
 			value={{
@@ -107,7 +117,8 @@ export function BuyerProvider({ children }) {
 				BuyerLogin,
 				getOneBuyer,
 				editBuyer,
-				
+				orders,
+				setOrders,
 			}}
 		>
 			{children}

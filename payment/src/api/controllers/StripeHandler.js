@@ -115,3 +115,16 @@ export const getPaymentDetails = async (request, response, next) => {
 		next();
 	}
 };
+
+// Get One Customer by customer id
+export const getOneCustomer = async (request, response, next) => {
+	try {
+		const customer = await stripe.customers.retrieve(request.params.customer_Id);
+
+		request.handleResponse.successRespond(response)(customer);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
+};
