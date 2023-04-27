@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import OrderService from "../services";
 import { checkUserLoggedIn } from "../middleware/Auth.middleware";
@@ -8,25 +9,25 @@ import getCustomer from "../../util/getCustomer";
 export const addOrder = async (request, response, next) => {
 	await OrderService.addOrder(request.body)
 		.then(async (data) => {
-			// // Get one customer
-			// await getCustomer(data.stripeUserId).then((customer) => {
-			// 	// Send Email
-			// 	sendMail({
-			// 		to: customer.data.email,
-			// 		subject: "Order Placed",
-			// 		templateType: "order",
-			// 		data: {
-			// 			name: customer.data.name,
-			// 			orderItems: [
-			// 				{
-			// 					productName: data.product_name,
-			// 					quantity: data.qty,
-			// 					price: data.price,
-			// 				},
-			// 			],
-			// 		},
-			// 	});
-			// });
+			// Get one customer
+			await getCustomer(data.stripeUserId).then((customer) => {
+				// Send Email
+				sendMail({
+					to: customer.data.email,
+					subject: "Order Placed",
+					templateType: "order",
+					data: {
+						name: customer.data.name,
+						orderItems: [
+							{
+								productName: data.product_name,
+								quantity: data.qty,
+								price: data.price,
+							},
+						],
+					},
+				});
+			});
 
 			request.handleResponse.successRespond(response)(data);
 			next();
@@ -53,7 +54,9 @@ export const getOrders = async (request, response, next) => {
 export const getOrder = async (request, response, next) => {
 	try {
 		// Check if the user is logged in
+		console.log(request.headers.authorization);
 		const isLoggedIn = await checkUserLoggedIn(request.headers.authorization);
+		console.log(isLoggedIn);
 
 		if (!isLoggedIn) {
 			// Handle case where user is not logged in
@@ -87,25 +90,25 @@ export const changeOrderStatus = async (request, response, next) => {
 	await OrderService.changeOrderStatus(request.params.orderId, request.body.status)
 		.then(async (data) => {
 			// Get one customer
-			// await getCustomer(data.stripeUserId).then((customer) => {
-			// 	// Send Email
-			// 	sendMail({
-			// 		to: customer.data.email,
-			// 		subject: `Order ${data.status}`,
-			// 		templateType: `order-${data.status}`,
-			// 		data: {
-			// 			name: customer.data.name,
-			// 			orderItems: [
-			// 				{
-			// 					productName: data.product_name,
-			// 					quantity: data.qty,
-			// 					price: data.price,
-			// 				},
-			// 			],
-			// 			orderNumber: data._id,
-			// 		},
-			// 	});
-			// });
+			await getCustomer(data.stripeUserId).then((customer) => {
+				// Send Email
+				sendMail({
+					to: customer.data.email,
+					subject: `Order ${data.status}`,
+					templateType: `order-${data.status}`,
+					data: {
+						name: customer.data.name,
+						orderItems: [
+							{
+								productName: data.product_name,
+								quantity: data.qty,
+								price: data.price,
+							},
+						],
+						orderNumber: data._id,
+					},
+				});
+			});
 			request.handleResponse.successRespond(response)({ message: "Order status changed successfully" });
 			next();
 		})
