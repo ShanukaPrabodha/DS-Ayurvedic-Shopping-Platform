@@ -1,0 +1,35 @@
+<!-- order delivered template -->
+<html>
+  <body>
+    <h1>Your Order is Delivered!</h1>
+    <p>Dear <%= name %>,</p>
+    <p>
+      Thank you for shopping with us at My Store! We're pleased to confirm that
+      your order has been received and is on its way to you.
+    </p>
+    <p>Order Details:</p>
+    <ul>
+      <% orderItems.forEach(function(item) { %>
+      <li>
+        <strong><%= item.productName %></strong> - <%= item.quantity %> x <%=
+        item.price %>
+      </li>
+      <% }); %>
+    </ul>
+    <p>For your reference, your order number is <%= orderNumber %>.</p>
+    <p>
+      If you have any questions or concerns about your order, please feel free
+      to contact us at
+      <a href="mailto:customerservice@mystore.com"
+        >customerservice@mystore.com</a
+      >
+      and we'll be happy to assist you.
+    </p>
+    <p>
+      Thank you for choosing My Store for your shopping needs! We appreciate
+      your business.
+    </p>
+    <p>Best regards,</p>
+    <p>The My Store Team</p>
+  </body>
+</html>
