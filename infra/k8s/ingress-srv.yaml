@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: localhost
+    - host: iherb.local
       http:
         paths:
           - path: /api/auth
@@ -24,6 +24,41 @@ spec:
                 name: payment-srv
                 port:
                   number: 5002
+          - path: /api/product
+            pathType: Prefix
+            backend:
+              service:
+                name: product-srv
+                port:
+                  number: 5003
+          - path: /api/order
+            pathType: Prefix
+            backend:
+              service:
+                name: order-srv
+                port:
+                  number: 5004
+          - path: /api/review
+            pathType: Prefix
+            backend:
+              service:
+                name: review-srv
+                port:
+                  number: 5005
+          - path: /api/notification
+            pathType: Prefix
+            backend:
+              service:
+                name: notification-srv
+                port:
+                  number: 5006
+          - path: /api/delivery
+            pathType: Prefix
+            backend:
+              service:
+                name: delivery-srv
+                port:
+                  number: 5007
           - path: /?(.*)
             pathType: Prefix
             backend:

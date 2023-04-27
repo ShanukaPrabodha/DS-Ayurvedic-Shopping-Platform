@@ -1,6 +1,8 @@
 const Stripe_Key =
 	"sk_test_51MiZM4HiG2lbuJ4ZmVIMooGWLjSSgyMBsAmvd8OwhjrdHN2jPeWZYSFUrnzn31IvEqi0V8HrpIlyvFzsE5OZrOpQ00wlMFnbBj";
 const stripe = require("stripe")(Stripe_Key);
+import axios from "axios";
+import configs from "../../config";
 
 // Add a new customer to your Stripe account
 export const createNewCustomer = async (request, response, next) => {
@@ -45,48 +47,84 @@ export const addNewCard = async (request, response, next) => {
 
 // Payment Intents API
 export const createPaymentIntent = async (request, response, next) => {
+	const orderId = request.body.orderId;
 
-	// {
-	// 	"customer_Id": "cus_NTwRB5ZlvkizzU",
-	// 	"currency": "LKR",
-	// 	"amount": "1000"
-	// }
+	try {
+		// create a payment intent
+		const paymentIntent = await stripe.paymentIntents.create({
+			amount: request.body.amount * 100,
+			currency: request.body.currency,
+			customer: request.body.customer_Id,
+			payment_method: request.body.payment_method,
+			confirm: true,
+			payment_method_types: ["card"],
+		});
 
-	// get user's payment methods
-	const paymentMethods = await stripe.paymentMethods.list({
-		customer: request.body.customer_Id,
-		type: "card",
-	});
-
-	// create a payment intent
-	const paymentIntent = await stripe.paymentIntents.create({
-		amount: request.body.amount * 100,
-		currency: request.body.currency,
-		customer: request.body.customer_Id,
-		payment_method: paymentMethods.data[0].id,
-		confirm: true,
-		payment_method_types: ["card"],
-	});
-
-	request.handleResponse.successRespond(response)(paymentIntent);
-	next();
+		// Check if payment is successful
+		if (paymentIntent.status === "succeeded") {
+			await axios.patch(`${configs.order_service}/api/order/paid/${orderId}`, {
+				isPaid: true,
+			});
+		}
+		request.handleResponse.successRespond(response)(paymentIntent);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
 };
 
 // Get customer's payment methods
 export const getPaymentMethods = async (request, response, next) => {
-	const paymentMethods = await stripe.paymentMethods.list({
-		customer: request.body.customer_Id,
-		type: "card",
-	});
+	try {
+		const paymentMethods = await stripe.paymentMethods.list({
+			customer: request.params.customer_Id,
+			type: "card",
+		});
 
-	request.handleResponse.successRespond(response)(paymentMethods);
-	next();
+		request.handleResponse.successRespond(response)(paymentMethods);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
 };
 
 // Get all customers
 export const getAllCustomers = async (request, response, next) => {
-	const customers = await stripe.customers.list();
+	try {
+		const customers = await stripe.customers.list();
 
-	request.handleResponse.successRespond(response)(customers);
-	next();
+		request.handleResponse.successRespond(response)(customers);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
+};
+
+// Get payment details by payment id
+export const getPaymentDetails = async (request, response, next) => {
+	try {
+		const paymentDetails = await stripe.paymentIntents.retrieve(request.params.payment_Id);
+
+		request.handleResponse.successRespond(response)(paymentDetails);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
+};
+
+// Get One Customer by customer id
+export const getOneCustomer = async (request, response, next) => {
+	try {
+		const customer = await stripe.customers.retrieve(request.params.customer_Id);
+
+		request.handleResponse.successRespond(response)(customer);
+		next();
+	} catch (error) {
+		request.handleResponse.errorRespond(response)(error.message);
+		next();
+	}
 };

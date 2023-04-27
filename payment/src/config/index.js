@@ -11,14 +11,7 @@ if (environment == "Development") {
 		mongodb: {
 			uri: process.env.DEV_MONGO_URI,
 		},
-		// auth: {
-		// 	secret: process.env.DEV_JWT_SECRET,
-		// },
-		// MAIL_FROM: process.env.MAIL_FROM,
-		// MAIL_HOST: process.env.MAIL_HOST,
-		// MAIL_PORT: process.env.MAIL_PORT,
-		// MAIL_USER: process.env.MAIL_USER,
-		// MAIL_PASS: process.env.MAIL_PASS,
+		order_service: process.env.DEV_ORDER_SERVICE,
 	};
 }
 
@@ -30,6 +23,7 @@ if (environment == "Production") {
 		mongodb: {
 			uri: process.env.DEV_MONGO_URI,
 		},
+		order_service: process.env.K8S_ORDER_SERVICE,
 	};
 }
 
