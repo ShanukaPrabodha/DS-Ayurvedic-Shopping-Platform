@@ -29,14 +29,11 @@ const SellerDashboard = () => {
         <div className="p-2">
           <h3 className="text-center text-xl text-gray-900 font-medium leading-8">{seller.name}</h3>
           <div className="text-center text-gray-400 text-xs font-semibold">
-            <p>Seller's Occupation/Title</p>
+            <p>Top rated Seller</p>
           </div>
           <table className="text-xs my-3">
             <tbody>
-              <tr>
-                <td className="px-2 py-2 text-gray-500 font-semibold">Seller ID</td>
-                <td className="px-2 py-2">{seller._id}</td>
-              </tr>
+              
               <tr>
                 <td className="px-2 py-2 text-gray-500 font-semibold">Seller Rating</td>
                 <div className="flex items-center mb-3">
@@ -130,39 +127,24 @@ const SellerDashboard = () => {
           </h1>
         </div>
       </Link>
-      <Link to="/seller-create-package">
-        <div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
-          <h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
-            Add Package
-          </h1>
-        </div>
-      </Link>
-    </div>
-    
-</div>
-</div>
-
-						<Link to="/confirmedOrders">
-							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
-								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
-									View Orders
-								</h1>
-							</div>
-						</Link>
-						<Link to={`/sellerReview?id=${currentSellerId}`}>
-							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
-								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
-									My Reviews
-								</h1>
-							</div>
-						</Link>
-						<Link to="/manage-products">
+      
+      <Link to="/manage-products">
 							<div className="m-5 p-5 sm:p-10 md:p-20 bg-white drop-shadow-lg bg-no-repeat bg-left-bottom md:bg-[url('../addPackage.png')] rounded-3xl">
 								<h1 className="text-primary-blue md:text-white md:bg-black md:bg-opacity-60 md:p-2 rounded-xl font-bold text-lg md:text-3xl hover:underline">
 									Manage Products
 								</h1>
 							</div>
 						</Link>
+    </div>
+    
+</div>
+</div>
+<div>
+<div className="flex flex-col sm:flex-wrap sm:flex-row justify-center">
+  <div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
