@@ -68,7 +68,7 @@ const Cart = () => {
 									</th>
 									<td className="px-6 py-4">
 										<div className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-s ">
-											{items.supplier}
+											{items.supplierName}
 										</div>
 									</td>
 									<td className="px-6 py-4">{items.price}</td>

@@ -50,6 +50,7 @@ export default function productModal({ visible, onClose, product }) {
 			productImage: product.productImage,
 			productDescription: product.description,
 			supplier: product.supplier,
+			supplierName:product.supplierName,
 			qty: qty,
 			size: size,
 			price: price,
