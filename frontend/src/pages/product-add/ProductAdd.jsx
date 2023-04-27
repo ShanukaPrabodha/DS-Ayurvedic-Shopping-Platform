@@ -22,8 +22,10 @@ const ProductAdd = () => {
 
 	const supplierID = localStorage.getItem("uId");
     const supplierName = localStorage.getItem("name");
+	const stripUserId = localStorage.getItem("stripeUserId");
 
-	console.log( supplierID + supplierName);
+
+	console.log( supplierID + supplierName , stripUserId);
 
 
 
@@ -92,6 +94,7 @@ const ProductAdd = () => {
 			description: e.target.description.value,
 			supplier: supplierID,
 			supplierName:supplierName,
+			stripUserId:stripUserId,
 			weight: e.target.weight.value,
 			variants: variant,
 			productImage: url,
