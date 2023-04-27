@@ -25,6 +25,11 @@ import BuyerOrderStatus from "./buyer-order-status";
 
 import ViewDeliveredOrders from "./view-delivered-orders";
 import Cart from "./cart";
+import BuyerPendingOrders from "./buyer-pending-orders";
+import BuyerConfirmOrders from "./buyer-confirm-orders";
+import BuyerDispatchOrder from "./buyer-dispatch-orders";
+import BuyerDeliveredOrders from "./buyer-delivered-orders";
+
 
 export {
 	Sample,
@@ -49,5 +54,10 @@ export {
 	BuyerOrders,
 	BuyerOrderStatus,
 	ViewDeliveredOrders,
+	BuyerPendingOrders,
+	BuyerConfirmOrders,
+	BuyerDispatchOrder,
+	BuyerDeliveredOrders,
+
 
 };
