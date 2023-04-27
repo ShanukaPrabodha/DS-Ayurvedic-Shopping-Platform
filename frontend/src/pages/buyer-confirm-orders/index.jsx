@@ -1,21 +1,15 @@
 import React from "react";
 import BuyerConfirmOrders from "./BuyerConfirmOrders";
-
-import { BuyerProvider } from "../../contexts/BuyerContext";
 import { OrderProvider } from "../../contexts/OrderContext";
 
 const index = () => {
-
-
-    return (
-        <>
-            <OrderProvider>
-                <BuyerProvider>
-                    <BuyerConfirmOrders />
-                </BuyerProvider>
-            </OrderProvider>
-        </>
-    );
+	return (
+		<>
+			<OrderProvider>
+				<BuyerConfirmOrders />
+			</OrderProvider>
+		</>
+	);
 };
 
 export default index;
