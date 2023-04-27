@@ -3,13 +3,14 @@
  // Insert one product
  export const insertProduct = async (request, response, next) => {
 
-    const{productId,productName,description, supplier,weight,variants,productImage}=request.body;
+    const{productId,productName,description, supplier,supplierName,weight,variants,productImage}=request.body;
      await ProductService.insertProduct(
         {
         productId,
         productName,
         description,
         supplier,
+        supplierName,
         weight,
         variants,
         productImage
