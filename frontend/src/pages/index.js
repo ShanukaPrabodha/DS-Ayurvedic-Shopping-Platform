@@ -24,6 +24,7 @@ import BuyerOrders from "./buyer-orders";
 import BuyerOrderStatus from "./buyer-order-status";
 
 import ViewDeliveredOrders from "./view-delivered-orders";
+import ViewConfirmedOrders from "./view-confirmed-orders";
 import Cart from "./cart";
 
 export {
@@ -49,5 +50,6 @@ export {
 	BuyerOrders,
 	BuyerOrderStatus,
 	ViewDeliveredOrders,
+	ViewConfirmedOrders,
 
 };
