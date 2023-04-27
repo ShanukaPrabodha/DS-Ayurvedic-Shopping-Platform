@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import BuyerContext from "../../contexts/BuyerContext";
 import OrderContext from "../../contexts/OrderContext";
+
 import { Link } from "react-router-dom";
 
 const BuyerOrders = () => {
@@ -57,6 +58,7 @@ const BuyerOrders = () => {
 									</div>
 								))}
 					</div>
+
 				</div>
 			</section>
 		</>

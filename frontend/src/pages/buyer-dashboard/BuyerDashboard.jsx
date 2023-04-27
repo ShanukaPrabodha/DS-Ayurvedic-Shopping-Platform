@@ -5,6 +5,7 @@ import OrderContext from "../../contexts/OrderContext";
 
 const BuyerDashboard = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
+
 	const { orders, refetchOrders } = useContext(OrderContext);
 	const id = localStorage.getItem("uId");
 	const stripId = localStorage.getItem("stripeUserId");
