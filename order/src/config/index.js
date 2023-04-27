@@ -12,6 +12,8 @@ if (environment == "Development") {
 			uri: process.env.DEV_MONGO_URI,
 		},
 		auth_service: process.env.DEV_AUTH_SERVICE,
+		notification_service: process.env.DEV_NOTIFICATION_SERVICE,
+		payment_service: process.env.DEV_PAYMENT_SERVICE,
 	};
 }
 
@@ -24,6 +26,8 @@ if (environment == "Production") {
 			uri: process.env.DEV_MONGO_URI,
 		},
 		auth_service: process.env.K8S_AUTH_SERVICE,
+		notification_service: process.env.K8S_NOTIFICATION_SERVICE,
+		payment_service: process.env.K8S_PAYMENT_SERVICE,
 	};
 }
 

@@ -36,8 +36,8 @@ app.post("/api/notification/send-email", async (req, res) => {
 
     if (templateType === "order") {
       file = folder + "/orderTemplate.ejs";
-    } else if (templateType === "invoice") {
-      file = folder + "/invoiceTemplate.ejs";
+    } else if (templateType === "order-confirmed") {
+      file = folder + "/orderConfirmedTemplate.ejs";
     } else {
       file = folder + "/defaultTemplate.ejs";
     }

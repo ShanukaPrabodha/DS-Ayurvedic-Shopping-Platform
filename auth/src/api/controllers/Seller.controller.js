@@ -57,6 +57,7 @@ export const loginSeller = async (request, response, next) => {
 					email: seller.email,
 					token: authToken,
 					permissionLevel: seller.permissionLevel,
+					name : seller.name,
 				};
 
 				request.handleResponse.successRespond(response)(data);

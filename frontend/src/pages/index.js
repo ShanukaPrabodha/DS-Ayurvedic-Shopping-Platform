@@ -23,6 +23,7 @@ import SellerDashboard from "./seller-dashboard";
 import BuyerOrders from "./buyer-orders";
 import BuyerOrderStatus from "./buyer-order-status";
 
+import ViewDeliveredOrders from "./view-delivered-orders";
 import Cart from "./cart";
 
 export {
@@ -47,4 +48,6 @@ export {
 	Cart,
 	BuyerOrders,
 	BuyerOrderStatus,
+	ViewDeliveredOrders,
+
 };
