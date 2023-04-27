@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SellerReviewAPI from "../../contexts/api/ReviewAPI";
 import ReactStars from "react-rating-stars-component";
+import ReviewContext from "../../contexts/SellerReviewContext";
+import { useParams } from "react-router-dom";
 
 const SellerReview = () => {
+  const { orders, refetchOrders } = useContext(ReviewContext);
   const [reviewValue, setReviewValue] = useState(0);
   const [highlightedStars, setHighlightedStars] = useState(0);
   const [commentValue, setCommentValue] = useState("");
   const [reviewData, setReviewData] = useState([]);
+  const { sellerId } = useParams();
+
+ 
+ // const sellerId = localStorage.getItem("uId");
 
   useEffect(() => {
+
+
     const getReviews = async () => {
       try {
         const id = localStorage.getItem("uId");

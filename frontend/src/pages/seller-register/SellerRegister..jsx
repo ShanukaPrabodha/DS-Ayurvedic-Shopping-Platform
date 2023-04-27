@@ -27,7 +27,7 @@ const SellerRegister = () => {
 		SellerRegister(newSeller);
 	};
 
-	let nameregext = /^[a-z A-Z]+$/;
+	let nameregext ;
 	let emailregext =
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 

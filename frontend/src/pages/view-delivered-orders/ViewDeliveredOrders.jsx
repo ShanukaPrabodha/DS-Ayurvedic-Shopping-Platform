@@ -1,14 +1,15 @@
 import { useContext, useEffect } from "react";
 import OrderContext from "../../contexts/OrderContext";
 import OrderAPI from "../../contexts/api/OrderAPI";
+import { Link } from "react-router-dom";
 
 function ViewDeliveredOrders() {
   const { orders, refetchOrders } = useContext(OrderContext);
 
 
-  const sellerName = localStorage.getItem("name");
+  const sellerName = localStorage.getItem("uId");
   
-  
+
 
 
   return (
@@ -24,9 +25,19 @@ function ViewDeliveredOrders() {
                 <p className="mb-2">Amount: {order.amount}</p>
                 <p className="mb-2">Status: {order.status}</p>
                 <p>Is Paid: {order.isPaid ? "Yes" : "No"}</p>
-                <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
-                  Rate Now
-                </button>
+                <div className="grid grid-cols-2 gap-4">
+  <Link to={`/sellerReview`}>
+    <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+      Rate Seller
+    </button>
+  </Link>
+  <Link to="/productReview">
+    <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+      Rate Product
+    </button>
+  </Link>
+</div>
+
               </div>
             ))}
       </div>
