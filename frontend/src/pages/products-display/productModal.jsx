@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function productModal({ visible, onClose, product }) {
 	//const local=JSON.parse(localStorage.getItem("cart"));
 	//console.log("local="+local);
-	const navigate=useNavigate();
-	const [cartItems,setCartItems]=useState([]);
+	const navigate = useNavigate();
+	const [cartItems, setCartItems] = useState([]);
 	const { getProduct } = useContext(ProductContext);
 	const [qty, setQty] = useState(0);
 	const [total, setTotal] = useState(0.0);
@@ -15,14 +15,12 @@ export default function productModal({ visible, onClose, product }) {
 	const [size, setSize] = useState();
 	const [stock, setStock] = useState();
 
-
 	const onCloseModel = () => {
 		setTotal(0);
 		setPrice(0);
 		setSize("");
 		setStock(0);
 		onClose();
-
 	};
 
 	const hello = (variant) => {
@@ -50,7 +48,7 @@ export default function productModal({ visible, onClose, product }) {
 			_id: product._id,
 			product_name: product.productName,
 			productImage: product.productImage,
-			productDescription:product.description,
+			productDescription: product.description,
 			supplier: product.supplier,
 			qty: qty,
 			size: size,
@@ -59,18 +57,16 @@ export default function productModal({ visible, onClose, product }) {
 			total: total,
 		};
 
-		setCartItems([...cartItems,newData]);
-		alert("Item added to cart successfully...!")
+		setCartItems([...cartItems, newData]);
+		alert("Item added to cart successfully...!");
 		onClose();
 	};
 
-	useEffect(()=>{
-
+	useEffect(() => {
 		//console.log(cartItems);
-	   localStorage.setItem("cart",JSON.stringify(cartItems));
-	   localStorage.setItem("size",cartItems.length);
-
-	},[cartItems]);
+		localStorage.setItem("cart", JSON.stringify(cartItems));
+		localStorage.setItem("size", cartItems.length);
+	}, [cartItems]);
 
 	if (visible == "false") return null;
 
@@ -103,10 +99,7 @@ export default function productModal({ visible, onClose, product }) {
 							</p>
 							<div className="flex items-center justify-between w-full pt-1">
 								<div>
-									<div
-										id="productName"
-										className="text-base font-black leading-none text-gray-800 dark:text-white mt-[10px]"
-									>
+									<div id="productName" className="text-base font-black leading-none text-gray-800 mt-[10px]">
 										{product.productName}
 									</div>
 									<div>
@@ -151,15 +144,9 @@ export default function productModal({ visible, onClose, product }) {
 								</div>
 							</div>
 							<br></br>
-							<div className="text-[14px] font-semibold leading-3 text-gray-600 pt-2">
-								Size : {size}
-							</div>
-							<div className="text-[14px] font-semibold leading-3 text-gray-600 py-4">
-								Price: {price}
-							</div>
-							<div className="w-96 text-[14px] font-semibold leading-3 text-gray-600">
-								Stock: {stock}
-							</div>
+							<div className="text-[14px] font-semibold leading-3 text-gray-600 pt-2">Size : {size}</div>
+							<div className="text-[14px] font-semibold leading-3 text-gray-600 py-4">Price: {price}</div>
+							<div className="w-96 text-[14px] font-semibold leading-3 text-gray-600">Stock: {stock}</div>
 							<div className="flex items-center justify-between pt-5">
 								<div className="flex itemms-center">
 									<button
