@@ -35,9 +35,7 @@ const BuyerPendingOrders = () => {
 						<thead className="bg-gray-50">
 							<tr>
 								<th scope="col" className="px-6 py-4 font-medium text   gray-900 "></th>
-								<th scope="col" className="px-6 py-4 font-bold text-black">
-									Seller
-								</th>
+								
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Unit Price
 								</th>
@@ -75,9 +73,7 @@ const BuyerPendingOrders = () => {
 													<div className="text-gray-400">{elem.product_name}</div>
 												</div>
 											</th>
-											<td className="px-2 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.supplier}</div>
-											</td>
+											
 											<td className="px-6 py-4">
 												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.price}</div>
 											</td>
