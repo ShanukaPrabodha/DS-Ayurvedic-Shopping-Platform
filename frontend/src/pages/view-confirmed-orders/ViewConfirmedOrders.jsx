@@ -1,9 +1,12 @@
-import { useContext } from "react";
+
+import { useContext, useEffect } from "react";
+
 import OrderContext from "../../contexts/OrderContext";
 import OrderAPI from "../../contexts/api/OrderAPI";
 
 function ViewConfirmedOrders() {
   const { orders, refetchOrders } = useContext(OrderContext);
+
 
   // Change order status
   const updateStatus = async (orderId) => {
@@ -17,12 +20,19 @@ function ViewConfirmedOrders() {
     }
   };
   
+
+
+  const sellerUid = localStorage.getItem("uId");
+  
+
+
   return (
     <>
       <h1 className="mt-5 text-4xl text-center">Confirmed Orders Page</h1>
       <div className="mt-10 max-w-md mx-auto space-y-5">
         {orders &&
           orders
+
             .filter((elem) => elem.status === "confirmed")
             .map((order) => {
               return (
@@ -40,6 +50,7 @@ function ViewConfirmedOrders() {
                 </div>
               );
             })}
+
       </div>
     </>
   );
