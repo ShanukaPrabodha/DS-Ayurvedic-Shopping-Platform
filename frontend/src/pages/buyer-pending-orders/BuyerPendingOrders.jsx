@@ -1,18 +1,13 @@
 import React, { useContext } from "react";
-import BuyerContext from "../../contexts/BuyerContext";
+
 import OrderContext from "../../contexts/OrderContext";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import OrderAPI from "../../contexts/api/OrderAPI";
 import makeToast from "../../components/toast";
 
 const BuyerPendingOrders = () => {
-	const { buyer, getOneBuyer } = useContext(BuyerContext);
-
 	const { orders, refetchOrders } = useContext(OrderContext);
-
-	const id = localStorage.getItem("uId");
 	const stripId = localStorage.getItem("stripeUserId");
-	getOneBuyer(id);
 
 	// Cancel Order
 	const cancelOrder = async (orderId) => {
@@ -35,7 +30,7 @@ const BuyerPendingOrders = () => {
 						<thead className="bg-gray-50">
 							<tr>
 								<th scope="col" className="px-6 py-4 font-medium text   gray-900 "></th>
-								
+
 								<th scope="col" className="px-6 py-4 font-bold text-black">
 									Unit Price
 								</th>
@@ -73,12 +68,12 @@ const BuyerPendingOrders = () => {
 													<div className="text-gray-400">{elem.product_name}</div>
 												</div>
 											</th>
-											
+
 											<td className="px-6 py-4">
 												<div className="inline-flex items-center rounded-full px- py-1 text-xl ">{elem.price}</div>
 											</td>
 											<td className="px-6 py-4">
-												<div className="inline-flex items-center rounded-full px- py-1 text-xl green-500 ">
+												<div className="inline-flex items-center rounded-full text-red-500 text-xl font-bold ">
 													{elem.status}
 												</div>
 											</td>

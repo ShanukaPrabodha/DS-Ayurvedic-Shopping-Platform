@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import BuyerContext from "../../contexts/BuyerContext";
-import OrderContext from "../../contexts/OrderContext";
 
 const BuyerDashboard = () => {
 	const { buyer, getOneBuyer } = useContext(BuyerContext);
 
-	const { orders, refetchOrders } = useContext(OrderContext);
 	const id = localStorage.getItem("uId");
-	const stripId = localStorage.getItem("stripeUserId");
-	getOneBuyer(id);
 
-	//const stripId = localStorage.getItem("stripeUserId");(())
+	getOneBuyer(id);
 
 	return (
 		<>
