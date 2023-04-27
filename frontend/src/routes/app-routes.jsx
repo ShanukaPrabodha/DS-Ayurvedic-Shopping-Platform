@@ -37,6 +37,7 @@ import {
 	BuyerConfirmOrders,
 	BuyerDispatchOrder,
 	BuyerDeliveredOrders,
+	ViewConfirmedOrders,
 	
 
 } from "../pages";
@@ -102,6 +103,9 @@ const AppRoutes = () => {
 
 						{/* Delivered Routes */}
 						<Route path="/deliveredOrders" element={<ViewDeliveredOrders />} />
+
+						{/* Confirmed Routes */}
+						<Route path="/confirmedOrders" element={<ViewConfirmedOrders />} />
 
 						{/* Check Login Status Seller */}
 						<Route exact path="/seller/login" element={<CheckLoginStatus />}>

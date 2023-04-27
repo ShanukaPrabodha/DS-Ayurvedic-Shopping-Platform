@@ -126,7 +126,7 @@ export default function productModal({ visible, onClose, product }) {
 														/>
 														<label
 															for={variant._id}
-															className="flex cursor-pointer  bg-gray-200 justify-center items-center h-5 w-5 peer-checked:bg-primary-green peer-checked:text-white text-[17px] text-sm font-medium text-gray-900 dark:text-gray-300"
+															className="flex cursor-pointer  bg-gray-200 justify-center items-center h-5 w-5 peer-checked:bg-primary-green peer-checked:text-white text-[17px] text-sm font-medium text-gray-900"
 														>
 															{key + 1}
 														</label>
@@ -141,7 +141,7 @@ export default function productModal({ visible, onClose, product }) {
 									<select
 										onChange={selectQty}
 										aria-label="Select quantity"
-										className="py-2 px-1 border border-gray-500 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+										className="py-2 px-1 border border-gray-500 mr-6 focus:outline-none"
 									>
 										<option defaultValue="0">select qty</option>
 										<option value="1">01</option>
@@ -151,13 +151,13 @@ export default function productModal({ visible, onClose, product }) {
 								</div>
 							</div>
 							<br></br>
-							<div className="text-[14px] font-semibold leading-3 text-gray-600 dark:text-white pt-2">
+							<div className="text-[14px] font-semibold leading-3 text-gray-600 pt-2">
 								Size : {size}
 							</div>
-							<div className="text-[14px] font-semibold leading-3 text-gray-600 dark:text-white py-4">
+							<div className="text-[14px] font-semibold leading-3 text-gray-600 py-4">
 								Price: {price}
 							</div>
-							<div className="w-96 text-[14px] font-semibold leading-3 text-gray-600 dark:text-white">
+							<div className="w-96 text-[14px] font-semibold leading-3 text-gray-600">
 								Stock: {stock}
 							</div>
 							<div className="flex items-center justify-between pt-5">
@@ -174,7 +174,7 @@ export default function productModal({ visible, onClose, product }) {
 								</div>
 								<div className="mr-2">
 									<div className="text-[14px] font-semibold  text-gray-800">Total:</div>
-									<div className="text-base font-black leading-none text-gray-800 dark:text-white">රු.{total}.00</div>
+									<div className="text-base font-black leading-none text-gray-800">රු.{total}.00</div>
 								</div>
 							</div>
 						</div>

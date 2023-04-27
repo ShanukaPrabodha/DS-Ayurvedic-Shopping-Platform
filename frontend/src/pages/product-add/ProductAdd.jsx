@@ -20,7 +20,12 @@ const ProductAdd = () => {
 	const PRESET_NAME = "x3uai9p5";
 	const CLOUD_NAME = "dnf7u8aus";
 
-	//const id = localStorage.getItem("uID");
+	const supplierID = localStorage.getItem("uId");
+    const supplierName = localStorage.getItem("name");
+
+	console.log( supplierID + supplierName);
+
+
 
 	const submitImage = () => {
 		console.log(CLOUD_NAME);
@@ -85,7 +90,8 @@ const ProductAdd = () => {
 			productId: "0",
 			productName: e.target.productName.value,
 			description: e.target.description.value,
-			supplier: e.target.supplier.value,
+			supplier: supplierID,
+			supplierName:supplierName,
 			weight: e.target.weight.value,
 			variants: variant,
 			productImage: url,
@@ -138,6 +144,8 @@ const ProductAdd = () => {
 									<div className="flex ...">
 										<input
 											type="text"
+											value={supplierName}
+											readOnly="true"
 											className="form-control block w-80 px-3 py-1.5 text-base  border-indigo-500 font-normal text-gray-700  bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 											id="supplier"
 											aria-describedby="emailHelp123"
