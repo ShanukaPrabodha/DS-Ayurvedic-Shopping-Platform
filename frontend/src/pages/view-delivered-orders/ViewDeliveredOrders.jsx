@@ -8,6 +8,20 @@ function ViewDeliveredOrders() {
 
 
   const sellerName = localStorage.getItem("uId");
+
+  const navSeller=(seller)=>{
+
+    localStorage.setItem("sellerIdr",seller)
+    window.location.href="/sellerReview"
+
+  }
+
+  const navProduct=(product)=>{
+
+    localStorage.setItem("productIdr",product)
+    window.location.href="/productReview"
+
+  }
   
 
 
@@ -26,16 +40,20 @@ function ViewDeliveredOrders() {
                 <p className="mb-2">Status: {order.status}</p>
                 <p>Is Paid: {order.isPaid ? "Yes" : "No"}</p>
                 <div className="grid grid-cols-2 gap-4">
-  <Link to={`/sellerReview`}>
-    <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+
+    <button 
+    onClick={()=>navSeller(order.supplier)}
+    className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
       Rate Seller
     </button>
-  </Link>
-  <Link to="/productReview">
-    <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+
+
+    <button 
+     onClick={()=>navProduct(order.productId)}
+    className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
       Rate Product
     </button>
-  </Link>
+
 </div>
 
               </div>

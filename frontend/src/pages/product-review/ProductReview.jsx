@@ -10,6 +10,12 @@ const ProductReview = () => {
 	const [reviewData, setReviewData] = useState([]);
 	const [stats, setStats] = useState(null);
 
+	const productId = localStorage.getItem("productIdr");
+
+
+
+
+
 	//get all reviews
 	useEffect(() => {
 		const getReviews = async (reviewValues) => {
@@ -78,11 +84,12 @@ const ProductReview = () => {
 		console.log(`Submitted review value: ${reviewValue}`);
 		try {
 			const response = await ProductReviewAPI.createProductReview({
-				product_id: "123", // Replace with the actual product ID
+				product_id: productId, 
 				review_value: reviewValue,
 				text: commentValue,
 			});
 			console.log(response);
+			window.location.reload(true);
 		} catch (error) {
 			console.error(error);
 		}

@@ -10,9 +10,9 @@ const SellerReview = () => {
   const [highlightedStars, setHighlightedStars] = useState(0);
   const [commentValue, setCommentValue] = useState("");
   const [reviewData, setReviewData] = useState([]);
-  const { sellerId } = useParams();
+  const sellerId  = localStorage.getItem("sellerIdr");
+  console.log(sellerId);
 
- 
  // const sellerId = localStorage.getItem("uId");
 
   useEffect(() => {
@@ -49,12 +49,14 @@ const SellerReview = () => {
     try {
       const id = localStorage.getItem("uId");
       const response = await SellerReviewAPI.createSellerReview({
-        seller_id: id,
+        seller_id: sellerId,
         review_value: reviewValue,
         text: commentValue,
       });
 
       console.log(response);
+      window.location.reload(true);
+
     } catch (error) {
       console.error(error);
     }
