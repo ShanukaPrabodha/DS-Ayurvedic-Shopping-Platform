@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 import logger from "../../util/logger";
 import AdminModel from "../models/Admin.model";
 import BuyerModel from "../models/Buyer.model";
-// import SellerModel from "../models/Seller.model";
+import SellerModel from "../models/Seller.model";
 
 export const user_auth = async (request, response, next) => {
 	try {
@@ -22,14 +22,14 @@ export const user_auth = async (request, response, next) => {
 					});
 				} else if (decode.permissionLevel === "BUYER") {
 					user = await BuyerModel.findOne({
-						_id: decode.userId,
+						id: decode,
 						authToken: authToken,
 					});
 				} else if (decode.permissionLevel === "SELLER") {
-					// user = await SellerModel.findOne({
-					// 	_id: decode.userId,
-					// 	authToken: authToken,
-					// });
+					user = await SellerModel.findOne({
+						id: decode,
+						authToken: authToken,
+					});
 				}
 
 				if (!user) {
