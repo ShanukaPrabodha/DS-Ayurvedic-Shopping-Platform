@@ -24,6 +24,8 @@ import SellerDashboard from "./seller-dashboard";
 import BuyerOrders from "./buyer-orders";
 import BuyerOrderStatus from "./buyer-order-status";
 
+import ViewDeliveredOrders from "./view-delivered-orders";
+
 
 export {
 	Sample,
@@ -48,6 +50,7 @@ export {
 	BuyerOrders,
 	BuyerOrderStatus,
 
+	ViewDeliveredOrders,
 
 
 };

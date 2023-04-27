@@ -52,6 +52,7 @@ export function SellerProvider({ children }) {
 				localStorage.setItem("email", response.data.email);
 				localStorage.setItem("authToken", response.data.token);
 				localStorage.setItem("permissionLevel", response.data.permissionLevel);
+				localStorage.setItem("name", response.data.name );
 
 				makeToast({ type: "success", message: "Login Successful" });
 				window.location.href = "/seller";
