@@ -55,6 +55,7 @@ export {
 	BuyerOrders,
 	BuyerOrderStatus,
 	ViewDeliveredOrders,
+
 	BuyerPendingOrders,
 	BuyerConfirmOrders,
 	BuyerDispatchOrder,
